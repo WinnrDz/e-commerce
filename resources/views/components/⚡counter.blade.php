@@ -9,13 +9,15 @@ new class extends Component
     public function increment() {
         $this->count++;
     }
-
-    public function render() {
-        return view('livewire.counter');
-    }
 };
 ?>
 
 <div>
-    {{-- No surplus words or unnecessary actions. - Marcus Aurelius --}}
+    <h1>{{ $count }}</h1>
+
+    <button
+        wire:click="increment"
+        class="bg-blue-500 text-white px-4 py-2 rounded">
+        Increment
+    </button>
 </div>

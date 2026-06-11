@@ -15,4 +15,11 @@ export default defineConfig({
             ignored: ['**/storage/framework/views/**'],
         },
     },
+    theme: {
+    extend: {
+      fontFamily: {
+        integral: ['"Integral CF"', 'sans-serif'],
+      },
+    },
+  },
 });
