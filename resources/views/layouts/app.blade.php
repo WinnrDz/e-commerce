@@ -75,5 +75,7 @@
 
     @livewireScripts
 </body>
-
+    <p class="font-integral text-[64px] w-160 pl">
+        FIND CLOTHES THAT MATCHES YOUR STYLE
+    </p>
 </html>

@@ -2,6 +2,17 @@
 
 @import "tailwindcss";
 
+@font-face {
+    font-family: 'IntegralCF';
+    src: url('../fonts/IntegralCF-Regular.eot') format('truetype')
+        , url('../fonts/IntegralCF-Regular.woff') format('woff')
+        , url('../fonts/IntegralCF-Regular.woff2') format('woff2')
+        , url('../fonts/IntegralCF-Regular.otf') format('opentype')
+        ;
+        font-weight: normal;
+        font-style: normal;
+    }
+
 /* Tailwind scan sources */
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -11,6 +22,7 @@
 /* Theme variables (Tailwind v4 style) */
 @theme {
     --font-poppins: "Poppins", sans-serif;
+    --font-integral : "IntegralCF" , sans-serif;
 }
 
 /* =========================
