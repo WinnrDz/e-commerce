@@ -162,7 +162,7 @@
         </svg>
 
     </div>
-    <div class="bg-white flex flex-col items-center">
+    <div class="bg-white flex flex-col items-center gap-8 border-b border-black/10 pb-8 ">
         <h1 class="font-integral font-bold text-[48px] m-20">NEW ARRIVALS</h1>
         <div class="flex gap-[30px]">
             <div class="flex flex-col gap-[8px]">
@@ -221,7 +221,7 @@
                 </div>
                 <label class="font-satoshi font-bold text-[20px]">Skinny fit jeans</label>
                 <div class="flex gap-[5px]">
-                    
+
                     <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -256,7 +256,8 @@
                 </div>
             </div>
             <div class="flex flex-col gap-[8px]">
-                <div class="bg-[#F0EEED] rounded-[20px] w-[300px] h-[300px] flex justify-center items-center"><img class="w-[663px]" src="{{ asset('images/CHECKERED-SHIRT.png') }}" alt="Logo"></div>
+                <div class="bg-[#F0EEED] rounded-[20px] w-[300px] h-[300px] flex justify-center items-center"><img
+                        class="w-[663px]" src="{{ asset('images/CHECKERED-SHIRT.png') }}" alt="Logo"></div>
                 <label class="font-satoshi font-bold text-[20px]">Checkered Shirt</label>
                 <div class="flex gap-[5px]">
                     <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
@@ -296,7 +297,9 @@
                 </div>
             </div>
             <div class="flex flex-col gap-[8px]">
-                <div class="bg-[#F0EEED] rounded-[20px] w-[300px] h-[300px] flex justify-center"><div class="bg-[#F0EEED] rounded-[20px] w-[300px] h-[300px] flex justify-center items-center"><img class="w-[663px]" src="{{ asset('images/striped-shirt.png') }}" alt="Logo"></div>
+                <div class="bg-[#F0EEED] rounded-[20px] w-[300px] h-[300px] flex justify-center">
+                    <div class="bg-[#F0EEED] rounded-[20px] w-[300px] h-[300px] flex justify-center items-center"><img
+                            class="w-[663px]" src="{{ asset('images/striped-shirt.png') }}" alt="Logo"></div>
                 </div>
                 <label class="font-satoshi font-bold text-[20px]">Sleeve Striped T-shirt</label>
                 <div class="flex gap-[5px]">
@@ -340,6 +343,184 @@
                 </div>
             </div>
         </div>
+        <button
+            class="font-satoshi font-medium text-[16px] rounded-[62px] border border-black/10 w-[218px] h-[52px]">View
+            all</button>
+    </div>
+    <div class="bg-white flex flex-col items-center gap-8 border-b border-black/10 pb-8 ">
+        <h1 class="font-integral font-bold text-[48px] m-20">TOP SELLING</h1>
+        <div class="flex gap-[30px]">
+            <div class="flex flex-col gap-[8px]">
+                <div class="bg-[#F0EEED] rounded-[20px] w-[300px] h-[300px] flex justify-center p-5">
+                    <img src="{{ asset('images/vertical-shirt.png') }}" alt="Logo">
+                </div>
+                <label class="font-satoshi font-bold text-[20px]">Vertical Striped Shirt</label>
+                <div class="flex gap-[5px]">
+                    <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.79246 0L11.4117 5.63991L17.5849 6.38809L13.0304 10.6219L14.2265 16.7243L8.79246 13.701L3.35842 16.7243L4.5545 10.6219L2.86102e-06 6.38809L6.17325 5.63991L8.79246 0Z"
+                            fill="#FFC633" />
+                    </svg>
+                    <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.79246 0L11.4117 5.63991L17.5849 6.38809L13.0304 10.6219L14.2265 16.7243L8.79246 13.701L3.35842 16.7243L4.5545 10.6219L2.86102e-06 6.38809L6.17325 5.63991L8.79246 0Z"
+                            fill="#FFC633" />
+                    </svg>
+                    <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.79246 0L11.4117 5.63991L17.5849 6.38809L13.0304 10.6219L14.2265 16.7243L8.79246 13.701L3.35842 16.7243L4.5545 10.6219L2.86102e-06 6.38809L6.17325 5.63991L8.79246 0Z"
+                            fill="#FFC633" />
+                    </svg>
+                    <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.79246 0L11.4117 5.63991L17.5849 6.38809L13.0304 10.6219L14.2265 16.7243L8.79246 13.701L3.35842 16.7243L4.5545 10.6219L2.86102e-06 6.38809L6.17325 5.63991L8.79246 0Z"
+                            fill="#FFC633" />
+                    </svg>
+                    <svg width="9" height="17" viewBox="0 0 9 17" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M3.35842 16.7243L8.79246 13.701V0L6.17325 5.63991L0 6.38809L4.55449 10.6219L3.35842 16.7243Z"
+                            fill="#FFC633" />
+                    </svg>
+                    <label class="font-satoshi text-[14px]">4.5/<span class="opacity-60">5</span></label>
+                </div>
+                <div class="flex items-center gap-[8px]">
+                    <label class="font-satoshi font-bold text-[24px]">212$</label>
+                    <label class="font-satoshi font-bold text-[24px] opacity-40 line-through">232$</label>
+                    <label
+                        class="flex items-center justify-center font-satoshi font-medium text-[12px] text-[#FF3333] bg-[#FFEBEB] rounded-[62px] w-[58px] h-[28px]">-20%</label>
+                </div>
+            </div>
+            <div class="flex flex-col gap-[8px]">
+                <div class="bg-[#F0EEED] rounded-[20px] w-[300px] h-[300px] flex justify-center p-8">
+                    <img class="bg-[#F0EEED] w-[300px] rounded-[20px]" src="{{ asset('images/courage.png') }}"
+                    alt="Logo">
+                </div>
+                <label class="font-satoshi font-bold text-[20px]">Courage Graphic T-shirt</label>
+                <div class="flex gap-[5px]">
+
+                    <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.79246 0L11.4117 5.63991L17.5849 6.38809L13.0304 10.6219L14.2265 16.7243L8.79246 13.701L3.35842 16.7243L4.5545 10.6219L2.86102e-06 6.38809L6.17325 5.63991L8.79246 0Z"
+                            fill="#FFC633" />
+                    </svg>
+                    <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.79246 0L11.4117 5.63991L17.5849 6.38809L13.0304 10.6219L14.2265 16.7243L8.79246 13.701L3.35842 16.7243L4.5545 10.6219L2.86102e-06 6.38809L6.17325 5.63991L8.79246 0Z"
+                            fill="#FFC633" />
+                    </svg>
+                    <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.79246 0L11.4117 5.63991L17.5849 6.38809L13.0304 10.6219L14.2265 16.7243L8.79246 13.701L3.35842 16.7243L4.5545 10.6219L2.86102e-06 6.38809L6.17325 5.63991L8.79246 0Z"
+                            fill="#FFC633" />
+                    </svg>
+                    <svg width="9" height="17" viewBox="0 0 9 17" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M3.35842 16.7243L8.79246 13.701V0L6.17325 5.63991L0 6.38809L4.55449 10.6219L3.35842 16.7243Z"
+                            fill="#FFC633" />
+                    </svg>
+                    <label class="font-satoshi text-[14px]">3.5/<span class="opacity-60">5</span></label>
+                </div>
+                <div class="flex items-center gap-[8px]">
+                    <label class="font-satoshi font-bold text-[24px]">145$</label>
+                </div>
+            </div>
+            <div class="flex flex-col gap-[8px]">
+                <div class="bg-[#F0EEED] rounded-[20px] w-[300px] h-[300px] flex justify-center items-center p-16"><img
+                        class="w-[663px]" src="{{ asset('images/loose.png') }}" alt="Logo"></div>
+                <label class="font-satoshi font-bold text-[20px]">Loose Fit Bermuda Shorts</label>
+                <div class="flex gap-[5px]">
+                    <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.79246 0L11.4117 5.63991L17.5849 6.38809L13.0304 10.6219L14.2265 16.7243L8.79246 13.701L3.35842 16.7243L4.5545 10.6219L2.86102e-06 6.38809L6.17325 5.63991L8.79246 0Z"
+                            fill="#FFC633" />
+                    </svg>
+                    <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.79246 0L11.4117 5.63991L17.5849 6.38809L13.0304 10.6219L14.2265 16.7243L8.79246 13.701L3.35842 16.7243L4.5545 10.6219L2.86102e-06 6.38809L6.17325 5.63991L8.79246 0Z"
+                            fill="#FFC633" />
+                    </svg>
+                    <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.79246 0L11.4117 5.63991L17.5849 6.38809L13.0304 10.6219L14.2265 16.7243L8.79246 13.701L3.35842 16.7243L4.5545 10.6219L2.86102e-06 6.38809L6.17325 5.63991L8.79246 0Z"
+                            fill="#FFC633" />
+                    </svg>
+                    <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.79246 0L11.4117 5.63991L17.5849 6.38809L13.0304 10.6219L14.2265 16.7243L8.79246 13.701L3.35842 16.7243L4.5545 10.6219L2.86102e-06 6.38809L6.17325 5.63991L8.79246 0Z"
+                            fill="#FFC633" />
+                    </svg>
+                    <svg width="9" height="17" viewBox="0 0 9 17" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M3.35842 16.7243L8.79246 13.701V0L6.17325 5.63991L0 6.38809L4.55449 10.6219L3.35842 16.7243Z"
+                            fill="#FFC633" />
+                    </svg>
+                    <label class="font-satoshi text-[14px]">4.5/<span class="opacity-60">5</span></label>
+                </div>
+                <div class="flex items-center gap-[8px]">
+                    <label class="font-satoshi font-bold text-[24px]">80$</label>
+                </div>
+            </div>
+            <div class="flex flex-col gap-[8px]">
+                <div class="bg-[#F0EEED] rounded-[20px] w-[300px] h-[300px] flex justify-center">
+                    <div class="bg-[#F0EEED] rounded-[20px] w-[300px] h-[300px] flex justify-center items-center p-22"><img
+                            class="w-[663px]" src="{{ asset('images/faded.png') }}" alt="Logo"></div>
+                </div>
+                <label class="font-satoshi font-bold text-[20px]">Faded Skinny Jeans</label>
+                <div class="flex gap-[5px]">
+                    <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.79246 0L11.4117 5.63991L17.5849 6.38809L13.0304 10.6219L14.2265 16.7243L8.79246 13.701L3.35842 16.7243L4.5545 10.6219L2.86102e-06 6.38809L6.17325 5.63991L8.79246 0Z"
+                            fill="#FFC633" />
+                    </svg>
+                    <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.79246 0L11.4117 5.63991L17.5849 6.38809L13.0304 10.6219L14.2265 16.7243L8.79246 13.701L3.35842 16.7243L4.5545 10.6219L2.86102e-06 6.38809L6.17325 5.63991L8.79246 0Z"
+                            fill="#FFC633" />
+                    </svg>
+                    <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.79246 0L11.4117 5.63991L17.5849 6.38809L13.0304 10.6219L14.2265 16.7243L8.79246 13.701L3.35842 16.7243L4.5545 10.6219L2.86102e-06 6.38809L6.17325 5.63991L8.79246 0Z"
+                            fill="#FFC633" />
+                    </svg>
+                    <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.79246 0L11.4117 5.63991L17.5849 6.38809L13.0304 10.6219L14.2265 16.7243L8.79246 13.701L3.35842 16.7243L4.5545 10.6219L2.86102e-06 6.38809L6.17325 5.63991L8.79246 0Z"
+                            fill="#FFC633" />
+                    </svg>
+                    <svg width="9" height="17" viewBox="0 0 9 17" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M3.35842 16.7243L8.79246 13.701V0L6.17325 5.63991L0 6.38809L4.55449 10.6219L3.35842 16.7243Z"
+                            fill="#FFC633" />
+                    </svg>
+                    <label class="font-satoshi text-[14px]">4.5/<span class="opacity-60">5</span></label>
+                </div>
+                <div class="flex items-center gap-[8px]">
+                    <label class="font-satoshi font-bold text-[24px]">210$</label>
+                </div>
+            </div>
+        </div>
+        <button
+            class="font-satoshi font-medium text-[16px] rounded-[62px] border border-black/10 w-[218px] h-[52px]">View
+            all</button>
     </div>
     @livewireScripts
 </body>
