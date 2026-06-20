@@ -17,7 +17,7 @@
     @livewireStyles
 </head>
 
-<body class="bg-[#F2F0F1]">
+<body class="bg-white">
     <nav class="font-satoshi text-[16px] bg-[#FFFFFF] px-7 py-5 flex items-center justify-center gap-30">
         <div class="pl-12">
             <h1 class="font-integral font-bold text-[32px] ">SHOP.CO</h1>
@@ -68,7 +68,7 @@
             </div>
         </div>
     </nav>
-    <div class="flex justify-around">
+    <div class="flex justify-around bg-[#F2F0F1]">
         <div class="m-10 mt-30">
             <p class="font-integral font-bold text-[64px] leading-[64px] w-160">
                 FIND CLOTHES THAT MATCHES YOUR STYLE
@@ -347,7 +347,7 @@
             class="font-satoshi font-medium text-[16px] rounded-[62px] border border-black/10 w-[218px] h-[52px]">View
             all</button>
     </div>
-    <div class="bg-white flex flex-col items-center gap-8 border-b border-black/10 pb-8 ">
+    <div class="bg-white flex flex-col items-center gap-8 pb-8 ">
         <h1 class="font-integral font-bold text-[48px] m-20">TOP SELLING</h1>
         <div class="flex gap-[30px]">
             <div class="flex flex-col gap-[8px]">
@@ -521,6 +521,27 @@
         <button
             class="font-satoshi font-medium text-[16px] rounded-[62px] border border-black/10 w-[218px] h-[52px]">View
             all</button>
+    </div>
+    <div class="bg-[#F0F0F0] rounded-[40px] m-20">
+        <h1 class="font-integral font-bold text-[48px] p-25 text-center">BROWSE BY dress STYLE</h1>
+        <div class="flex flex-wrap justify-center gap-8 pb-16">
+            <div class="w-[30%] bg-white rounded-[20px] h-75 relative overflow-hidden">
+                <div class="font-satoshi font-bold text-[36px] absolute top-0 left-0 z-10 p-8">Casual</div>
+                <img class="absolute -bottom-55 right-0 w-auto h-160 object-cover" src="{{ asset('images/tato-guy.png') }}" alt="Logo">
+            </div>
+            <div class="w-[50%] bg-[#FCFCFC] rounded-[20px] h-75 relative overflow-hidden ">
+                <div class="font-satoshi font-bold text-[36px] absolute top-0 left-0 z-10 p-8">Formal</div>
+                <img class="absolute -bottom-90 right-0 w-auto h-200 object-cover" src="{{ asset('images/suit-guy.png') }}" alt="Logo">
+            </div>
+            <div class="w-[50%] bg-white rounded-[20px] h-75 relative overflow-hidden">
+                <div class="font-satoshi font-bold text-[36px] absolute top-0 left-0 z-10 p-8">Party</div>
+                <img class="absolute -bottom-40 right-0 w-auto h-160 object-cover" src="{{ asset('images/cool-guy.png') }}" alt="Logo">
+            </div>
+            <div class="w-[30%] bg-white rounded-[20px] h-75 relative overflow-hidden">
+                <div class="font-satoshi font-bold text-[36px] absolute top-0 left-0 z-10 p-8">Gym</div>
+                <img class="absolute -bottom-50 -right-10 w-auto h-160 object-cover" src="{{ asset('images/gym-guy.png') }}" alt="Logo">
+            </div>
+        </div>
     </div>
     @livewireScripts
 </body>
