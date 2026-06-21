@@ -398,7 +398,7 @@
             <div class="flex flex-col gap-[8px]">
                 <div class="bg-[#F0EEED] rounded-[20px] w-[300px] h-[300px] flex justify-center p-8">
                     <img class="bg-[#F0EEED] w-[300px] rounded-[20px]" src="{{ asset('images/courage.png') }}"
-                    alt="Logo">
+                        alt="Logo">
                 </div>
                 <label class="font-satoshi font-bold text-[20px]">Courage Graphic T-shirt</label>
                 <div class="flex gap-[5px]">
@@ -476,8 +476,8 @@
             </div>
             <div class="flex flex-col gap-[8px]">
                 <div class="bg-[#F0EEED] rounded-[20px] w-[300px] h-[300px] flex justify-center">
-                    <div class="bg-[#F0EEED] rounded-[20px] w-[300px] h-[300px] flex justify-center items-center p-22"><img
-                            class="w-[663px]" src="{{ asset('images/faded.png') }}" alt="Logo"></div>
+                    <div class="bg-[#F0EEED] rounded-[20px] w-[300px] h-[300px] flex justify-center items-center p-22">
+                        <img class="w-[663px]" src="{{ asset('images/faded.png') }}" alt="Logo"></div>
                 </div>
                 <label class="font-satoshi font-bold text-[20px]">Faded Skinny Jeans</label>
                 <div class="flex gap-[5px]">
@@ -527,21 +527,126 @@
         <div class="flex flex-wrap justify-center gap-8 pb-16">
             <div class="w-[30%] bg-white rounded-[20px] h-75 relative overflow-hidden">
                 <div class="font-satoshi font-bold text-[36px] absolute top-0 left-0 z-10 p-8">Casual</div>
-                <img class="absolute -bottom-55 right-0 w-auto h-160 object-cover" src="{{ asset('images/tato-guy.png') }}" alt="Logo">
+                <img class="absolute -bottom-55 right-0 w-auto h-160 object-cover"
+                    src="{{ asset('images/tato-guy.png') }}" alt="Logo">
             </div>
             <div class="w-[50%] bg-[#FCFCFC] rounded-[20px] h-75 relative overflow-hidden ">
                 <div class="font-satoshi font-bold text-[36px] absolute top-0 left-0 z-10 p-8">Formal</div>
-                <img class="absolute -bottom-90 right-0 w-auto h-200 object-cover" src="{{ asset('images/suit-guy.png') }}" alt="Logo">
+                <img class="absolute -bottom-90 right-0 w-auto h-200 object-cover"
+                    src="{{ asset('images/suit-guy.png') }}" alt="Logo">
             </div>
             <div class="w-[50%] bg-white rounded-[20px] h-75 relative overflow-hidden">
                 <div class="font-satoshi font-bold text-[36px] absolute top-0 left-0 z-10 p-8">Party</div>
-                <img class="absolute -bottom-40 right-0 w-auto h-160 object-cover" src="{{ asset('images/cool-guy.png') }}" alt="Logo">
+                <img class="absolute -bottom-40 right-0 w-auto h-160 object-cover"
+                    src="{{ asset('images/cool-guy.png') }}" alt="Logo">
             </div>
             <div class="w-[30%] bg-white rounded-[20px] h-75 relative overflow-hidden">
                 <div class="font-satoshi font-bold text-[36px] absolute top-0 left-0 z-10 p-8">Gym</div>
-                <img class="absolute -bottom-50 -right-10 w-auto h-160 object-cover" src="{{ asset('images/gym-guy.png') }}" alt="Logo">
+                <img class="absolute -bottom-50 -right-10 w-auto h-160 object-cover"
+                    src="{{ asset('images/gym-guy.png') }}" alt="Logo">
             </div>
         </div>
+    </div>
+    <div class="flex items-center justify-between">
+        <h1 class="font-integral font-bold text-[48px] p-8 pl-20">OUR HAPPY CUSTOMERS</h1>
+        <div class="mr-24 flex gap-4">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M9.70406 4.4541L2.95406 11.2041C2.84918 11.3086 2.76597 11.4328 2.70919 11.5696C2.6524 11.7063 2.62317 11.8529 2.62317 12.001C2.62317 12.149 2.6524 12.2957 2.70919 12.4324C2.76597 12.5691 2.84918 12.6933 2.95406 12.7979L9.70406 19.5479C9.91541 19.7592 10.2021 19.8779 10.5009 19.8779C10.7998 19.8779 11.0865 19.7592 11.2978 19.5479C11.5092 19.3365 11.6279 19.0499 11.6279 18.751C11.6279 18.4521 11.5092 18.1654 11.2978 17.9541L6.46875 13.125L20.25 13.125C20.5484 13.125 20.8345 13.0065 21.0455 12.7955C21.2565 12.5846 21.375 12.2984 21.375 12C21.375 11.7017 21.2565 11.4155 21.0455 11.2045C20.8345 10.9936 20.5484 10.875 20.25 10.875L6.46875 10.875L11.2988 6.04598C11.5101 5.83463 11.6288 5.54799 11.6288 5.2491C11.6288 4.95022 11.5101 4.66357 11.2988 4.45223C11.0874 4.24088 10.8008 4.12215 10.5019 4.12215C10.203 4.12215 9.91634 4.24088 9.705 4.45223L9.70406 4.4541Z"
+                    fill="black" />
+            </svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M14.2959 4.4541L21.0459 11.2041C21.1508 11.3086 21.234 11.4328 21.2908 11.5696C21.3476 11.7063 21.3768 11.8529 21.3768 12.001C21.3768 12.149 21.3476 12.2957 21.2908 12.4324C21.234 12.5691 21.1508 12.6933 21.0459 12.7979L14.2959 19.5479C14.0846 19.7592 13.7979 19.8779 13.4991 19.8779C13.2002 19.8779 12.9135 19.7592 12.7022 19.5479C12.4908 19.3365 12.3721 19.0499 12.3721 18.751C12.3721 18.4521 12.4908 18.1654 12.7022 17.9541L17.5313 13.125L3.75 13.125C3.45163 13.125 3.16548 13.0065 2.9545 12.7955C2.74353 12.5846 2.625 12.2984 2.625 12C2.625 11.7017 2.74353 11.4155 2.95451 11.2045C3.16548 10.9936 3.45163 10.875 3.75 10.875L17.5313 10.875L12.7013 6.04598C12.4899 5.83463 12.3712 5.54799 12.3712 5.2491C12.3712 4.95022 12.4899 4.66357 12.7013 4.45223C12.9126 4.24088 13.1992 4.12215 13.4981 4.12215C13.797 4.12215 14.0837 4.24088 14.295 4.45223L14.2959 4.4541Z"
+                    fill="black" />
+            </svg>
+        </div>
+    </div>
+    <div class="flex justify-center gap-8 overflow-x-hidden">
+        <div class="blur-[1.75px] border border-black/10 rounded-[20px] w-130 h-60 p-6 shrink-0">
+            <div class="flex gap-2"> 
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
+            </div>
+            <div class="flex items-center gap-2">
+                <h3 class="font-satoshi font-bold text-[20px] mt-4 mb-4">Sarah M.</h3>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.75 0C7.82164 0 5.93657 0.571828 4.33319 1.64317C2.72982 2.71451 1.48013 4.23726 0.742179 6.01884C0.00422452 7.80042 -0.188858 9.76082 0.187348 11.6521C0.563554 13.5434 1.49215 15.2807 2.85571 16.6443C4.21928 18.0079 5.95656 18.9365 7.84787 19.3127C9.73919 19.6889 11.6996 19.4958 13.4812 18.7578C15.2627 18.0199 16.7855 16.7702 17.8568 15.1668C18.9282 13.5634 19.5 11.6784 19.5 9.75C19.4973 7.16498 18.4692 4.68661 16.6413 2.85872C14.8134 1.03084 12.335 0.00272983 9.75 0ZM14.0306 8.03063L8.78063 13.2806C8.71097 13.3504 8.62826 13.4057 8.53721 13.4434C8.44616 13.4812 8.34857 13.5006 8.25 13.5006C8.15144 13.5006 8.05385 13.4812 7.9628 13.4434C7.87175 13.4057 7.78903 13.3504 7.71938 13.2806L5.46938 11.0306C5.32865 10.8899 5.24959 10.699 5.24959 10.5C5.24959 10.301 5.32865 10.1101 5.46938 9.96937C5.61011 9.82864 5.80098 9.74958 6 9.74958C6.19903 9.74958 6.3899 9.82864 6.53063 9.96937L8.25 11.6897L12.9694 6.96937C13.0391 6.89969 13.1218 6.84442 13.2128 6.8067C13.3039 6.76899 13.4015 6.74958 13.5 6.74958C13.5986 6.74958 13.6961 6.76899 13.7872 6.8067C13.8782 6.84442 13.9609 6.89969 14.0306 6.96937C14.1003 7.03906 14.1556 7.12178 14.1933 7.21283C14.231 7.30387 14.2504 7.40145 14.2504 7.5C14.2504 7.59855 14.231 7.69613 14.1933 7.78717C14.1556 7.87822 14.1003 7.96094 14.0306 8.03063Z" fill="#01AB31"/></svg>
+            </div>
+            <p class="font-satoshi text-[16px] text-black opacity-60">
+                "I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.”
+            </p>
+        </div>
+    
+        <div class="border border-black/10 rounded-[20px] w-130 h-60 p-6 shrink-0">
+            <div class="flex gap-2"> 
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
+            </div>
+            <div class="flex items-center gap-2">
+                <h3 class="font-satoshi font-bold text-[20px] mt-4 mb-4">Sarah M.</h3>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.75 0C7.82164 0 5.93657 0.571828 4.33319 1.64317C2.72982 2.71451 1.48013 4.23726 0.742179 6.01884C0.00422452 7.80042 -0.188858 9.76082 0.187348 11.6521C0.563554 13.5434 1.49215 15.2807 2.85571 16.6443C4.21928 18.0079 5.95656 18.9365 7.84787 19.3127C9.73919 19.6889 11.6996 19.4958 13.4812 18.7578C15.2627 18.0199 16.7855 16.7702 17.8568 15.1668C18.9282 13.5634 19.5 11.6784 19.5 9.75C19.4973 7.16498 18.4692 4.68661 16.6413 2.85872C14.8134 1.03084 12.335 0.00272983 9.75 0ZM14.0306 8.03063L8.78063 13.2806C8.71097 13.3504 8.62826 13.4057 8.53721 13.4434C8.44616 13.4812 8.34857 13.5006 8.25 13.5006C8.15144 13.5006 8.05385 13.4812 7.9628 13.4434C7.87175 13.4057 7.78903 13.3504 7.71938 13.2806L5.46938 11.0306C5.32865 10.8899 5.24959 10.699 5.24959 10.5C5.24959 10.301 5.32865 10.1101 5.46938 9.96937C5.61011 9.82864 5.80098 9.74958 6 9.74958C6.19903 9.74958 6.3899 9.82864 6.53063 9.96937L8.25 11.6897L12.9694 6.96937C13.0391 6.89969 13.1218 6.84442 13.2128 6.8067C13.3039 6.76899 13.4015 6.74958 13.5 6.74958C13.5986 6.74958 13.6961 6.76899 13.7872 6.8067C13.8782 6.84442 13.9609 6.89969 14.0306 6.96937C14.1003 7.03906 14.1556 7.12178 14.1933 7.21283C14.231 7.30387 14.2504 7.40145 14.2504 7.5C14.2504 7.59855 14.231 7.69613 14.1933 7.78717C14.1556 7.87822 14.1003 7.96094 14.0306 8.03063Z" fill="#01AB31"/></svg>
+            </div>
+            <p class="font-satoshi text-[16px] text-black opacity-60">
+                "I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.”
+            </p>
+        </div>
+        <div class="border border-black/10 rounded-[20px] w-130 h-60 p-6 shrink-0">
+            <div class="flex gap-2"> 
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
+            </div>
+            <div class="flex items-center gap-2">
+                <h3 class="font-satoshi font-bold text-[20px] mt-4 mb-4">Alex K.</h3>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.75 0C7.82164 0 5.93657 0.571828 4.33319 1.64317C2.72982 2.71451 1.48013 4.23726 0.742179 6.01884C0.00422452 7.80042 -0.188858 9.76082 0.187348 11.6521C0.563554 13.5434 1.49215 15.2807 2.85571 16.6443C4.21928 18.0079 5.95656 18.9365 7.84787 19.3127C9.73919 19.6889 11.6996 19.4958 13.4812 18.7578C15.2627 18.0199 16.7855 16.7702 17.8568 15.1668C18.9282 13.5634 19.5 11.6784 19.5 9.75C19.4973 7.16498 18.4692 4.68661 16.6413 2.85872C14.8134 1.03084 12.335 0.00272983 9.75 0ZM14.0306 8.03063L8.78063 13.2806C8.71097 13.3504 8.62826 13.4057 8.53721 13.4434C8.44616 13.4812 8.34857 13.5006 8.25 13.5006C8.15144 13.5006 8.05385 13.4812 7.9628 13.4434C7.87175 13.4057 7.78903 13.3504 7.71938 13.2806L5.46938 11.0306C5.32865 10.8899 5.24959 10.699 5.24959 10.5C5.24959 10.301 5.32865 10.1101 5.46938 9.96937C5.61011 9.82864 5.80098 9.74958 6 9.74958C6.19903 9.74958 6.3899 9.82864 6.53063 9.96937L8.25 11.6897L12.9694 6.96937C13.0391 6.89969 13.1218 6.84442 13.2128 6.8067C13.3039 6.76899 13.4015 6.74958 13.5 6.74958C13.5986 6.74958 13.6961 6.76899 13.7872 6.8067C13.8782 6.84442 13.9609 6.89969 14.0306 6.96937C14.1003 7.03906 14.1556 7.12178 14.1933 7.21283C14.231 7.30387 14.2504 7.40145 14.2504 7.5C14.2504 7.59855 14.231 7.69613 14.1933 7.78717C14.1556 7.87822 14.1003 7.96094 14.0306 8.03063Z" fill="#01AB31"/></svg>
+            </div>
+            <p class="font-satoshi text-[16px] text-black opacity-60">
+                "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions.”
+            </p>
+        </div>
+        <div class="border border-black/10 rounded-[20px] w-130 h-60 p-6 shrink-0">
+            <div class="flex gap-2"> 
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
+            </div>
+            <div class="flex items-center gap-2">
+                <h3 class="font-satoshi font-bold text-[20px] mt-4 mb-4">James L.</h3>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.75 0C7.82164 0 5.93657 0.571828 4.33319 1.64317C2.72982 2.71451 1.48013 4.23726 0.742179 6.01884C0.00422452 7.80042 -0.188858 9.76082 0.187348 11.6521C0.563554 13.5434 1.49215 15.2807 2.85571 16.6443C4.21928 18.0079 5.95656 18.9365 7.84787 19.3127C9.73919 19.6889 11.6996 19.4958 13.4812 18.7578C15.2627 18.0199 16.7855 16.7702 17.8568 15.1668C18.9282 13.5634 19.5 11.6784 19.5 9.75C19.4973 7.16498 18.4692 4.68661 16.6413 2.85872C14.8134 1.03084 12.335 0.00272983 9.75 0ZM14.0306 8.03063L8.78063 13.2806C8.71097 13.3504 8.62826 13.4057 8.53721 13.4434C8.44616 13.4812 8.34857 13.5006 8.25 13.5006C8.15144 13.5006 8.05385 13.4812 7.9628 13.4434C7.87175 13.4057 7.78903 13.3504 7.71938 13.2806L5.46938 11.0306C5.32865 10.8899 5.24959 10.699 5.24959 10.5C5.24959 10.301 5.32865 10.1101 5.46938 9.96937C5.61011 9.82864 5.80098 9.74958 6 9.74958C6.19903 9.74958 6.3899 9.82864 6.53063 9.96937L8.25 11.6897L12.9694 6.96937C13.0391 6.89969 13.1218 6.84442 13.2128 6.8067C13.3039 6.76899 13.4015 6.74958 13.5 6.74958C13.5986 6.74958 13.6961 6.76899 13.7872 6.8067C13.8782 6.84442 13.9609 6.89969 14.0306 6.96937C14.1003 7.03906 14.1556 7.12178 14.1933 7.21283C14.231 7.30387 14.2504 7.40145 14.2504 7.5C14.2504 7.59855 14.231 7.69613 14.1933 7.78717C14.1556 7.87822 14.1003 7.96094 14.0306 8.03063Z" fill="#01AB31"/></svg>
+            </div>
+            <p class="font-satoshi text-[16px] text-black opacity-60">
+                "As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends.”
+            </p>
+        </div>
+        <div class="blur-[1.75px] border border-black/10 rounded-[20px] w-130 h-60 p-6 shrink-0">
+            <div class="flex gap-2"> 
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
+                <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
+            </div>
+            <div class="flex items-center gap-2">
+                <h3 class="font-satoshi font-bold text-[20px] mt-4 mb-4">Mooen</h3>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.75 0C7.82164 0 5.93657 0.571828 4.33319 1.64317C2.72982 2.71451 1.48013 4.23726 0.742179 6.01884C0.00422452 7.80042 -0.188858 9.76082 0.187348 11.6521C0.563554 13.5434 1.49215 15.2807 2.85571 16.6443C4.21928 18.0079 5.95656 18.9365 7.84787 19.3127C9.73919 19.6889 11.6996 19.4958 13.4812 18.7578C15.2627 18.0199 16.7855 16.7702 17.8568 15.1668C18.9282 13.5634 19.5 11.6784 19.5 9.75C19.4973 7.16498 18.4692 4.68661 16.6413 2.85872C14.8134 1.03084 12.335 0.00272983 9.75 0ZM14.0306 8.03063L8.78063 13.2806C8.71097 13.3504 8.62826 13.4057 8.53721 13.4434C8.44616 13.4812 8.34857 13.5006 8.25 13.5006C8.15144 13.5006 8.05385 13.4812 7.9628 13.4434C7.87175 13.4057 7.78903 13.3504 7.71938 13.2806L5.46938 11.0306C5.32865 10.8899 5.24959 10.699 5.24959 10.5C5.24959 10.301 5.32865 10.1101 5.46938 9.96937C5.61011 9.82864 5.80098 9.74958 6 9.74958C6.19903 9.74958 6.3899 9.82864 6.53063 9.96937L8.25 11.6897L12.9694 6.96937C13.0391 6.89969 13.1218 6.84442 13.2128 6.8067C13.3039 6.76899 13.4015 6.74958 13.5 6.74958C13.5986 6.74958 13.6961 6.76899 13.7872 6.8067C13.8782 6.84442 13.9609 6.89969 14.0306 6.96937C14.1003 7.03906 14.1556 7.12178 14.1933 7.21283C14.231 7.30387 14.2504 7.40145 14.2504 7.5C14.2504 7.59855 14.231 7.69613 14.1933 7.78717C14.1556 7.87822 14.1003 7.96094 14.0306 8.03063Z" fill="#01AB31"/></svg>
+            </div>
+            <p class="font-satoshi text-[16px] text-black opacity-60">
+                "As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends.”    
+            </p>
+        </div>
+        
     </div>
     @livewireScripts
 </body>
