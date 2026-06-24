@@ -558,7 +558,7 @@
             </button>   
         </div>
     </div>
-    <div class="flex justify-center gap-8" id="customersParent">
+    <div class="flex justify-center gap-8 overflow-x-hidden" id="customersParent">
         <div class="blur-[1.75px] border border-black/10 rounded-[20px] w-130 h-60 p-6 shrink-0 transition-transform duration-300 ease-in-out">
             <div class="flex gap-2"> 
                 <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
