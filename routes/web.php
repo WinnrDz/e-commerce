@@ -3,5 +3,10 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('layouts.app');
+    return view('welcome');
+});
+
+
+Route::get('/show', function () {
+    return view('Show');
 });
