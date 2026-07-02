@@ -63,7 +63,22 @@ window.rightArrow = async function () {
         v.classList.remove("transition-transform","duration-300","ease-in-out");
         v.style.transform = "";
     })
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------------------*/
 
 
-    
+const previewCont = document.getElementById("previewCont");
+const previewArray = Array.from(previewCont.children);
+const previewImage = document.getElementById("previewImage");
+
+window.preview = function (num) {
+    for (let i = 0; i < 3; i++) {
+        previewArray[i].classList.remove("border" ,"black");
+    }
+    previewArray[num].classList.add("border" ,"black");
+
+    console.log(previewArray[num].firstElementChild.src);
+
+    previewImage.src = previewArray[num].firstElementChild.src
 }

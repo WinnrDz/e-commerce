@@ -12,19 +12,19 @@
 </div>
 <div class="flex flex-col items-center justify-center">
 <div class="ml-20 flex gap-4">
-     <div>
-          <div class="bg-[#F0EEED] w-38 h-41 rounded-[20px] border black mb-8 flex justify-center items-center">
+     <div id="previewCont">
+          <div class="bg-[#F0EEED] w-38 h-41 rounded-[20px] border black mb-8 flex justify-center items-center cursor-pointer" onclick="preview(0)">
                <img class="bg-[#F0EEED] w-34 " src="{{ asset('images/life-shirt.png') }}" alt="Logo">
           </div>
-          <div class="bg-[#F0EEED] w-38 h-41 rounded-[20px] mb-8 flex justify-center items-center">
+          <div class="bg-[#F0EEED] w-38 h-41 rounded-[20px] mb-8 flex justify-center items-center cursor-pointer" onclick="preview(1)">
                <img class="bg-[#F0EEED] w-34 " src="{{ asset('images/dead-shirt.png') }}" alt="Logo">
           </div>
-          <div class="bg-[#F0EEED] w-38 h-41 rounded-[20px] mb-8 flex justify-center items-center overflow-hidden">
+          <div class="bg-[#F0EEED] w-38 h-41 rounded-[20px] mb-8 flex justify-center items-center overflow-hidden cursor-pointer" onclick="preview(2)">
                <img class="bg-[#F0EEED] w-44 max-w-none translate-x-2" src="{{ asset('images/life-guy.png') }}" alt="Logo">
           </div>
      </div>
-     <div class="bg-[#F0EEED] w-111 h-140 rounded-[20px] mb-8 flex justify-center items-center">
-               <img class="bg-[#F0EEED] w-100 " src="{{ asset('images/life-shirt.png') }}" alt="Logo">
+     <div class="bg-[#F0EEED] w-111 h-140 rounded-[20px] mb-8 flex justify-center items-center overflow-hidden">
+               <img id="previewImage" class="bg-[#F0EEED] w-100 " src="{{ asset('images/life-shirt.png') }}" alt="Logo">
      </div>
      <div class="flex flex-col gap-4 ml-4">
           <h1 class="font-integral font-bold text-[40px] ">ONE LIFE GRAPHIC T-SHIRT</h1>
