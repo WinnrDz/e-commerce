@@ -82,3 +82,33 @@ window.preview = function (num) {
 
     previewImage.src = previewArray[num].firstElementChild.src
 }
+
+
+/*---------------------------------------------------------------------------------------------------------------------------------------*/
+
+const zoomable = document.getElementById("zoomable");
+const square = document.getElementById("square");
+
+
+zoomable.addEventListener("mousemove", (e) => {
+    square.classList.remove("hidden");
+    square.classList.add("block");
+
+
+    const left = Math.max(535, Math.min(e.clientX - square.offsetWidth / 2, 740));
+    const top = Math.max(215, Math.min(e.clientY - square.offsetHeight / 2, 500));
+
+    square.style.left = `${left}px`;
+    square.style.top = `${top}px`;
+    
+
+
+    console.log(left,top);
+
+});
+
+zoomable.addEventListener("mouseleave", () => {
+    square.classList.remove("block");
+    square.classList.add("hidden");
+});
+
