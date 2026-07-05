@@ -25,7 +25,11 @@
      </div>
      <div id="zoomable" class="bg-[#F0EEED] w-111 h-140 rounded-[20px] mb-8 flex justify-center items-center overflow-hidden cursor-pointer relative">
                <img id="previewImage" class="bg-[#F0EEED] w-100 " src="{{ asset('images/life-shirt.png') }}" alt="Logo">
-               <div id="square" class="bg-[#91FFFF] h-70 w-60 fixed z-50 opacity-20 hidden"></div>
+               <div id="square" class="bg-[#91FFFF] h-70 w-60 absolute z-50 opacity-20 hidden"></div>
+     </div>
+     <div class="bg-[#F0EEED] w-111 h-140 rounded-[20px] mb-8 flex justify-center items-center overflow-hidden cursor-pointer hidden">
+               <img class="bg-[#F0EEED] w-100 " src="{{ asset('images/life-shirt.png') }}" alt="Logo">
+               
      </div>
      <div class="flex flex-col gap-4 ml-4">
           <h1 class="font-integral font-bold text-[40px] ">ONE LIFE GRAPHIC T-SHIRT</h1>

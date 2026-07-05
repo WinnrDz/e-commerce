@@ -94,13 +94,24 @@ zoomable.addEventListener("mousemove", (e) => {
     square.classList.remove("hidden");
     square.classList.add("block");
 
-
+/*
     const left = Math.max(535, Math.min(e.clientX - square.offsetWidth / 2, 740));
     const top = Math.max(215, Math.min(e.clientY - square.offsetHeight / 2, 500));
+    */
 
+    const rect = zoomable.getBoundingClientRect();
+
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+
+    
+
+   const left = Math.max(0 ,Math.min(210 ,x - 120));
+   const top = Math.max(0 ,Math.min(280 ,y - 140));
+     
     square.style.left = `${left}px`;
     square.style.top = `${top}px`;
-    
 
 
     console.log(left,top);
