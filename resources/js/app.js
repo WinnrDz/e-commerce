@@ -88,24 +88,26 @@ window.preview = function (num) {
 
 const zoomable = document.getElementById("zoomable");
 const square = document.getElementById("square");
-
+const zoomed = document.getElementById("zoomed");
+const buyContent = document.getElementById("buyContent");
+const zoomedImage = document.getElementById("zoomedImage");
 
 zoomable.addEventListener("mousemove", (e) => {
     square.classList.remove("hidden");
     square.classList.add("block");
 
-/*
-    const left = Math.max(535, Math.min(e.clientX - square.offsetWidth / 2, 740));
-    const top = Math.max(215, Math.min(e.clientY - square.offsetHeight / 2, 500));
-    */
+    zoomed.classList.add("block");
+    zoomed.classList.remove("hidden");
+
+    buyContent.classList.add("hidden");
+
 
     const rect = zoomable.getBoundingClientRect();
+    
 
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-
-    
 
    const left = Math.max(0 ,Math.min(210 ,x - 120));
    const top = Math.max(0 ,Math.min(280 ,y - 140));
@@ -113,6 +115,11 @@ zoomable.addEventListener("mousemove", (e) => {
     square.style.left = `${left}px`;
     square.style.top = `${top}px`;
 
+    let invLeft = -(left - 210);
+    let infTop = -(top - 280);
+
+    zoomedImage.style.left = `${invLeft}px`;
+    zoomedImage.style.top = `${infTop}px`;
 
     console.log(left,top);
 
@@ -121,5 +128,12 @@ zoomable.addEventListener("mousemove", (e) => {
 zoomable.addEventListener("mouseleave", () => {
     square.classList.remove("block");
     square.classList.add("hidden");
+
+
+    zoomed.classList.add("hidden");
+    zoomed.classList.remove("block");
+    
+    buyContent.classList.add("block");
+    buyContent.classList.remove("hidden");
 });
 

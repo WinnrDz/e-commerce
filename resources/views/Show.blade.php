@@ -27,11 +27,10 @@
                <img id="previewImage" class="bg-[#F0EEED] w-100 " src="{{ asset('images/life-shirt.png') }}" alt="Logo">
                <div id="square" class="bg-[#91FFFF] h-70 w-60 absolute z-50 opacity-20 hidden"></div>
      </div>
-     <div class="bg-[#F0EEED] w-111 h-140 rounded-[20px] mb-8 flex justify-center items-center overflow-hidden cursor-pointer hidden">
-               <img class="bg-[#F0EEED] w-100 " src="{{ asset('images/life-shirt.png') }}" alt="Logo">
-               
+     <div id="zoomed" class="bg-[#F0EEED] w-154 h-140 rounded-[20px] mb-8 flex justify-center items-center overflow-hidden relative hidden ">
+               <img id="zoomedImage" class="bg-[#F0EEED] w-100 scale-200 absolute" src="{{ asset('images/life-shirt.png') }}" alt="Logo">    
      </div>
-     <div class="flex flex-col gap-4 ml-4">
+     <div id="buyContent" class="flex flex-col gap-4 ml-4">
           <h1 class="font-integral font-bold text-[40px] ">ONE LIFE GRAPHIC T-SHIRT</h1>
           <div class="flex gap-2">
                <svg width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.7515 0L15.2521 7.53796L23.5029 8.53794L17.4157 14.1966L19.0143 22.3526L11.7515 18.3119L4.48868 22.3526L6.08728 14.1966L2.00272e-05 8.53794L8.25081 7.53796L11.7515 0Z" fill="#FFC633"/></svg>
