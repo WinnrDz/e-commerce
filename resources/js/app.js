@@ -78,9 +78,10 @@ window.preview = function (num) {
     }
     previewArray[num].classList.add("border" ,"black");
 
-    console.log(previewArray[num].firstElementChild.src);
+    
 
-    previewImage.src = previewArray[num].firstElementChild.src
+    previewImage.src = previewArray[num].firstElementChild.src;
+    zoomedImage.src = previewArray[num].firstElementChild.src;
 }
 
 
