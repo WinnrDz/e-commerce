@@ -157,3 +157,66 @@ window.clicked = function (num) {
 
 
 /*----------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*ripple effect*/
+
+/*create the circle*/
+const circle = document.createElement("div");
+circle.classList.add("absolute");
+
+let size = 50;
+
+circle.style.width = `${size}px`;
+circle.style.height = `${size}px`;
+
+circle.style.borderRadius = "50%";
+circle.style.backgroundColor = "red";
+circle.style.pointerEvents = "none";
+
+/*get the btn & spawn the circle*/
+const testBtn = document.getElementById("testBtn");
+testBtn.appendChild(circle);
+
+
+/*position the circle*/
+testBtn.addEventListener("mousemove", (e) => {
+
+    const x = e.offsetX;
+    const y = e.offsetY;
+
+    console.log(x, y);
+
+    
+
+
+
+    window.clicked = function () {
+        let running = true;
+        
+        circle.style.left = `${x - size / 2}px`;
+        circle.style.top = `${y - size / 2}px`;
+
+    function loop() {
+        if (!running) return;
+
+        size += 10;
+
+        /*
+        circle.style.left = `${x - size / 2}px`;
+        circle.style.top = `${y - size / 2}px`;*/
+
+        circle.style.width = `${size}px`;
+        circle.style.height = `${size}px`;
+
+        requestAnimationFrame(loop);
+    }
+
+    requestAnimationFrame(loop);
+
+    
+    
+}
+    
+
+});
+
