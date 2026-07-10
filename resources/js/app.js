@@ -138,3 +138,22 @@ zoomable.addEventListener("mouseleave", () => {
     buyContent.classList.remove("hidden");
 });
 
+
+
+/*---------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+const btnCont = document.getElementById("btnCont");
+const btnsArray = Array.from(btnCont.children);
+
+window.clicked = function (num) {
+    for (let i = 0; i < 3; i++) {
+        btnsArray[i].classList.remove("font-satoshim");
+        btnsArray[i].classList.add("opacity-60","border-black/10");
+    }
+    btnsArray[num].classList.remove("border-black/10","opacity-60");
+    btnsArray[num].classList.add("font-satoshim",);
+}
+
+
+/*----------------------------------------------------------------------------------------------------------------------------------------------------*/
