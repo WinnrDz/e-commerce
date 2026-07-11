@@ -166,7 +166,7 @@ zoomable.addEventListener("mouseleave", () => {
 const btnCont = document.getElementById("btnCont");
 const btnsArray = Array.from(btnCont.children);
 
-window.clicked = function (num) {
+const selectBtn = function (num) {
     for (let i = 0; i < 3; i++) {
         btnsArray[i].classList.remove("font-satoshim");
         btnsArray[i].classList.add("opacity-60", "border-black/10");
@@ -177,69 +177,73 @@ window.clicked = function (num) {
 
 /*----------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-/*ripple effect*/
-
-/*create the circle*/
-const circle = document.createElement("div");
-circle.classList.add("absolute");
-
-let size = 10;
-
-circle.style.width = `${size}px`;
-circle.style.height = `${size}px`;
-
-circle.style.borderRadius = "50%";
-circle.style.backgroundColor = "rgba(0, 0, 0, 0.08)";
-circle.style.pointerEvents = "none";
-circle.style.opacity = "60%";
-
-/*get the btn & spawn the circle*/
-const testBtn = document.getElementById("testBtn");
 
 
 /*ripple effect*/
 
 let running = false;
 
-testBtn.addEventListener("mousemove", (e) => {
-    const x = e.offsetX;
-    const y = e.offsetY;
 
-    console.log(x, y);
+    for (let i = 0; i < 3; i++) {
+        
 
-    window.clicked = function () {
-        if (!running) {
-            running = true;
-            testBtn.appendChild(circle);
+        /*create the circle*/
+        const circle = document.createElement("div");
+        circle.classList.add("absolute");
 
-            circle.style.left = `${x - size / 2}px`;
-            circle.style.top = `${y - size / 2}px`;
+        let size = 10;
 
-            const rippleAnim = circle.animate(
-                [
+        circle.style.width = `${size}px`;
+        circle.style.height = `${size}px`;
+
+        circle.style.borderRadius = "50%";
+        circle.style.backgroundColor = "rgba(0, 0, 0, 0.08)";
+        circle.style.pointerEvents = "none";
+        circle.style.opacity = "60%";
+
+
+
+        btnsArray[i].addEventListener("mousemove", (e) => {
+            const x = e.offsetX;
+            const y = e.offsetY;
+
+            console.log(x, y);
+
+        window.clicked = function (num) {
+            selectBtn(num);
+            if (!running) {
+                running = true;
+                btnsArray[i].appendChild(circle);
+
+                circle.style.left = `${x - size / 2}px`;
+                circle.style.top = `${y - size / 2}px`;
+
+                const rippleAnim = circle.animate(
+                    [
+                        {
+                            width: `${size}px`,
+                            height: `${size}px`,
+                        },
+                        {
+                            width: "1000px",
+                            height: "1000px",
+                            left: `${x - 1000 / 2}px`,
+                            top: `${y - 1000 / 2}px`,
+                            opacity: "0%",
+                        },
+                    ],
                     {
-                        width: `${size}px`,
-                        height: `${size}px`,
+                        duration: 500,
+                        easing: "ease-in-out",
+                        fill: "none",
+                        //iterations: ...
                     },
-                    {
-                        width: "1000px",
-                        height: "1000px",
-                        left: `${x - 1000 / 2}px`,
-                        top: `${y - 1000 / 2}px`,
-                        opacity: "0%",
-                    },
-                ],
-                {
-                    duration: 500,
-                    easing: "ease-in-out",
-                    fill: "none",
-                    //iterations: ...
-                },
-            );
-            rippleAnim.finished.then(() => {
-                running = false;
-                circle.remove();
-            });
-        }
+                );
+                rippleAnim.finished.then(() => {
+                    running = false;
+                    circle.remove();
+                });
+            }
+        };
+    })
     };
-});

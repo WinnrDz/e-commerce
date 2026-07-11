@@ -78,9 +78,9 @@
           </div>
      </div>
      <div id="btnCont" class="flex w-320 mt-15">
-          <button id="testBtn" onclick="clicked(0)" class="w-[33%] font-satoshi text-[20px] opacity-60 border-b border-black/10 leading-[22px] p-5  cursor-pointer hover:bg-gray-100 transition-colors duration-150 relative overflow-hidden">Product Details</button>
-          <button onclick="clicked(1)" class="w-[33%] font-satoshim text-[20px] border-b leading-[22px] p-5 cursor-pointer hover:bg-gray-100 transition-colors duration-150">Rating & Reviews</button>
-          <button onclick="clicked(2)" class="w-[33%] font-satoshi text-[20px] opacity-60 border-b border-black/10 leading-[22px] p-5 cursor-pointer hover:bg-gray-100 transition-colors duration-150">FAQs</button>
+          <button id="detailBtn0" onclick="clicked(0)" class="w-[33%] font-satoshi text-[20px] opacity-60 border-b border-black/10 leading-[22px] p-5 cursor-pointer hover:bg-gray-100 transition-colors duration-150 relative overflow-hidden">Product Details</button>
+          <button id="detailBtn1" onclick="clicked(1)" class="w-[33%] font-satoshim text-[20px] border-b leading-[22px] p-5 cursor-pointer hover:bg-gray-100 transition-colors duration-150 relative overflow-hidden">Rating & Reviews</button>
+          <button id="detailBtn2" onclick="clicked(2)" class="w-[33%] font-satoshi text-[20px] opacity-60 border-b border-black/10 leading-[22px] p-5 cursor-pointer hover:bg-gray-100 transition-colors duration-150 relative overflow-hidden">FAQs</button>
      </div>
 </div>
 @endsection
