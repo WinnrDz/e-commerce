@@ -59,11 +59,11 @@
                <p class="font-satoshi text-[16px] text-black opacity-60">
                     Chose Size
                </p>
-               <div class="flex gap-3 border-b border-black/10 pb-4">
-                    <button class="font-satoshi text-[16px] text-black/60 bg-[#F0F0F0] p-3 pl-7 pr-7 rounded-[62px]">Small</button>
-                    <button class="font-satoshi text-[16px] text-black/60 bg-[#F0F0F0] p-3 pl-7 pr-7 rounded-[62px]">Medium</button>
-                    <button class="font-satoshi text-[16px] text-white bg-black p-3 pl-7 pr-7 rounded-[62px]">Large</button>
-                    <button class="font-satoshi text-[16px] text-black/60 bg-[#F0F0F0] p-3 pl-7 pr-7 rounded-[62px]">X-Large</button>
+               <div id="sizeBtnsCont" class="flex gap-3 border-b border-black/10 pb-4">
+                    <button class="font-satoshi text-[16px] text-black/60 bg-[#F0F0F0] p-3 pl-7 pr-7 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">Small</button>
+                    <button class="font-satoshi text-[16px] text-black/60 bg-[#F0F0F0] p-3 pl-7 pr-7 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">Medium</button>
+                    <button class="font-satoshi text-[16px] text-black/60 bg-[#F0F0F0] p-3 pl-7 pr-7 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">Large</button>
+                    <button class="font-satoshi text-[16px] text-black/60 bg-[#F0F0F0] p-3 pl-7 pr-7 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">X-Large</button>
                </div>
                <div class="flex gap-6">
                     <button class="bg-[#F0F0F0] flex p-5 justify-between w-43 rounded-[62px]">
@@ -77,10 +77,10 @@
                </div>
           </div>
      </div>
-     <div id="btnCont" class="flex w-320 mt-15">
-          <button id="detailBtn0" onclick="clicked(0)" class="w-[33%] font-satoshi text-[20px] opacity-60 border-b border-black/10 leading-[22px] p-5 cursor-pointer hover:bg-gray-100 transition-colors duration-150 relative overflow-hidden">Product Details</button>
-          <button id="detailBtn1" onclick="clicked(1)" class="w-[33%] font-satoshim text-[20px] border-b leading-[22px] p-5 cursor-pointer hover:bg-gray-100 transition-colors duration-150 relative overflow-hidden">Rating & Reviews</button>
-          <button id="detailBtn2" onclick="clicked(2)" class="w-[33%] font-satoshi text-[20px] opacity-60 border-b border-black/10 leading-[22px] p-5 cursor-pointer hover:bg-gray-100 transition-colors duration-150 relative overflow-hidden">FAQs</button>
+     <div id="detailBtnsCont" class="flex w-320 mt-15">
+          <button class="w-[33%] font-satoshi text-[20px] opacity-60 border-b border-black/10 leading-[22px] p-5 cursor-pointer hover:bg-gray-100 transition-colors duration-150 relative overflow-hidden">Product Details</button>
+          <button class="w-[33%] font-satoshim text-[20px] border-b leading-[22px] p-5 cursor-pointer hover:bg-gray-100 transition-colors duration-150 relative overflow-hidden">Rating & Reviews</button>
+          <button class="w-[33%] font-satoshi text-[20px] opacity-60 border-b border-black/10 leading-[22px] p-5 cursor-pointer hover:bg-gray-100 transition-colors duration-150 relative overflow-hidden">FAQs</button>
      </div>
 </div>
 @endsection

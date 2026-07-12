@@ -105,7 +105,7 @@ const previewImage = document.getElementById("previewImage");
 
 window.preview = function (num) {
     for (let i = 0; i < 3; i++) {
-        previewArray[i].classList.remove("border", "black");
+        previewArray[num].classList.remove("border", "black");
     }
     previewArray[num].classList.add("border", "black");
 
@@ -163,87 +163,87 @@ zoomable.addEventListener("mouseleave", () => {
 
 /*---------------------------------------------------------------------------------------------------------------------------------------*/
 
-const btnCont = document.getElementById("btnCont");
-const btnsArray = Array.from(btnCont.children);
+const detailBtnsCont = document.getElementById("detailBtnsCont");
+const detailBtnsArray = Array.from(detailBtnsCont.children);
 
-const selectBtn = function (num) {
-    for (let i = 0; i < 3; i++) {
-        btnsArray[i].classList.remove("font-satoshim");
-        btnsArray[i].classList.add("opacity-60", "border-black/10");
-    }
-    btnsArray[num].classList.remove("border-black/10", "opacity-60");
-    btnsArray[num].classList.add("font-satoshim");
-};
-
-/*----------------------------------------------------------------------------------------------------------------------------------------------------*/
+const sizeBtnsCont = document.getElementById("sizeBtnsCont");
+const sizeBtnsArray = Array.from(sizeBtnsCont.children);
 
 
-
-/*ripple effect*/
-
-let running = false;
-
-
-    for (let i = 0; i < 3; i++) {
-        
-
+const setupSelectableButtons = function (btns,styles) {
+    for (let activeNum = 0;activeNum < btns.length ; activeNum++) {
+    btns[activeNum].addEventListener("click", (e) => {
         /*create the circle*/
         const circle = document.createElement("div");
         circle.classList.add("absolute");
 
-        let size = 10;
+        const size = 10;
 
         circle.style.width = `${size}px`;
         circle.style.height = `${size}px`;
 
         circle.style.borderRadius = "50%";
-        circle.style.backgroundColor = "rgba(0, 0, 0, 0.08)";
+        circle.style.backgroundColor = styles.rippleColor;
         circle.style.pointerEvents = "none";
-        circle.style.opacity = "60%";
+        circle.style.opacity = "0.6";
 
+        const x = e.offsetX;
+        const y = e.offsetY;
+        /*style selected buttons the ... spread the array of strings*/
 
+        for (let i = 0; i < btns.length; i++) {
+        btns[i].classList.remove(...styles.active);
+        btns[i].classList.add(...styles.inactive);
+        }
+        btns[activeNum].classList.remove(...styles.inactive);
+        btns[activeNum].classList.add(...styles.active);
 
-        btnsArray[i].addEventListener("mousemove", (e) => {
-            const x = e.offsetX;
-            const y = e.offsetY;
+        btns[activeNum].appendChild(circle);
 
-            console.log(x, y);
+        /*position circle*/
+        circle.style.left = `${x}px`;
+        circle.style.top = `${y}px`;
+        circle.style.transform = "translate(-50%, -50%)";
 
-        window.clicked = function (num) {
-            selectBtn(num);
-            if (!running) {
-                running = true;
-                btnsArray[i].appendChild(circle);
-
-                circle.style.left = `${x - size / 2}px`;
-                circle.style.top = `${y - size / 2}px`;
-
-                const rippleAnim = circle.animate(
-                    [
-                        {
-                            width: `${size}px`,
-                            height: `${size}px`,
-                        },
-                        {
-                            width: "1000px",
-                            height: "1000px",
-                            left: `${x - 1000 / 2}px`,
-                            top: `${y - 1000 / 2}px`,
-                            opacity: "0%",
-                        },
-                    ],
-                    {
-                        duration: 500,
-                        easing: "ease-in-out",
-                        fill: "none",
-                        //iterations: ...
-                    },
-                );
-                rippleAnim.finished.then(() => {
-                    running = false;
-                    circle.remove();
-                });
+        const rippleAnim = circle.animate(
+            [
+                {
+                    transform: "translate(-50%, -50%) scale(1)",
+                    opacity: "0.4",
+                },
+                {
+                    transform: "translate(-50%, -50%) scale(100)",
+                    opacity: "0",
+                },
+            ],
+            {
+                duration: 500,
+                easing: "ease-in-out",
+                fill: "forwards",
             }
-        };
-    })
-    };
+        );
+        rippleAnim.finished.then(() => {
+            circle.remove();
+        });
+    });
+    }
+};
+
+
+    setupSelectableButtons(detailBtnsArray, {
+        active: ["font-satoshim"],
+        inactive: ["opacity-60","border-black/10"],
+        rippleColor: "rgba(0, 0, 0, 0.08)"
+    });
+
+    setupSelectableButtons(sizeBtnsArray, {
+        active: ["text-white","bg-black"],
+        inactive: ["text-black/60","hover:bg-[#EAEAEA]"],
+        rippleColor : "rgba(255, 255, 255, 0.3)"
+    });
+    
+
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*size buttons*/
