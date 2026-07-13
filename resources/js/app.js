@@ -105,7 +105,7 @@ const previewImage = document.getElementById("previewImage");
 
 window.preview = function (num) {
     for (let i = 0; i < 3; i++) {
-        previewArray[num].classList.remove("border", "black");
+        previewArray[i].classList.remove("border", "black");
     }
     previewArray[num].classList.add("border", "black");
 
