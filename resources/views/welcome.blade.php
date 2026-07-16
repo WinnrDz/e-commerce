@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Home')
 @section('content')
-    <div class="flex justify-around bg-[#F2F0F1]">
+    <div id="welcome" class="flex justify-around bg-[#F2F0F1]">
         <div class="m-10 mt-30">
             <p class="font-integral font-bold text-[64px] leading-[64px] w-160">
                 FIND CLOTHES THAT MATCHES YOUR STYLE
