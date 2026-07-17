@@ -101,14 +101,15 @@ const slider = document.getElementById("slider");
 const circle1 = document.createElement("div");
 
 circle1.style.width = "20px";
-circle1.style.left = "48px"
+circle1.style.opacity = "0.5";
+circle1.style.left = "40px"
 circle1.style.height = "20px";
 circle1.style.backgroundColor = "black";
 circle1.style.borderRadius = "50%";
 circle1.style.cursor = "pointer";
 circle1.style.position = "absolute";
 circle1.style.top = "50%";
-circle1.style.transform = "translateY(-50%)";
+circle1.style.transform = "translate(-50%, -50%)";
 circle1.style.zIndex = "3"
 
 slider.appendChild(circle1);
@@ -123,14 +124,15 @@ circle1.addEventListener("mousedown", () => {
 const circle2 = document.createElement("div");
 
 circle2.style.width = "20px";
-circle2.style.left = "192px"
+circle2.style.opacity = "0.5";
+circle2.style.left = "210px"
 circle2.style.height = "20px";
 circle2.style.backgroundColor = "black";
 circle2.style.borderRadius = "50%";
 circle2.style.cursor = "pointer";
 circle2.style.position = "absolute";
 circle2.style.top = "50%";
-circle2.style.transform = "translateY(-50%)";
+circle2.style.transform = "translate(-50%, -50%)";
 circle2.style.zIndex = "3"
 
 slider.appendChild(circle2);
@@ -157,14 +159,20 @@ Rectangle.style.userSelect = "none";
 slider.appendChild(Rectangle);
 
 
+const minPrice = document.getElementById("minPrice");
+const maxPrice = document.getElementById("maxPrice");
+const xPrice = 1;
 
 
 document.addEventListener("mousemove", (e) => {
     const rect = slider.getBoundingClientRect();
     const x = e.clientX - rect.left;
 
-    const left1 = Math.max(0,Math.min(x,circle2.offsetLeft - 20));
-    const left2 = Math.max(circle1.offsetLeft + 20,Math.min(x,240));
+    const left1 = Math.max(-10,Math.min(x,circle2.offsetLeft - 20));
+    const left2 = Math.max(circle1.offsetLeft + 20,Math.min(x,250));
+
+    
+    
 
     
 
@@ -175,17 +183,22 @@ document.addEventListener("mousemove", (e) => {
         Rectangle.style.left = left1 + "px";
         
         
-
         document.body.style.userSelect = "none";
+        
+        minPrice.style.left = left1 + 'px';
+        minPrice.innerHTML = (circle1.offsetLeft + 10) * xPrice + "$";
     }
 
     if (isDragging2) {
-
+        maxPrice.style.left = left2 + 'px';
 
         circle2.style.left = left2 + "px";
         circle2.style.transform = "translate(-50%, -50%)";
 
         document.body.style.userSelect = "none";
+
+        maxPrice.style.left = left2 + 'px';
+        maxPrice.innerHTML = (circle2.offsetLeft - 10) * xPrice + "$";
     }
 
     const width = circle2.offsetLeft - circle1.offsetLeft;
