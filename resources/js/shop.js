@@ -96,12 +96,27 @@ const setupSelectableButtons = function (btns,styles) {
 
 /*------------------------------------------------------------------------------------------------------------------------------------------------*/
 
+
+function isColliding(el1, el2) {
+    const rect1 = el1.getBoundingClientRect();
+    const rect2 = el2.getBoundingClientRect();
+
+    return !(
+        rect1.right < rect2.left ||
+        rect1.left > rect2.right ||
+        rect1.bottom < rect2.top ||
+        rect1.top > rect2.bottom
+    );
+}
+
+
+
+
 const slider = document.getElementById("slider");
 
 const circle1 = document.createElement("div");
 
 circle1.style.width = "20px";
-circle1.style.opacity = "0.5";
 circle1.style.left = "40px"
 circle1.style.height = "20px";
 circle1.style.backgroundColor = "black";
@@ -124,7 +139,6 @@ circle1.addEventListener("mousedown", () => {
 const circle2 = document.createElement("div");
 
 circle2.style.width = "20px";
-circle2.style.opacity = "0.5";
 circle2.style.left = "210px"
 circle2.style.height = "20px";
 circle2.style.backgroundColor = "black";
@@ -162,6 +176,7 @@ slider.appendChild(Rectangle);
 const minPrice = document.getElementById("minPrice");
 const maxPrice = document.getElementById("maxPrice");
 const xPrice = 1;
+const collisionPrice = document.getElementById("collisionPrice");
 
 
 document.addEventListener("mousemove", (e) => {
@@ -170,11 +185,6 @@ document.addEventListener("mousemove", (e) => {
 
     const left1 = Math.max(-10,Math.min(x,circle2.offsetLeft - 20));
     const left2 = Math.max(circle1.offsetLeft + 20,Math.min(x,250));
-
-    
-    
-
-    
 
     if (isDragging1) {
 
@@ -201,9 +211,31 @@ document.addEventListener("mousemove", (e) => {
         maxPrice.innerHTML = (circle2.offsetLeft - 10) * xPrice + "$";
     }
 
+    
+
     const width = circle2.offsetLeft - circle1.offsetLeft;
     Rectangle.style.width = width + "px";
 
+    if (isDragging1 || isDragging2) {
+        if (isColliding(maxPrice,minPrice) || minPrice.innerHTML == maxPrice.innerHTML) {
+            maxPrice.style.visibility = "hidden";
+            minPrice.style.visibility = "hidden";
+            
+            collisionPrice.style.display = "inline";
+            collisionPrice.style.left = circle1.offsetLeft + width / 2 + 'px';
+
+            collisionPrice.innerHTML = minPrice.innerHTML + " - " + maxPrice.innerHTML;
+            if (minPrice.innerHTML == maxPrice.innerHTML) { 
+                collisionPrice.innerHTML = minPrice.innerHTML;   
+            }
+
+        } else {
+            maxPrice.style.visibility = "";
+            minPrice.style.visibility = "";
+            collisionPrice.style.display = "none";
+
+        }
+    }
     
 });
 
@@ -213,3 +245,5 @@ document.addEventListener("mouseup", () => {
     
     document.body.style.userSelect = "auto";
 });
+
+
