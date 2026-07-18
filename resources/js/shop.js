@@ -175,32 +175,57 @@ slider.appendChild(Rectangle);
 
 const minPrice = document.getElementById("minPrice");
 const maxPrice = document.getElementById("maxPrice");
-const xPrice = 1;
+const xPrice = 2;
 const collisionPrice = document.getElementById("collisionPrice");
+const maxInput = document.getElementById("maxInput");
+const minInput = document.getElementById("minInput");
 
 
-document.addEventListener("mousemove", (e) => {
-    const rect = slider.getBoundingClientRect();
-    const x = e.clientX - rect.left;
+function updateCircles(e,minP,maxP) {
+    let left1 ;
+    let left2;
+    let rect ;
+    let x ;
 
-    const left1 = Math.max(-10,Math.min(x,circle2.offsetLeft - 20));
-    const left2 = Math.max(circle1.offsetLeft + 20,Math.min(x,250));
+    if (e) {
+        rect = slider.getBoundingClientRect();
+        x = e.clientX - rect.left;
 
-    if (isDragging1) {
-
-        circle1.style.left = left1 + "px";
-        circle1.style.transform = "translate(-50%, -50%)";
-        Rectangle.style.left = left1 + "px";
-        
-        
-        document.body.style.userSelect = "none";
-        
-        minPrice.style.left = left1 + 'px';
-        minPrice.innerHTML = (circle1.offsetLeft + 10) * xPrice + "$";
+        left1 = Math.max(-10,Math.min(x,circle2.offsetLeft - 20));
+        left2 = Math.max(circle1.offsetLeft + 20,Math.min(x,250));
     }
 
-    if (isDragging2) {
-        maxPrice.style.left = left2 + 'px';
+    
+
+    if (minP ) {
+        left1 = Math.max(-10,Math.min(minP / xPrice,circle2.offsetLeft - 20)) ;
+    }
+
+    if (maxP ) {
+        left2 = Math.max(circle1.offsetLeft + 20,Math.min(maxP / xPrice,250)) ;
+    }
+
+    if (isDragging1 || minP) {
+
+            circle1.style.left = left1 + "px";
+            circle1.style.transform = "translate(-50%, -50%)";
+            Rectangle.style.left = left1 + "px";
+            
+            
+            document.body.style.userSelect = "none";
+            
+            minPrice.style.left = left1 + 'px';
+            if (minP) {
+                minPrice.innerHTML = minP + "$";
+            }else {
+                minPrice.innerHTML = (circle1.offsetLeft + 10) * xPrice + "$";
+            }
+            
+        
+    }
+
+    if (isDragging2 || maxP) {
+
 
         circle2.style.left = left2 + "px";
         circle2.style.transform = "translate(-50%, -50%)";
@@ -208,7 +233,12 @@ document.addEventListener("mousemove", (e) => {
         document.body.style.userSelect = "none";
 
         maxPrice.style.left = left2 + 'px';
-        maxPrice.innerHTML = (circle2.offsetLeft - 10) * xPrice + "$";
+
+        if (maxP) {
+                maxPrice.innerHTML = maxP + "$";
+            }else {
+                maxPrice.innerHTML = (circle2.offsetLeft + 10) * xPrice + "$";
+            }
     }
 
     
@@ -216,7 +246,7 @@ document.addEventListener("mousemove", (e) => {
     const width = circle2.offsetLeft - circle1.offsetLeft;
     Rectangle.style.width = width + "px";
 
-    if (isDragging1 || isDragging2) {
+    if (isDragging1 || isDragging2 || minP || maxP) {
         if (isColliding(maxPrice,minPrice) || minPrice.innerHTML == maxPrice.innerHTML) {
             maxPrice.style.visibility = "hidden";
             minPrice.style.visibility = "hidden";
@@ -233,10 +263,14 @@ document.addEventListener("mousemove", (e) => {
             maxPrice.style.visibility = "";
             minPrice.style.visibility = "";
             collisionPrice.style.display = "none";
-
         }
+        minInput.value = Number(minPrice.innerHTML.replace("$", "")) ;
+        maxInput.value = Number(maxPrice.innerHTML.replace("$", "")) ;
     }
-    
+}
+
+document.addEventListener("mousemove", (e) => {
+    updateCircles(e);
 });
 
 document.addEventListener("mouseup", () => {
@@ -247,3 +281,11 @@ document.addEventListener("mouseup", () => {
 });
 
 
+minInput.addEventListener("input", () => {
+    if (!isDragging1) updateCircles(null,minInput.value);
+});
+
+maxInput.addEventListener("input", () => {
+    if (!isDragging2) updateCircles(null,null,maxInput.value);
+    
+});
