@@ -117,9 +117,10 @@ const slider = document.getElementById("slider");
 const circle1 = document.createElement("div");
 
 circle1.style.width = "20px";
-circle1.style.left = "40px"
+circle1.style.left = "50px"
 circle1.style.height = "20px";
 circle1.style.backgroundColor = "black";
+circle1.style.opacity = "0.6";
 circle1.style.borderRadius = "50%";
 circle1.style.cursor = "pointer";
 circle1.style.position = "absolute";
@@ -139,9 +140,10 @@ circle1.addEventListener("mousedown", () => {
 const circle2 = document.createElement("div");
 
 circle2.style.width = "20px";
-circle2.style.left = "210px"
+circle2.style.left = "220px"
 circle2.style.height = "20px";
 circle2.style.backgroundColor = "black";
+circle2.style.opacity = "0.6";
 circle2.style.borderRadius = "50%";
 circle2.style.cursor = "pointer";
 circle2.style.position = "absolute";
@@ -162,6 +164,7 @@ const Rectangle = document.createElement("div");
 
 Rectangle.style.height = "6px";
 Rectangle.style.backgroundColor = "black";
+Rectangle.style.opacity = "0.6";
 Rectangle.style.position = "absolute";
 Rectangle.style.top = "50%";
 Rectangle.style.transform = "translateY(-50%)";
@@ -181,7 +184,7 @@ const maxInput = document.getElementById("maxInput");
 const minInput = document.getElementById("minInput");
 
 
-function updateCircles(e,minP,maxP) {
+function updateCircles(e,minP,maxP,inputElement) {
     let left1 ;
     let left2;
     let rect ;
@@ -191,21 +194,24 @@ function updateCircles(e,minP,maxP) {
         rect = slider.getBoundingClientRect();
         x = e.clientX - rect.left;
 
-        left1 = Math.max(-10,Math.min(x,circle2.offsetLeft - 20));
+        left1 = Math.max(0,Math.min(x,circle2.offsetLeft - 20));
         left2 = Math.max(circle1.offsetLeft + 20,Math.min(x,250));
     }
 
     
 
     if (minP ) {
-        left1 = Math.max(-10,Math.min(minP / xPrice,circle2.offsetLeft - 20)) ;
+        left1 = Math.max(0,Math.min(minP / xPrice,circle2.offsetLeft - 20)) ;
+        
     }
 
     if (maxP ) {
-        left2 = Math.max(circle1.offsetLeft + 20,Math.min(maxP / xPrice,250)) ;
+        let maxPinPixels = maxP / xPrice + 20
+        left2 = Math.max(circle1.offsetLeft + 20,Math.min(maxPinPixels ,250)) ;
     }
 
     if (isDragging1 || minP) {
+            
 
             circle1.style.left = left1 + "px";
             circle1.style.transform = "translate(-50%, -50%)";
@@ -218,7 +224,7 @@ function updateCircles(e,minP,maxP) {
             if (minP) {
                 minPrice.innerHTML = minP + "$";
             }else {
-                minPrice.innerHTML = (circle1.offsetLeft + 10) * xPrice + "$";
+                minPrice.innerHTML = (circle1.offsetLeft) * xPrice + "$";
             }
             
         
@@ -235,9 +241,9 @@ function updateCircles(e,minP,maxP) {
         maxPrice.style.left = left2 + 'px';
 
         if (maxP) {
-                maxPrice.innerHTML = maxP + "$";
+                maxPrice.innerHTML = maxP  + "$";
             }else {
-                maxPrice.innerHTML = (circle2.offsetLeft + 10) * xPrice + "$";
+                maxPrice.innerHTML = (circle2.offsetLeft - 20) * xPrice + "$";
             }
     }
 
@@ -282,10 +288,9 @@ document.addEventListener("mouseup", () => {
 
 
 minInput.addEventListener("input", () => {
-    if (!isDragging1) updateCircles(null,minInput.value);
+    if (!isDragging1) updateCircles(null,minInput.value,null,minInput);
 });
 
 maxInput.addEventListener("input", () => {
-    if (!isDragging2) updateCircles(null,null,maxInput.value);
-    
+    if (!isDragging2) updateCircles(null,null,maxInput.value,maxInput);
 });
