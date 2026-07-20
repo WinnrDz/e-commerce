@@ -11,7 +11,7 @@
         <a class="font-satoshi text-[16px] text-black ">T-Shirts</a>
     </div>
     <div class="flex flex-col items-center">
-        <div class="flex justify-center w-310 gap-4">
+        <div class="flex justify-center w-320 gap-3">
             <div class="w-80 border border-black/10 rounded-[20px]">
                 <div class="flex justify-between items-center mt-5 mx-6 pb-6 border-b border-black/10">
                     <h2 class="font-satoshi font-bold text-[20px]">Filters</h2>
@@ -37,8 +37,7 @@
                     <div class="flex justify-between">
                         <span class="font-satoshi text-[16px] opacity-60">Jeans</span>
                         <svg class="cursor-pointer" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.53073 2.46937L11.5307 7.46937C11.6007 7.53905 11.6561 7.62184 11.694 7.71301C11.7318 7.80417 11.7513 7.90191 11.7513 8.00062C11.7513 8.09933 11.7318 8.19707 11.694 8.28824C11.6561 8.3794 11.6007 8.46219 11.5307 8.53187L6.53073 13.5319C6.38984 13.6728 6.19874 13.7519 5.99948 13.7519C5.80023 13.7519 5.60913 13.6728 5.46823 13.5319C5.32734 13.391 5.24818 13.1999 5.24818 13.0006C5.24818 12.8014 5.32734 12.6103 5.46823 12.4694L9.93761 8L5.46761 3.53062C5.32671 3.38973 5.24756 3.19863 5.24756 2.99937C5.24756 2.80011 5.32671 2.60902 5.46761 2.46812C5.60851 2.32723 5.7996 2.24807 5.99886 2.24807C6.19812 2.24807 6.38921 2.32723 6.53011 2.46812L6.53073 2.46937Z" fill="black" fill-opacity="0.6"/></svg>
-                    </div>
-                    
+                    </div>              
                 </div>
                 <div class="flex flex-col gap-10 mt-5 mx-6 pb-8 border-b border-black/10">
                     <div class="flex justify-between items-center ">
@@ -65,6 +64,85 @@
                             class="bg-[#F0F0F0] text-center w-28 h-10 rounded-[8px] border focus:outline-none" />
                         </div>
                     </form>
+                </div>
+                <div class="flex flex-col gap-5 mt-5 mx-6 pb-8 border-b border-black/10">
+                    <div class="flex justify-between items-center ">
+                        <h2 class="font-satoshi font-bold text-[20px]">Color</h2>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.4694 9.46939L7.4694 4.46939C7.53908 4.39947 7.62188 4.34399 7.71304 4.30614C7.8042 4.26828 7.90194 4.2488 8.00065 4.2488C8.09936 4.2488 8.1971 4.26828 8.28827 4.30614C8.37943 4.34399 8.46223 4.39947 8.5319 4.46939L13.5319 9.46939C13.6728 9.61028 13.752 9.80138 13.752 10.0006C13.752 10.1999 13.6728 10.391 13.5319 10.5319C13.391 10.6728 13.1999 10.7519 13.0007 10.7519C12.8014 10.7519 12.6103 10.6728 12.4694 10.5319L8.00003 6.06251L3.53065 10.5325C3.38976 10.6734 3.19866 10.7526 2.9994 10.7526C2.80015 10.7526 2.60905 10.6734 2.46815 10.5325C2.32726 10.3916 2.2481 10.2005 2.2481 10.0013C2.2481 9.80201 2.32726 9.61091 2.46815 9.47001L2.4694 9.46939Z" fill="black"/></svg>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <div class="flex justify-between">
+                            <div class="h-9.25 w-9.25 rounded-full bg-[#00C12B] border border-black/20 border-2 flex items-center justify-center"></div>
+                            <div class="h-9.25 w-9.25 rounded-full bg-[#F50606] border border-black/20 border-2 flex items-center justify-center"></div>
+                            <div class="h-9.25 w-9.25 rounded-full bg-[#F5DD06] border border-black/20 border-2 flex items-center justify-center"></div>
+                            <div class="h-9.25 w-9.25 rounded-full bg-[#F57906] border border-black/20 border-2 flex items-center justify-center"></div>
+                            <div class="h-9.25 w-9.25 rounded-full bg-[#06CAF5] border border-black/20 border-2 flex items-center justify-center"></div>
+                        </div>
+
+                        <div class="flex justify-between">
+                            <div class="h-9.25 w-9.25 rounded-full bg-[#063AF5] border border-black/20 border-2 flex items-center justify-center"> <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">s<path d="M14.5306 5.03063L6.5306 13.0306C6.46092 13.1005 6.37813 13.156 6.28696 13.1939C6.1958 13.2317 6.09806 13.2512 5.99935 13.2512C5.90064 13.2512 5.8029 13.2317 5.71173 13.1939C5.62057 13.156 5.53778 13.1005 5.4681 13.0306L1.9681 9.53063C1.89833 9.46087 1.84299 9.37804 1.80524 9.28689C1.76748 9.19574 1.74805 9.09804 1.74805 8.99938C1.74805 8.90072 1.76748 8.80302 1.80524 8.71187C1.84299 8.62072 1.89833 8.53789 1.9681 8.46813C2.03786 8.39837 2.12069 8.34302 2.21184 8.30527C2.30299 8.26751 2.40069 8.24808 2.49935 8.24808C2.59801 8.24808 2.69571 8.26751 2.78686 8.30527C2.87801 8.34302 2.96083 8.39837 3.0306 8.46813L5.99997 11.4375L13.4693 3.96938C13.6102 3.82848 13.8013 3.74933 14.0006 3.74933C14.1999 3.74933 14.391 3.82848 14.5318 3.96938C14.6727 4.11028 14.7519 4.30137 14.7519 4.50063C14.7519 4.69989 14.6727 4.89098 14.5318 5.03188L14.5306 5.03063Z" fill="white"/></svg></div>
+                            <div class="h-9.25 w-9.25 rounded-full bg-[#7D06F5] border border-black/20 border-2 flex items-center justify-center"></div>
+                            <div class="h-9.25 w-9.25 rounded-full bg-[#F506A4] border border-black/20 border-2 flex items-center justify-center"></div>
+                            <div class="h-9.25 w-9.25 rounded-full bg-[#FFFFFF] border border-black/20 border-2 flex items-center justify-center"></div>
+                            <div class="h-9.25 w-9.25 rounded-full bg-[#000000] border border-black/20 border-2 flex items-center justify-center"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-5 mt-5 mx-6 pb-8 border-b border-black/10">
+                    <div class="flex justify-between items-center ">
+                        <h2 class="font-satoshi font-bold text-[20px]">Size</h2>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.4694 9.46939L7.4694 4.46939C7.53908 4.39947 7.62188 4.34399 7.71304 4.30614C7.8042 4.26828 7.90194 4.2488 8.00065 4.2488C8.09936 4.2488 8.1971 4.26828 8.28827 4.30614C8.37943 4.34399 8.46223 4.39947 8.5319 4.46939L13.5319 9.46939C13.6728 9.61028 13.752 9.80138 13.752 10.0006C13.752 10.1999 13.6728 10.391 13.5319 10.5319C13.391 10.6728 13.1999 10.7519 13.0007 10.7519C12.8014 10.7519 12.6103 10.6728 12.4694 10.5319L8.00003 6.06251L3.53065 10.5325C3.38976 10.6734 3.19866 10.7526 2.9994 10.7526C2.80015 10.7526 2.60905 10.6734 2.46815 10.5325C2.32726 10.3916 2.2481 10.2005 2.2481 10.0013C2.2481 9.80201 2.32726 9.61091 2.46815 9.47001L2.4694 9.46939Z" fill="black"/></svg>
+                    </div>
+                    <div id="sizeBtnsCont" class="flex flex-wrap gap-3">
+                        <button
+                            class="font-satoshi text-[16px] text-black/60 bg-[#F0F0F0] py-2.5 px-5 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">XX-Small</button>
+                        <button
+                            class="font-satoshi text-[16px] text-black/60 bg-[#F0F0F0] py-2.5 px-5 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">X-Small</button>
+                        <button
+                            class="font-satoshi text-[16px] text-black/60 bg-[#F0F0F0] py-2.5 px-5 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">Small</button>
+                        <button
+                            class="font-satoshi text-[16px] text-black/60 bg-[#F0F0F0] py-2.5 px-5 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">Medium</button>
+                        <button
+                            class="font-satoshi text-[16px] text-black/60 bg-[#F0F0F0] py-2.5 px-5 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">Large</button>
+                        <button
+                            class="font-satoshi text-[16px] text-black/60 bg-[#F0F0F0] py-2.5 px-5 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">X-Large</button>
+                        <button
+                            class="font-satoshi text-[16px] text-black/60 bg-[#F0F0F0] py-2.5 px-5 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">XX-Large</button>
+                        <button
+                            class="font-satoshi text-[16px] text-black/60 bg-[#F0F0F0] py-2.5 px-5 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">3X-Large</button>
+                        <button
+                            class="font-satoshi text-[16px] text-black/60 bg-[#F0F0F0] py-2.5 px-5 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">4X-Large</button>
+                        </div>
+                </div>
+                <div class="flex flex-col  gap-5 mt-5 mx-6 pb-8 border-b border-black/10">
+                    <div class="flex justify-between items-center ">
+                        <h2 class="font-satoshi font-bold text-[20px]">Dress Style</h2>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.4694 9.46939L7.4694 4.46939C7.53908 4.39947 7.62188 4.34399 7.71304 4.30614C7.8042 4.26828 7.90194 4.2488 8.00065 4.2488C8.09936 4.2488 8.1971 4.26828 8.28827 4.30614C8.37943 4.34399 8.46223 4.39947 8.5319 4.46939L13.5319 9.46939C13.6728 9.61028 13.752 9.80138 13.752 10.0006C13.752 10.1999 13.6728 10.391 13.5319 10.5319C13.391 10.6728 13.1999 10.7519 13.0007 10.7519C12.8014 10.7519 12.6103 10.6728 12.4694 10.5319L8.00003 6.06251L3.53065 10.5325C3.38976 10.6734 3.19866 10.7526 2.9994 10.7526C2.80015 10.7526 2.60905 10.6734 2.46815 10.5325C2.32726 10.3916 2.2481 10.2005 2.2481 10.0013C2.2481 9.80201 2.32726 9.61091 2.46815 9.47001L2.4694 9.46939Z" fill="black"/></svg>
+                    </div>
+                    <div class="flex flex-col gap-5">
+                        <div class="flex justify-between">
+                            <span class="font-satoshi text-[16px] opacity-60">T-shirts</span>
+                            <svg class="cursor-pointer" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.53073 2.46937L11.5307 7.46937C11.6007 7.53905 11.6561 7.62184 11.694 7.71301C11.7318 7.80417 11.7513 7.90191 11.7513 8.00062C11.7513 8.09933 11.7318 8.19707 11.694 8.28824C11.6561 8.3794 11.6007 8.46219 11.5307 8.53187L6.53073 13.5319C6.38984 13.6728 6.19874 13.7519 5.99948 13.7519C5.80023 13.7519 5.60913 13.6728 5.46823 13.5319C5.32734 13.391 5.24818 13.1999 5.24818 13.0006C5.24818 12.8014 5.32734 12.6103 5.46823 12.4694L9.93761 8L5.46761 3.53062C5.32671 3.38973 5.24756 3.19863 5.24756 2.99937C5.24756 2.80011 5.32671 2.60902 5.46761 2.46812C5.60851 2.32723 5.7996 2.24807 5.99886 2.24807C6.19812 2.24807 6.38921 2.32723 6.53011 2.46812L6.53073 2.46937Z" fill="black" fill-opacity="0.6"/></svg>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-satoshi text-[16px] opacity-60">Shorts</span>
+                            <svg class="cursor-pointer" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.53073 2.46937L11.5307 7.46937C11.6007 7.53905 11.6561 7.62184 11.694 7.71301C11.7318 7.80417 11.7513 7.90191 11.7513 8.00062C11.7513 8.09933 11.7318 8.19707 11.694 8.28824C11.6561 8.3794 11.6007 8.46219 11.5307 8.53187L6.53073 13.5319C6.38984 13.6728 6.19874 13.7519 5.99948 13.7519C5.80023 13.7519 5.60913 13.6728 5.46823 13.5319C5.32734 13.391 5.24818 13.1999 5.24818 13.0006C5.24818 12.8014 5.32734 12.6103 5.46823 12.4694L9.93761 8L5.46761 3.53062C5.32671 3.38973 5.24756 3.19863 5.24756 2.99937C5.24756 2.80011 5.32671 2.60902 5.46761 2.46812C5.60851 2.32723 5.7996 2.24807 5.99886 2.24807C6.19812 2.24807 6.38921 2.32723 6.53011 2.46812L6.53073 2.46937Z" fill="black" fill-opacity="0.6"/></svg>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-satoshi text-[16px] opacity-60">Shirts</span>
+                            <svg class="cursor-pointer" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.53073 2.46937L11.5307 7.46937C11.6007 7.53905 11.6561 7.62184 11.694 7.71301C11.7318 7.80417 11.7513 7.90191 11.7513 8.00062C11.7513 8.09933 11.7318 8.19707 11.694 8.28824C11.6561 8.3794 11.6007 8.46219 11.5307 8.53187L6.53073 13.5319C6.38984 13.6728 6.19874 13.7519 5.99948 13.7519C5.80023 13.7519 5.60913 13.6728 5.46823 13.5319C5.32734 13.391 5.24818 13.1999 5.24818 13.0006C5.24818 12.8014 5.32734 12.6103 5.46823 12.4694L9.93761 8L5.46761 3.53062C5.32671 3.38973 5.24756 3.19863 5.24756 2.99937C5.24756 2.80011 5.32671 2.60902 5.46761 2.46812C5.60851 2.32723 5.7996 2.24807 5.99886 2.24807C6.19812 2.24807 6.38921 2.32723 6.53011 2.46812L6.53073 2.46937Z" fill="black" fill-opacity="0.6"/></svg>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-satoshi text-[16px] opacity-60">Hoodie</span>
+                            <svg class="cursor-pointer" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.53073 2.46937L11.5307 7.46937C11.6007 7.53905 11.6561 7.62184 11.694 7.71301C11.7318 7.80417 11.7513 7.90191 11.7513 8.00062C11.7513 8.09933 11.7318 8.19707 11.694 8.28824C11.6561 8.3794 11.6007 8.46219 11.5307 8.53187L6.53073 13.5319C6.38984 13.6728 6.19874 13.7519 5.99948 13.7519C5.80023 13.7519 5.60913 13.6728 5.46823 13.5319C5.32734 13.391 5.24818 13.1999 5.24818 13.0006C5.24818 12.8014 5.32734 12.6103 5.46823 12.4694L9.93761 8L5.46761 3.53062C5.32671 3.38973 5.24756 3.19863 5.24756 2.99937C5.24756 2.80011 5.32671 2.60902 5.46761 2.46812C5.60851 2.32723 5.7996 2.24807 5.99886 2.24807C6.19812 2.24807 6.38921 2.32723 6.53011 2.46812L6.53073 2.46937Z" fill="black" fill-opacity="0.6"/></svg>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-satoshi text-[16px] opacity-60">Jeans</span>
+                            <svg class="cursor-pointer" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.53073 2.46937L11.5307 7.46937C11.6007 7.53905 11.6561 7.62184 11.694 7.71301C11.7318 7.80417 11.7513 7.90191 11.7513 8.00062C11.7513 8.09933 11.7318 8.19707 11.694 8.28824C11.6561 8.3794 11.6007 8.46219 11.5307 8.53187L6.53073 13.5319C6.38984 13.6728 6.19874 13.7519 5.99948 13.7519C5.80023 13.7519 5.60913 13.6728 5.46823 13.5319C5.32734 13.391 5.24818 13.1999 5.24818 13.0006C5.24818 12.8014 5.32734 12.6103 5.46823 12.4694L9.93761 8L5.46761 3.53062C5.32671 3.38973 5.24756 3.19863 5.24756 2.99937C5.24756 2.80011 5.32671 2.60902 5.46761 2.46812C5.60851 2.32723 5.7996 2.24807 5.99886 2.24807C6.19812 2.24807 6.38921 2.32723 6.53011 2.46812L6.53073 2.46937Z" fill="black" fill-opacity="0.6"/></svg>
+                        </div>              
+                    </div>
+                    <button
+                        class="flex items-center justify-around bg-black w-[100%] h-12 mt-1 rounded-[62px] cursor-pointer font-satoshi font-medium text-[16px] text-white">Apply filter</button>
                 </div>
             </div>
             <div class="flex flex-wrap gap-4 w-239">

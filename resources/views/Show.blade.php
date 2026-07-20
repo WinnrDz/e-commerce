@@ -111,7 +111,7 @@
                     <button class="bg-[#31344F] w-10 h-10 rounded-full cursor-pointer"></button>
                 </div>
                 <p class="font-satoshi text-[16px] text-black opacity-60">
-                    Chose Size
+                    Choose Size
                 </p>
                 <div id="sizeBtnsCont" class="flex gap-3 border-b border-black/10 pb-4">
                     <button
