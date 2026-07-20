@@ -144,7 +144,7 @@ function updateCircles(e,minP,maxP,inputElement) {
         x = e.clientX - rect.left;
 
         left1 = Math.max(0,Math.min(x,circle2.offsetLeft - 20));
-        left2 = Math.max(circle1.offsetLeft + 20,Math.min(x,250));
+        left2 = Math.max(circle1.offsetLeft + 20,Math.min(x,270));
     }
 
     
@@ -156,7 +156,7 @@ function updateCircles(e,minP,maxP,inputElement) {
 
     if (maxP ) {
         let maxPinPixels = maxP / xPrice + 20
-        left2 = Math.max(circle1.offsetLeft + 20,Math.min(maxPinPixels ,250)) ;
+        left2 = Math.max(circle1.offsetLeft + 20,Math.min(maxPinPixels ,270)) ;
     }
 
     if (isDragging1 || minP) {
