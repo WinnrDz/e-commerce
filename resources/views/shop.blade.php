@@ -47,7 +47,7 @@
                     </div>
                     <div id="slider" class="bg-[#F0F0F0] w-[100%] h-2 rounded-[20px] relative">
                         <span id="minPrice" class="font-satoshi font-medium text-[14px] text-center w-9 left-12.5 top-4 -translate-x-[50%] absolute">100$</span>
-                        <span id="maxPrice" class="font-satoshi font-medium text-[14px] text-center w-9 left-50 top-4 -translate-x-[50%] absolute">400$</span>
+                        <span id="maxPrice" class="font-satoshi font-medium text-[14px] text-center w-9 left-55 top-4 -translate-x-[50%] absolute">400$</span>
                         <span id="collisionPrice" class="font-satoshi font-medium text-[14px] text-center top-4 -translate-x-[50%] absolute whitespace-nowrap hidden">200$</span>
                     </div>
                     <form class="flex justify-between relative font-satoshi text-[16px]">
