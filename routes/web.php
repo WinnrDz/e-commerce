@@ -14,3 +14,7 @@ Route::get('/show', function () {
 Route::get('/shop', function () {
     return view('shop');
 });
+
+Route::get('/cart', function () {
+    return view('cart');
+});

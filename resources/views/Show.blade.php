@@ -124,7 +124,7 @@
                         class="font-satoshi text-[16px] text-black/60 bg-[#F0F0F0] p-3 pl-7 pr-7 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">X-Large</button>
                 </div>
                 <div class="flex gap-6">
-                    <button class="bg-[#F0F0F0] flex p-5 justify-between w-43 rounded-[62px]">
+                    <button class="bg-[#F0F0F0] flex px-5 py-3 justify-between items-center w-43 rounded-[62px]">
                         <svg class="cursor-pointer" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
