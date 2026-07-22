@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Show')
 @section('content')
-    <div id="show" class="border-t border-black/10 m-20 pt-4 mt-0 flex items-center gap-4 ">
+    <div id="show" class="mb-15 pt-4 mt-0 flex items-center gap-4 ">
         <a class="font-satoshi text-[16px] text-black opacity-60 cursor-pointer">Home</a>
         <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path

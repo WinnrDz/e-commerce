@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'cart')
 @section('content')
-    <div id="cart" class="border-t border-black/10 m-20 mb-10 pt-4 mt-0 flex items-center gap-4 ">
+    <div id="cart" class="mb-10 pt-4 mt-0 flex items-center gap-4 ">
         <a class="font-satoshi text-[16px] text-black opacity-60 cursor-pointer">Home</a>
         <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -11,7 +11,7 @@
         <a class="font-satoshi text-[16px] text-black ">Cart</a>
     </div>
     <div class="flex flex-col items-center justify-center">
-        <h1 class="font-integral font-bold text-[40px] w-[100%] ml-[33%]">Your cart</h1>
+        <h1 class="font-integral font-bold text-[40px] w-[100%]">Your cart</h1>
         <div class="flex items-start gap-8 mt-10">
             <div class="flex flex-col items-center py-5 gap-6 w-178.75 border border-black/10 rounded-[20px]">
                 <div class="flex justify-between gap-4 pb-6 border-b border-black/10">
