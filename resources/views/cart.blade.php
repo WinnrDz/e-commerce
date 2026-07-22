@@ -12,8 +12,8 @@
     </div>
     <div class="flex flex-col items-center justify-center">
         <h1 class="font-integral font-bold text-[40px] w-[100%] ml-[33%]">Your cart</h1>
-        <div class="flex gap-8 mt-10">
-            <div class="flex flex-col items-center py-5 gap-6 w-178.75 h-127 border border-black/10 rounded-[20px]">
+        <div class="flex items-start gap-8 mt-10">
+            <div class="flex flex-col items-center py-5 gap-6 w-178.75 border border-black/10 rounded-[20px]">
                 <div class="flex justify-between gap-4 pb-6 border-b border-black/10">
                     <img class="w-31 h-31 bg-[#F0EEED] rounded-[8.66px] p-3" src="{{ asset('images/gradient-shirt.png') }}" alt="Logo">
                     <div class="flex justify-between w-131.75">
@@ -79,7 +79,39 @@
                 </div>
                 
             </div>
-            <div class="w-126.25 h-114.5 border border-black/10 rounded-[20px]">
+            <div class="flex flex-col py-5 px-6 gap-6 w-126.25 border border-black/10 rounded-[20px]">
+                <h2 class="font-satoshi font-bold text-[24px]">Order Summary</h2>
+                <div class="flex flex-col gap-5">
+                    <div class="flex justify-between">
+                        <span class="font-satoshi text-[20px] opacity-60">Subtotal</span>
+                        <span class="font-satoshi font-bold text-[20px]">$565</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="font-satoshi text-[20px] opacity-60">Discount (-20%)</span>
+                        <span class="font-satoshi font-bold text-[20px] text-[#FF3333]">-$113</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="font-satoshi text-[20px] opacity-60">Delivery Fee</span>
+                        <span class="font-satoshi font-bold text-[20px]">$15</span>
+                    </div>
+                    <div class="w-full h-px bg-black opacity-10"></div>
+                    <div class="flex justify-between">
+                        <span class="font-satoshi text-[20px]">Total</span>
+                        <span class="font-satoshi font-bold text-[24px]">$467</span>
+                    </div>
+                </div>
+                <form class="flex justify-between">
+                    <div class="w-81.5 relative">
+                        <svg class="absolute top-1/4 left-4" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.0766 12.4856L13.7653 3.17438C13.5917 2.99963 13.3851 2.86109 13.1576 2.76679C12.93 2.67248 12.686 2.62429 12.4397 2.62501H3.75001C3.45164 2.62501 3.16549 2.74353 2.95451 2.95451C2.74353 3.16549 2.62501 3.45164 2.62501 3.75001V12.4397C2.62429 12.686 2.67248 12.93 2.76679 13.1576C2.86109 13.3851 2.99963 13.5917 3.17438 13.7653L12.4856 23.0766C12.8372 23.4281 13.3141 23.6255 13.8113 23.6255C14.3084 23.6255 14.7853 23.4281 15.1369 23.0766L23.0766 15.1369C23.4281 14.7853 23.6255 14.3084 23.6255 13.8113C23.6255 13.3141 23.4281 12.8372 23.0766 12.4856ZM13.8113 21.2203L4.87501 12.2813V4.87501H12.2813L21.2175 13.8113L13.8113 21.2203ZM9.37501 7.87501C9.37501 8.17168 9.28703 8.46169 9.12221 8.70836C8.95739 8.95504 8.72312 9.1473 8.44903 9.26083C8.17494 9.37436 7.87334 9.40406 7.58237 9.34619C7.2914 9.28831 7.02413 9.14545 6.81435 8.93567C6.60457 8.72589 6.46171 8.45861 6.40383 8.16764C6.34595 7.87667 6.37566 7.57507 6.48919 7.30098C6.60272 7.02689 6.79498 6.79263 7.04165 6.6278C7.28833 6.46298 7.57834 6.37501 7.87501 6.37501C8.27283 6.37501 8.65436 6.53304 8.93567 6.81435C9.21697 7.09565 9.37501 7.47718 9.37501 7.87501Z" fill="black" fill-opacity="0.4"/></svg> 
+                        <input type="text" placeholder="Search for products..."
+                        class="bg-[#F0F0F0] font-satoshi text-[16px] placeholder:text-black/40 pl-13 pr-4 py-3  w-full h-12 rounded-[62px] focus:outline-none" />
+                    </div>
+                    <button class="bg-black text-white font-satoshim text-[16px] w-29.75 rounded-[62px]">Apply</button>
+                </form>
+                <button class="flex items-center justify-center gap-3 bg-black text-white font-satoshim text-[16px] w-full py-4  rounded-[62px]">
+                    <span>Go to Checkout</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.2959 4.45404L21.0459 11.204C21.1508 11.3086 21.234 11.4327 21.2908 11.5695C21.3476 11.7062 21.3768 11.8529 21.3768 12.0009C21.3768 12.149 21.3476 12.2956 21.2908 12.4323C21.234 12.5691 21.1508 12.6933 21.0459 12.7978L14.2959 19.5478C14.0846 19.7591 13.7979 19.8779 13.4991 19.8779C13.2002 19.8779 12.9135 19.7591 12.7022 19.5478C12.4908 19.3364 12.3721 19.0498 12.3721 18.7509C12.3721 18.452 12.4908 18.1654 12.7022 17.954L17.5313 13.125L3.75 13.125C3.45163 13.125 3.16548 13.0065 2.9545 12.7955C2.74353 12.5845 2.625 12.2983 2.625 12C2.625 11.7016 2.74353 11.4155 2.95451 11.2045C3.16548 10.9935 3.45163 10.875 3.75 10.875L17.5313 10.875L12.7013 6.04592C12.4899 5.83457 12.3712 5.54793 12.3712 5.24904C12.3712 4.95016 12.4899 4.66351 12.7013 4.45217C12.9126 4.24082 13.1992 4.12209 13.4981 4.12209C13.797 4.12209 14.0837 4.24082 14.295 4.45217L14.2959 4.45404Z" fill="white"/></svg>
+                </button>
             </div>
         </div>
     </div>
