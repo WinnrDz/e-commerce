@@ -61,49 +61,51 @@
         </div>
     </nav>
     <main>
-        <div id="welcome" class="flex justify-around bg-[#F2F0F1]">
-            <div class="m-10 mt-30">
-                <p class="font-integral font-bold text-[64px] leading-[64px] w-160">
+        <div id="welcome" class="flex flex-col lg:flex-row justify-between bg-[#F2F0F1]">
+            <div class="px-6 py-10 lg:px-20 lg:py-16">
+                <p class="font-integral font-bold text-[36px] lg:text-[64px] leading-[34px] lg:leading-[64px] w-full max-w-160">
                     FIND CLOTHES THAT MATCHES YOUR STYLE
                 </p>
-                <p class="font-satoshi text-[16px] leading-[22px] w-[545px] mt-8 text-black opacity-60">
+                <p class="font-satoshi text-[14px] lg:text-[16px] leading-[22px] w-full max-w-[545px] mt-8 text-black opacity-60">
                     Browse through our diverse range of meticulously crafted garments, designed to bring out your
                     individuality and cater to your sense of style.
                 </p>
-                <button class="font-satoshim bg-black text-white text-[16px] rounded-full w-[210px] h-[52px] mt-10 ">Shop
+                <button class="font-satoshim bg-black text-white text-[16px] rounded-full w-full lg:max-w-[210px] h-[52px] mt-10 ">Shop
                     now</button>
 
-                <div class="flex mt-10">
-                    <div class="border-r border-gray-300 pr-10">
-                        <div class="font-satoshi font-bold text-[40px]">200+</div>
-                        <div class="font-satoshi text-[16px] text-black opacity-60">International Brands</div>
+                <div class="flex flex-wrap mt-10">
+
+                    <div class="w-1/2 lg:w-1/3 px-10 border-r border-gray-300">
+                        <div class="font-satoshi font-bold text-[24px] lg:text-[40px]">
+                            200+
+                        </div>
+                        <div class="font-satoshi text-[12px] lg:text-[16px] text-black opacity-60">
+                            International Brands
+                        </div>
                     </div>
-                    <div class="border-r border-gray-300 pr-10 pl-10">
-                        <div class="font-satoshi font-bold text-[40px]">2,000+</div>
-                        <div class="font-satoshi text-[16px] text-black opacity-60">High-Quality Products</div>
+
+                    <div class="w-1/2 lg:w-1/3 px-10 lg:border-r border-gray-300">
+                        <div class="font-satoshi font-bold text-[24px] lg:text-[40px]">
+                            2,000+
+                        </div>
+                        <div class="font-satoshi text-[12px] lg:text-[16px] text-black opacity-60">
+                            High-Quality Products
+                        </div>
                     </div>
-                    <div class="pr-10 pl-10">
-                        <div class="font-satoshi font-bold text-[40px]">30,000+</div>
-                        <div class="font-satoshi text-[16px] text-black opacity-60">Happy Customers</div>
+
+                    <div class="w-full lg:w-1/3 px-10 text-center lg:text-left mt-4 lg:mt-0">
+                        <div class="font-satoshi font-bold text-[24px] lg:text-[40px]">
+                            30,000+
+                        </div>
+                        <div class="font-satoshi text-[12px] lg:text-[16px] text-black opacity-60">
+                            Happy Customers
+                        </div>
                     </div>
+
                 </div>
             </div>
-            <div class="relative mt-auto">
-                <img class="w-[640px] mb-0 " src="{{ asset('images/fashion-hero.png') }}" alt="Logo">
-                <svg class="absolute top-30 right-[0%]" width="104" height="104" viewBox="0 0 104 104" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M52 0C53.7654 27.955 76.0448 50.2347 104 52C76.0448 53.7654 53.7654 76.0448 52 104C50.2347 76.0448 27.955 53.7654 0 52C27.955 50.2347 50.2347 27.955 52 0Z"
-                        fill="black" />
-                </svg>
-                <svg class="absolute bottom-50 right-[100%]" width="56" height="56" viewBox="0 0 56 56" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M28 0C28.9506 15.0527 40.9472 27.0495 56 28C40.9472 28.9506 28.9506 40.9472 28 56C27.0495 40.9472 15.0527 28.9506 0 28C15.0527 27.0495 27.0495 15.0527 28 0Z"
-                        fill="black" />
-                </svg>
-
-
+            <div class="overflow-hidden mt-auto">
+                <img class="hidden min-[1275px]:block min-w-[637px] max-w-[700px] h-auto mb-0 " src="{{ asset('images/fashion-hero.png') }}" alt="Logo">
             </div>
         </div>
         <div class="bg-black w-full flex justify-around p-12">
