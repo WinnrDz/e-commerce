@@ -332,13 +332,13 @@
                 all</button>
         </div>
         <div class="bg-white flex flex-col items-center gap-8 pb-8 ">
-            <h1 class="font-integral font-bold text-[48px] m-20">TOP SELLING</h1>
-            <div class="flex gap-[30px]">
-                <div class="flex flex-col gap-[8px]">
-                    <div class="bg-[#F0EEED] rounded-[20px] w-[300px] h-[300px] flex justify-center p-5">
+            <h1 class="font-integral font-bold text-[28px] lg:text-[48px] m-10 lg:m-20">TOP SELLING</h1>
+            <div class="flex flex-wrap justify-center gap-8 w-full max-w-[1300px]">
+                <div class="flex flex-col items-center gap-2">
+                    <div class="bg-[#F0EEED] rounded-[20px] w-[150px] lg:w-[300px] h-[150px] lg:h-[300px] flex justify-center p-5">
                         <img src="{{ asset('images/vertical-shirt.png') }}" alt="Logo">
                     </div>
-                    <label class="font-satoshi font-bold text-[20px]">Vertical Striped Shirt</label>
+                    <label class="font-satoshi font-bold text-[16px] lg:text-[20px]">Vertical Striped Shirt</label>
                     <div class="flex gap-[5px]">
                         <svg class="w-[15.47px] lg:w-[18.49px]" width="18" height="17" viewBox="0 0 18 17" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -379,12 +379,12 @@
                             class="flex items-center justify-center font-satoshi font-medium text-[12px] text-[#FF3333] bg-[#FFEBEB] rounded-[62px] w-[58px] h-[28px]">-20%</label>
                     </div>
                 </div>
-                <div class="flex flex-col gap-[8px]">
-                    <div class="bg-[#F0EEED] rounded-[20px] w-[300px] h-[300px] flex justify-center p-8">
+                <div class="flex flex-col items-center gap-2">
+                    <div class="bg-[#F0EEED] rounded-[20px] w-[150px] lg:w-[300px] h-[150px] lg:h-[300px] flex justify-center p-8">
                         <img class="bg-[#F0EEED] w-[300px] rounded-[20px]" src="{{ asset('images/courage.png') }}"
                             alt="Logo">
                     </div>
-                    <label class="font-satoshi font-bold text-[20px]">Courage Graphic T-shirt</label>
+                    <label class="font-satoshi font-bold text-[16px] lg:text-[20px]">Courage Graphic T-shirt</label>
                     <div class="flex gap-[5px]">
 
                         <svg class="w-[15.47px] lg:w-[18.49px]" width="18" height="17" viewBox="0 0 18 17" fill="none"
@@ -417,10 +417,10 @@
                         <label class="font-satoshi font-bold text-[20px] lg:text-[24px]">145$</label>
                     </div>
                 </div>
-                <div class="flex flex-col gap-[8px]">
-                    <div class="bg-[#F0EEED] rounded-[20px] w-[300px] h-[300px] flex justify-center items-center p-16"><img
+                <div class="flex flex-col items-center gap-2">
+                    <div class="bg-[#F0EEED] rounded-[20px] w-[150px] lg:w-[300px] h-[150px] lg:h-[300px] flex justify-center items-center p-8"><img
                             class="w-[663px]" src="{{ asset('images/loose.png') }}" alt="Logo"></div>
-                    <label class="font-satoshi font-bold text-[20px]">Loose Fit Bermuda Shorts</label>
+                    <label class="font-satoshi font-bold text-[16px] lg:text-[20px]">Loose Fit Bermuda Shorts</label>
                     <div class="flex gap-[5px]">
                         <svg class="w-[15.47px] lg:w-[18.49px]" width="18" height="17" viewBox="0 0 18 17" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -454,16 +454,15 @@
                         </svg>
                         <label class="font-satoshi text-[14px]">4.5/<span class="opacity-60">5</span></label>
                     </div>
-                    <div class="flex items-center gap-[8px]">
+                    <div class="flex items-center gap-2">
                         <label class="font-satoshi font-bold text-[20px] lg:text-[24px]">80$</label>
                     </div>
                 </div>
-                <div class="flex flex-col gap-[8px]">
-                    <div class="bg-[#F0EEED] rounded-[20px] w-[300px] h-[300px] flex justify-center">
-                        <div class="bg-[#F0EEED] rounded-[20px] w-[300px] h-[300px] flex justify-center items-center p-22">
-                            <img class="w-[663px]" src="{{ asset('images/faded.png') }}" alt="Logo"></div>
+                <div class="flex flex-col items-center gap-2">
+                    <div class="bg-[#F0EEED] rounded-[20px] w-[150px] lg:w-[300px] h-[150px] lg:h-[300px] flex justify-center p-4">
+                        <img src="{{ asset('images/faded.png') }}" alt="">
                     </div>
-                    <label class="font-satoshi font-bold text-[20px]">Faded Skinny Jeans</label>
+                    <label class="font-satoshi font-bold text-[16px] lg:text-[20px]">Faded Skinny Jeans</label>
                     <div class="flex gap-[5px]">
                         <svg class="w-[15.47px] lg:w-[18.49px]" width="18" height="17" viewBox="0 0 18 17" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -497,7 +496,7 @@
                         </svg>
                         <label class="font-satoshi text-[14px]">4.5/<span class="opacity-60">5</span></label>
                     </div>
-                    <div class="flex items-center gap-[8px]">
+                    <div class="flex items-center gap-2">
                         <label class="font-satoshi font-bold text-[20px] lg:text-[24px]">210$</label>
                     </div>
                 </div>
@@ -506,25 +505,25 @@
                 class="font-satoshi font-medium text-[16px] rounded-[62px] border border-black/10 w-[218px] h-[52px]">View
                 all</button>
         </div>
-        <div class="bg-[#F0F0F0] rounded-[40px] m-20">
-            <h1 class="font-integral font-bold text-[48px] p-25 text-center">BROWSE BY dress STYLE</h1>
+        <div class="bg-[#F0F0F0] rounded-[40px] m-5 lg:m-20">
+            <h1 class="font-integral font-bold text-[32px] lg:text-[48px] p-10 lg:p-25 text-center">BROWSE BY DRESS styles</h1>
             <div class="flex flex-wrap justify-center gap-8 pb-16">
-                <div class="w-[30%] bg-white rounded-[20px] h-75 relative overflow-hidden">
+                <div class="w-full max-w-[80%] lg:max-w-[30%] bg-white rounded-[20px] h-75 relative overflow-hidden">
                     <div class="font-satoshi font-bold text-[36px] absolute top-0 left-0 z-10 p-8">Casual</div>
                     <img class="absolute -bottom-55 right-0 w-auto h-160 object-cover"
                         src="{{ asset('images/tato-guy.png') }}" alt="Logo">
                 </div>
-                <div class="w-[50%] bg-[#FCFCFC] rounded-[20px] h-75 relative overflow-hidden ">
+                <div class="w-full max-w-[80%] lg:max-w-[50%] bg-[#FCFCFC] rounded-[20px] h-75 relative overflow-hidden">
                     <div class="font-satoshi font-bold text-[36px] absolute top-0 left-0 z-10 p-8">Formal</div>
-                    <img class="absolute -bottom-90 right-0 w-auto h-200 object-cover"
+                    <img class="absolute lg:-bottom-90 -right-20 lg:right-0 lg:w-auto lg:h-200 object-cover"
                         src="{{ asset('images/suit-guy.png') }}" alt="Logo">
                 </div>
-                <div class="w-[50%] bg-white rounded-[20px] h-75 relative overflow-hidden">
+                <div class="w-full max-w-[80%] lg:max-w-[50%] bg-white rounded-[20px] h-75 relative overflow-hidden">
                     <div class="font-satoshi font-bold text-[36px] absolute top-0 left-0 z-10 p-8">Party</div>
                     <img class="absolute -bottom-40 right-0 w-auto h-160 object-cover"
                         src="{{ asset('images/cool-guy.png') }}" alt="Logo">
                 </div>
-                <div class="w-[30%] bg-white rounded-[20px] h-75 relative overflow-hidden">
+                <div class="w-full max-w-[80%] lg:max-w-[30%] bg-white rounded-[20px] h-75 relative overflow-hidden">
                     <div class="font-satoshi font-bold text-[36px] absolute top-0 left-0 z-10 p-8">Gym</div>
                     <img class="absolute -bottom-50 -right-10 w-auto h-160 object-cover"
                         src="{{ asset('images/gym-guy.png') }}" alt="Logo">
