@@ -530,8 +530,8 @@
                 </div>
             </div>
         </div>
-        <div class="flex items-center justify-between">
-            <h1 class="font-integral font-bold text-[48px] p-8 pl-20">OUR HAPPY CUSTOMERS</h1>
+        <div class="flex items-center w-full justify-between">
+            <h1 class="font-integral font-bold text-[32px] lg:text-[48px] p-8">OUR HAPPY CUSTOMERS</h1>
             <div class="mr-24 flex gap-4">
                 <button class="cursor-pointer" onclick="leftArrow()">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M9.70406 4.4541L2.95406 11.2041C2.84918 11.3086 2.76597 11.4328 2.70919 11.5696C2.6524 11.7063 2.62317 11.8529 2.62317 12.001C2.62317 12.149 2.6524 12.2957 2.70919 12.4324C2.76597 12.5691 2.84918 12.6933 2.95406 12.7979L9.70406 19.5479C9.91541 19.7592 10.2021 19.8779 10.5009 19.8779C10.7998 19.8779 11.0865 19.7592 11.2978 19.5479C11.5092 19.3365 11.6279 19.0499 11.6279 18.751C11.6279 18.4521 11.5092 18.1654 11.2978 17.9541L6.46875 13.125L20.25 13.125C20.5484 13.125 20.8345 13.0065 21.0455 12.7955C21.2565 12.5846 21.375 12.2984 21.375 12C21.375 11.7017 21.2565 11.4155 21.0455 11.2045C20.8345 10.9936 20.5484 10.875 20.25 10.875L6.46875 10.875L11.2988 6.04598C11.5101 5.83463 11.6288 5.54799 11.6288 5.2491C11.6288 4.95022 11.5101 4.66357 11.2988 4.45223C11.0874 4.24088 10.8008 4.12215 10.5019 4.12215C10.203 4.12215 9.91634 4.24088 9.705 4.45223L9.70406 4.4541Z" fill="black" /></svg>
@@ -542,7 +542,7 @@
             </div>
         </div>
         <div class="flex justify-center gap-8 overflow-x-hidden" id="customersParent">
-            <div class="blur-[1.75px] border border-black/10 rounded-[20px] w-130 h-60 p-6 shrink-0 transition-transform duration-300 ease-in-out">
+            <div class="blur-[1.75px] border border-black/10 rounded-[20px] w-[300px] xl:w-110 h-auto xl:h-60 p-6 shrink-0 transition-transform duration-300 ease-in-out">
                 <div class="flex gap-2"> 
                     <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
                     <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
@@ -558,7 +558,7 @@
                     "I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.”
                 </p>
             </div>
-            <div class="border border-black/10 rounded-[20px] w-130 h-60 p-6 shrink-0 transition-transform duration-300 ease-in-out">
+            <div class="border border-black/10 rounded-[20px] w-[330px] xl:w-110 h-auto xl:h-60 p-6 shrink-0 transition-transform duration-300 ease-in-out">
                 <div class="flex gap-2"> 
                     <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
                     <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
@@ -574,7 +574,7 @@
                     "I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.”
                 </p>
             </div>
-            <div class="border border-black/10 rounded-[20px] w-130 h-60 p-6 shrink-0 transition-transform duration-300 ease-in-out">
+            <div class="border border-black/10 rounded-[20px] w-[330px] xl:w-110 h-auto xl:h-60 p-6 shrink-0 transition-transform duration-300 ease-in-out">
                 <div class="flex gap-2"> 
                     <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
                     <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
@@ -590,7 +590,7 @@
                     "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions.”
                 </p>
             </div>
-            <div class="border border-black/10 rounded-[20px] w-130 h-60 p-6 shrink-0 transition-transform duration-300 ease-in-out">
+            <div class="border border-black/10 rounded-[20px] w-[330px] xl:w-110 h-auto xl:h-60 p-6 shrink-0 transition-transform duration-300 ease-in-out">
                 <div class="flex gap-2"> 
                     <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
                     <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
@@ -606,7 +606,7 @@
                     "As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends.”
                 </p>
             </div>
-            <div class=" blur-[1.75px] border border-black/10 rounded-[20px] w-130 h-60 p-6 shrink-0 transition-transform duration-300 ease-in-out">
+            <div class=" blur-[1.75px] border border-black/10 rounded-[20px] w-[330px] xl:w-110 h-auto xl:h-60 p-6 shrink-0 transition-transform duration-300 ease-in-out">
                 <div class="flex gap-2"> 
                     <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
                     <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="#FFC633"/></svg>
@@ -626,19 +626,19 @@
         </div>
     </main>
     <footer class="bg-[#F0F0F0] p-24 relative mt-45 pt-50">
-            <div class="absolute left-1/2 -translate-x-1/2 -top-16 w-[80%] bg-black rounded-3xl p-8 flex justify-around items-center">
-                <h1 class="font-integral font-bold leading-[45px] text-[40px] text-white w-138">STAY UPTO DATE ABOUT OUR LATEST OFFERS</h1>
-                <div class="flex flex-col gap-4">
-                    <div class="relative w-80">
+            <div class="flex flex-col lg:flex-row gap-y-8 justify-between absolute left-1/2 -translate-x-1/2 -top-16 w-[80%] bg-black rounded-3xl p-8 ">
+                <h1 class="font-integral font-bold leading-[35px] lg:leading-[45px] text-[32px] lg:text-[40px] text-white w-full max-w-138">STAY UP TO DATE ABOUT OUR LATEST OFFERS</h1>
+                <div class="flex flex-col gap-4 w-full max-w-[100%] lg:max-w-[400px]">
+                    <div class="relative w-[100%]">
                         <svg class="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 4.125H3C2.70163 4.125 2.41548 4.24353 2.2045 4.4545C1.99353 4.66548 1.875 4.95163 1.875 5.25V18C1.875 18.4973 2.07254 18.9742 2.42417 19.3258C2.77581 19.6775 3.25272 19.875 3.75 19.875H20.25C20.7473 19.875 21.2242 19.6775 21.5758 19.3258C21.9275 18.9742 22.125 18.4973 22.125 18V5.25C22.125 4.95163 22.0065 4.66548 21.7955 4.4545C21.5845 4.24353 21.2984 4.125 21 4.125ZM12 11.9738L5.89219 6.375H18.1078L12 11.9738ZM8.69906 12L4.125 16.1925V7.8075L8.69906 12ZM10.3641 13.5262L11.2397 14.3297C11.4472 14.52 11.7185 14.6255 12 14.6255C12.2815 14.6255 12.5528 14.52 12.7603 14.3297L13.6359 13.5262L18.1078 17.625H5.89219L10.3641 13.5262ZM15.3009 12L19.875 7.8075V16.1925L15.3009 12Z" fill="black" fill-opacity="0.4"/></svg>
                         <input type="email" placeholder="Enter your email address" class="bg-white w-full rounded-full border pl-12 pr-4 py-3">
                     </div>
-                    <button class="bg-white w-80 rounded-[62px] font-satoshi font-medium text-[16px] p-3">
+                    <button class="bg-white w-[100%] rounded-[62px] font-satoshi font-medium text-[16px] p-3">
                         Subscribe to Newsletter
                     </button>
                 </div>
             </div >
-            <div class="flex justify-between border-b border-black/10 pb-8">
+            <div class="flex flex-col lg:flex-row justify-between border-b border-black/10 pb-8">
                 <div class="flex flex-col gap-8 w-62">
                     <h1 class="font-integral font-bold text-[32px]">SHOP.CO</h1>
                     <p class="font-satoshi text-[14px] text-black opacity-60">
