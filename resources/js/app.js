@@ -113,3 +113,12 @@ example of calling the function
     */
 
 /*------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+const mobileMenu = document.getElementById("mobileMenu");
+const burgerBtn = document.getElementById("burgerBtn")
+
+burgerBtn.addEventListener("click",() => {
+    mobileMenu.classList.toggle("hidden");
+})
