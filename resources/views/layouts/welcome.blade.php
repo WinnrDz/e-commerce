@@ -625,8 +625,8 @@
             
         </div>
     </main>
-    <footer class="bg-[#F0F0F0] p-24 relative mt-45 pt-50">
-            <div class="flex flex-col lg:flex-row gap-y-8 justify-between absolute left-1/2 -translate-x-1/2 -top-16 w-[80%] bg-black rounded-3xl p-8 ">
+    <footer class="bg-[#F0F0F0] p-12 lg:p-24 relative mt-45">
+            <div class="flex flex-col lg:flex-row gap-y-8 justify-between -mt-45 mx-auto max-w-6xl w-[100%] bg-black rounded-3xl p-8 ">
                 <h1 class="font-integral font-bold leading-[35px] lg:leading-[45px] text-[32px] lg:text-[40px] text-white w-full max-w-138">STAY UP TO DATE ABOUT OUR LATEST OFFERS</h1>
                 <div class="flex flex-col gap-4 w-full max-w-[100%] lg:max-w-[400px]">
                     <div class="relative w-[100%]">
@@ -638,7 +638,7 @@
                     </button>
                 </div>
             </div >
-            <div class="flex flex-col lg:flex-row justify-between border-b border-black/10 pb-8">
+            <div class="flex flex-col lg:flex-row gap-16 lg:gap-32 border-b border-black/10 mt-10 pb-8">
                 <div class="flex flex-col gap-8 w-62">
                     <h1 class="font-integral font-bold text-[32px]">SHOP.CO</h1>
                     <p class="font-satoshi text-[14px] text-black opacity-60">
@@ -652,36 +652,38 @@
 
                     </div>
                 </div>
-                <div class="flex flex-col justify-between">
-                    <h3 class="font-satoshi font-medium text-[16px] tracking-[3px]">COMPANY</h3>
-                    <span class="font-satoshi text-[16px] text-black opacity-60">About</span>          
-                    <span class="font-satoshi text-[16px] text-black opacity-60">Features</span>          
-                    <span class="font-satoshi text-[16px] text-black opacity-60">Works</span>          
-                    <span class="font-satoshi text-[16px] text-black opacity-60">Career</span>  
-                </div>
-                <div class="flex flex-col justify-between">
-                    <h3 class="font-satoshi font-medium text-[16px] tracking-[3px]">HELP</h3>
-                    <span class="font-satoshi text-[16px] text-black opacity-60">Customer Support</span>          
-                    <span class="font-satoshi text-[16px] text-black opacity-60">Delivery Details</span>          
-                    <span class="font-satoshi text-[16px] text-black opacity-60">Terms & Conditions</span>          
-                    <span class="font-satoshi text-[16px] text-black opacity-60">Privacy Policy</span>  
-                </div>
-                <div class="flex flex-col justify-between">
-                    <h3 class="font-satoshi font-medium text-[16px] tracking-[3px]">FAQ</h3>
-                    <span class="font-satoshi text-[16px] text-black opacity-60">Account</span>          
-                    <span class="font-satoshi text-[16px] text-black opacity-60">Manage Deliveries</span>          
-                    <span class="font-satoshi text-[16px] text-black opacity-60">Orders</span>          
-                    <span class="font-satoshi text-[16px] text-black opacity-60">Payments</span>  
-                </div>
-                <div class="flex flex-col justify-between">
-                    <h3 class="font-satoshi font-medium text-[16px] tracking-[3px]">RESOURCES</h3>
-                    <span class="font-satoshi text-[16px] text-black opacity-60">Free eBooks</span>          
-                    <span class="font-satoshi text-[16px] text-black opacity-60">Development Tutorial</span>          
-                    <span class="font-satoshi text-[16px] text-black opacity-60">How to - Blog</span>          
-                    <span class="font-satoshi text-[16px] text-black opacity-60">Youtube Playlist</span>  
+                <div class="flex flex-wrap gap-16 lg:gap-50">
+                    <div class="flex flex-col justify-between gap-4">
+                        <h3 class="font-satoshi font-medium text-[16px] tracking-[3px]">COMPANY</h3>
+                        <span class="font-satoshi text-[16px] text-black opacity-60">About</span>          
+                        <span class="font-satoshi text-[16px] text-black opacity-60">Features</span>          
+                        <span class="font-satoshi text-[16px] text-black opacity-60">Works</span>          
+                        <span class="font-satoshi text-[16px] text-black opacity-60">Career</span>  
+                    </div>
+                    <div class="flex flex-col justify-between gap-4">
+                        <h3 class="font-satoshi font-medium text-[16px] tracking-[3px]">HELP</h3>
+                        <span class="font-satoshi text-[16px] text-black opacity-60">Customer Support</span>          
+                        <span class="font-satoshi text-[16px] text-black opacity-60">Delivery Details</span>          
+                        <span class="font-satoshi text-[16px] text-black opacity-60">Terms & Conditions</span>          
+                        <span class="font-satoshi text-[16px] text-black opacity-60">Privacy Policy</span>  
+                    </div>
+                    <div class="flex flex-col justify-between gap-4">
+                        <h3 class="font-satoshi font-medium text-[16px] tracking-[3px]">FAQ</h3>
+                        <span class="font-satoshi text-[16px] text-black opacity-60">Account</span>          
+                        <span class="font-satoshi text-[16px] text-black opacity-60">Manage Deliveries</span>          
+                        <span class="font-satoshi text-[16px] text-black opacity-60">Orders</span>          
+                        <span class="font-satoshi text-[16px] text-black opacity-60">Payments</span>  
+                    </div>
+                    <div class="flex flex-col justify-between gap-4">
+                        <h3 class="font-satoshi font-medium text-[16px] tracking-[3px]">RESOURCES</h3>
+                        <span class="font-satoshi text-[16px] text-black opacity-60">Free eBooks</span>          
+                        <span class="font-satoshi text-[16px] text-black opacity-60">Development Tutorial</span>          
+                        <span class="font-satoshi text-[16px] text-black opacity-60">How to - Blog</span>          
+                        <span class="font-satoshi text-[16px] text-black opacity-60">Youtube Playlist</span>  
+                    </div>
                 </div>
             </div>
-            <div class="flex justify-between mt-8">
+            <div class="flex flex-col lg:flex-row justify-between mt-8">
                 <p class="font-satoshi text-[14px] text-black opacity-60">Shop.co © 2000-2023, All Rights Reserved</p>
                 <div class="flex">
                     <svg width="65" height="49" viewBox="0 0 65 49" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_dd_20_320)">    <rect x="9.18835" y="4.70605" width="46.6143" height="30.0304" rx="5.37857" fill="white"/>    <rect x="9.0763" y="4.594" width="46.8384" height="30.2545" rx="5.49062" stroke="#D6DCE5" stroke-width="0.224107"/>    <path d="M32.2105 14.827L30.0362 24.9906H27.4071L29.5817 14.827H32.2105ZM43.2722 21.3897L44.6563 17.5729L45.4528 21.3897H43.2722ZM46.2056 24.9906H48.6375L46.5153 14.827H44.2707C43.7663 14.827 43.3407 15.1204 43.1512 15.5727L39.2067 24.9906H41.9677L42.5159 23.4729H45.889L46.2056 24.9906ZM39.3438 21.6721C39.355 18.9896 35.6341 18.842 35.6599 17.6437C35.6676 17.2786 36.0153 16.8913 36.7748 16.7919C37.1522 16.7427 38.1896 16.705 39.3676 17.2471L39.8289 15.0918C39.1961 14.8621 38.3819 14.6411 37.3693 14.6411C34.7707 14.6411 32.9417 16.0227 32.9262 18.0011C32.9098 19.4641 34.2319 20.2805 35.2282 20.7669C36.2524 21.2652 36.5966 21.5843 36.5921 22.0298C36.5854 22.7121 35.775 23.0126 35.0191 23.0245C33.697 23.0454 32.9298 22.6677 32.3182 22.3827L31.8418 24.6097C32.4559 24.8918 33.5898 25.137 34.7662 25.1495C37.5279 25.1495 39.3348 23.7849 39.3438 21.6721ZM28.4536 14.827L24.1938 24.9906H21.4142L19.3181 16.8794C19.1907 16.3798 19.0801 16.1971 18.6931 15.9864C18.0616 15.6438 17.0178 15.3218 16.0994 15.1223L16.1621 14.827H20.6357C21.2057 14.827 21.7188 15.2066 21.8481 15.8632L22.9554 21.7448L25.6913 14.827H28.4536Z" fill="#1434CB"/>    </g>    <defs>    <filter id="filter0_dd_20_320" x="-5.24521e-05" y="-0.000209332" width="64.9911" height="48.4071" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">    <feFlood flood-opacity="0" result="BackgroundImageFix"/>    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>    <feOffset dy="0.448214"/>    <feGaussianBlur stdDeviation="2.24107"/>    <feColorMatrix type="matrix" values="0 0 0 0 0.717647 0 0 0 0 0.717647 0 0 0 0 0.717647 0 0 0 0.08 0"/>    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_20_320"/>    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>    <feOffset dy="4.48214"/>    <feGaussianBlur stdDeviation="4.48214"/>    <feColorMatrix type="matrix" values="0 0 0 0 0.717647 0 0 0 0 0.717647 0 0 0 0 0.717647 0 0 0 0.08 0"/>    <feBlend mode="normal" in2="effect1_dropShadow_20_320" result="effect2_dropShadow_20_320"/>    <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_20_320" result="shape"/>    </filter>    </defs>    </svg>
