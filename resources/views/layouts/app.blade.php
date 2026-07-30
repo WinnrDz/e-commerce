@@ -78,7 +78,7 @@
         </div>
     </header>
     
-    <main class="flex flex-col max-w-[1280px] mx-auto">
+    <main class="flex flex-col  max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         @yield('content')
     </main>
     <footer class="bg-[#F0F0F0] p-12 lg:p-24 relative mt-45">

@@ -22,17 +22,17 @@
         </svg>
         <a class="font-satoshi text-[14px] lg:text-[16px] text-black ">T-shirts</a>
     </div>
-    <div class="flex flex-col lg:flex-row gap-4">
-        <div id="previewCont" class="flex flex-row lg:flex-col gap-8 order-2 lg:order-1 h-[106px] lg:h-auto">
-            <div class="bg-[#F0EEED] p-2 w-full max-w-[111px] lg:max-w-38 h-full lg:max-h-41 rounded-[20px] border black flex justify-center items-center overflow-hidden cursor-pointer"
+    <div class="flex flex-col lg:flex-row gap-6 lg:gap-4">
+        <div id="previewCont" class="flex flex-row justify-center lg:justify-start lg:flex-col gap-8 order-2 lg:order-1 h-[106px] lg:h-auto">
+            <div class="bg-[#F0EEED] p-2 w-full max-w-[111px] lg:min-w-38 h-full lg:max-h-41 rounded-[20px] border black flex justify-center items-center overflow-hidden cursor-pointer"
                 onclick="preview(0)">
                 <img src="{{ asset('images/life-shirt.png') }}" alt="Logo">
             </div>
-            <div class="bg-[#F0EEED] p-2 w-full max-w-[111px] lg:max-w-38 h-full lg:max-h-41 rounded-[20px] flex justify-center items-center overflow-hidden cursor-pointer"
+            <div class="bg-[#F0EEED] p-2 w-full max-w-[111px] lg:min-w-38 h-full lg:max-h-41 rounded-[20px] flex justify-center items-center overflow-hidden cursor-pointer"
                 onclick="preview(1)">
                 <img src="{{ asset('images/dead-shirt.png') }}" alt="Logo">
             </div>
-            <div class="bg-[#F0EEED] p-2 w-full max-w-[111px] lg:max-w-38 h-full lg:max-h-41 rounded-[20px] flex justify-center items-center overflow-hidden cursor-pointer"
+            <div class="bg-[#F0EEED] p-2 w-full max-w-[111px] lg:min-w-38 h-full lg:max-h-41 rounded-[20px] flex justify-center items-center overflow-hidden cursor-pointer"
                 onclick="preview(2)">
                 <img src="{{ asset('images/life-guy.png') }}"
                     alt="Logo">
@@ -48,46 +48,46 @@
             <img id="zoomedImage" class="bg-[#F0EEED] w-100 scale-200 absolute" src="{{ asset('images/life-shirt.png') }}"
                 alt="Logo">
         </div>
-        <div id="buyContent" class="order-3 flex flex-col gap-4 ml-4">
-            <h1 class="font-integral font-bold text-[40px] ">ONE LIFE GRAPHIC T-SHIRT</h1>
+        <div id="buyContent" class="order-3 flex flex-col gap-4 lg:ml-4">
+            <h1 class="font-integral font-bold text-[24px] leading-[28px] lg:leading-normal lg:text-[40px] ">ONE LIFE GRAPHIC T-SHIRT</h1>
             <div class="flex gap-2">
-                <svg width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="h-[18px] lg:h-[24px]" width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M11.7515 0L15.2521 7.53796L23.5029 8.53794L17.4157 14.1966L19.0143 22.3526L11.7515 18.3119L4.48868 22.3526L6.08728 14.1966L2.00272e-05 8.53794L8.25081 7.53796L11.7515 0Z"
                         fill="#FFC633" />
                 </svg>
-                <svg width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="h-[18px] lg:h-[24px]" width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M11.7515 0L15.2521 7.53796L23.5029 8.53794L17.4157 14.1966L19.0143 22.3526L11.7515 18.3119L4.48868 22.3526L6.08728 14.1966L2.00272e-05 8.53794L8.25081 7.53796L11.7515 0Z"
                         fill="#FFC633" />
                 </svg>
-                <svg width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="h-[18px] lg:h-[24px]" width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M11.7515 0L15.2521 7.53796L23.5029 8.53794L17.4157 14.1966L19.0143 22.3526L11.7515 18.3119L4.48868 22.3526L6.08728 14.1966L2.00272e-05 8.53794L8.25081 7.53796L11.7515 0Z"
                         fill="#FFC633" />
                 </svg>
-                <svg width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="h-[18px] lg:h-[24px]" width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M11.7515 0L15.2521 7.53796L23.5029 8.53794L17.4157 14.1966L19.0143 22.3526L11.7515 18.3119L4.48868 22.3526L6.08728 14.1966L2.00272e-05 8.53794L8.25081 7.53796L11.7515 0Z"
                         fill="#FFC633" />
                 </svg>
-                <svg width="12" height="23" viewBox="0 0 12 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="h-[18px] lg:h-[24px]" width="12" height="23" viewBox="0 0 12 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4.48866 22.3526L11.7515 18.3119V0L8.25079 7.53796L0 8.53793L6.08726 14.1966L4.48866 22.3526Z"
                         fill="#FFC633" />
                 </svg>
-                <label class="font-satoshi text-[16px] ml-3">4.5/<span class="opacity-60">5</span></label>
+                <label class="font-satoshi text-[14px] lg:text-[16px] ml-3">4.5/<span class="opacity-60">5</span></label>
             </div>
             <div class="flex items-center gap-4">
-                <label class="font-satoshi font-bold text-[32px]">260$</label>
-                <label class="font-satoshi font-bold text-[32px] opacity-40 line-through">300$</label>
+                <label class="font-satoshi font-bold text-[24px] lg:text-[32px]">260$</label>
+                <label class="font-satoshi font-bold text-[24px] lg:text-[32px] opacity-40 line-through">300$</label>
                 <label
                     class="flex items-center justify-center font-satoshi font-medium text-[16px] text-[#FF3333] bg-[#FFEBEB] rounded-[62px] w-18 h-[28px] p-4">-40%</label>
             </div>
-            <p class="font-satoshi text-[16px] text-black opacity-60 w-147 border-b border-black/10 pb-4 leading-[22px]">
+            <p class="font-satoshi text-[14px] lg:text-[16px] text-black opacity-60 w-full max-w-147 border-b border-black/10 pb-4 leading-[22px]">
                 This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it
                 offers superior comfort and style.
             </p>
-            <p class="font-satoshi text-[16px] text-black opacity-60">
+            <p class="font-satoshi text-[14px] lg:text-[16px] text-black opacity-60">
                 Select Colors
             </p>
             <div class="flex gap-4 border-b border-black/10 pb-4">
@@ -101,18 +101,18 @@
                 <button class="bg-[#314F4A] w-10 h-10 rounded-full cursor-pointer"></button>
                 <button class="bg-[#31344F] w-10 h-10 rounded-full cursor-pointer"></button>
             </div>
-            <p class="font-satoshi text-[16px] text-black opacity-60">
+            <p class="font-satoshi text-[14px] lg:text-[16px] text-black opacity-60">
                 Choose Size
             </p>
             <div id="sizeBtnsCont" class="flex gap-3 border-b border-black/10 pb-4">
                 <button
-                    class="font-satoshi text-[16px] text-black/60 bg-[#F0F0F0] p-3 pl-7 pr-7 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">Small</button>
+                    class="flex items-center justify-center font-satoshi text-[14px] lg:text-[16px] text-black/60  bg-[#F0F0F0] px-5 py-2 lg:py-3 lg:px-7 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">Small</button>
                 <button
-                    class="font-satoshi text-[16px] text-black/60 bg-[#F0F0F0] p-3 pl-7 pr-7 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">Medium</button>
+                    class="flex items-center justify-center font-satoshi text-[14px] lg:text-[16px] text-black/60  bg-[#F0F0F0] px-5 py-2 lg:py-3 lg:px-7 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">Medium</button>
                 <button
-                    class="font-satoshi text-[16px] text-black/60 bg-[#F0F0F0] p-3 pl-7 pr-7 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">Large</button>
+                    class="flex items-center justify-center font-satoshi text-[14px] lg:text-[16px] text-black/60  bg-[#F0F0F0] px-5 py-2 lg:py-3 lg:px-7 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">Large</button>
                 <button
-                    class="font-satoshi text-[16px] text-black/60 bg-[#F0F0F0] p-3 pl-7 pr-7 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">X-Large</button>
+                    class="flex items-center justify-center font-satoshi text-[14px] lg:text-[16px] text-black/60  bg-[#F0F0F0] px-5 py-2 lg:py-3 lg:px-7 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">X-Large</button>
             </div>
             <div class="flex gap-6">
                 <button class="bg-[#F0F0F0] flex px-5 py-3 justify-between items-center w-43 rounded-[62px]">
@@ -122,7 +122,7 @@
                             d="M21.375 12C21.375 12.2984 21.2565 12.5845 21.0455 12.7955C20.8345 13.0065 20.5484 13.125 20.25 13.125H3.75C3.45163 13.125 3.16548 13.0065 2.9545 12.7955C2.74353 12.5845 2.625 12.2984 2.625 12C2.625 11.7016 2.74353 11.4155 2.9545 11.2045C3.16548 10.9935 3.45163 10.875 3.75 10.875H20.25C20.5484 10.875 20.8345 10.9935 21.0455 11.2045C21.2565 11.4155 21.375 11.7016 21.375 12Z"
                             fill="black" />
                     </svg>
-                    <span class="font-satoshim text-[16px] text-black ">1</span>
+                    <span class="font-satoshim text-[14px] lg:text-[16px] text-black ">1</span>
                     <svg class="cursor-pointer" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -131,27 +131,27 @@
                     </svg>
                 </button>
                 <button
-                    class="bg-black p-5 w-100 rounded-[62px] font-satoshi font-medium text-[16px] text-white cursor-pointer">
+                    class="bg-black p-5 w-100 rounded-[62px] font-satoshi font-medium text-[14px] lg:text-[16px] text-white cursor-pointer">
                     Add to Cart
                 </button>
             </div>
         </div>
     </div>
-    <div class="flex flex-col w-320 mt-15 gap-8">
+    <div class="flex flex-col w-full max-w-320 mt-15 gap-8">
         <div id="detailBtnsCont" class="flex">
             <button
-                class="w-[33%] font-satoshi text-[20px] opacity-60 border-b border-black/10 leading-[22px] p-5 cursor-pointer hover:bg-gray-100 transition-colors duration-150 relative overflow-hidden">Product
+                class="w-[33%] font-satoshi text-[16px] lg:text-[20px] opacity-60 border-b border-black/10 leading-[22px] p-2 lg:p-5 cursor-pointer hover:bg-gray-100 transition-colors duration-150 relative overflow-hidden">Product
                 Details</button>
             <button
-                class="w-[33%] font-satoshim text-[20px] border-b leading-[22px] p-5 cursor-pointer hover:bg-gray-100 transition-colors duration-150 relative overflow-hidden">Rating
+                class="w-[33%] font-satoshim text-[16px] lg:text-[20px] border-b leading-[22px] p-2 lg:p-5 cursor-pointer hover:bg-gray-100 transition-colors duration-150 relative overflow-hidden">Rating
                 & Reviews</button>
             <button
-                class="w-[33%] font-satoshi text-[20px] opacity-60 border-b border-black/10 leading-[22px] p-5 cursor-pointer hover:bg-gray-100 transition-colors duration-150 relative overflow-hidden">FAQs</button>
+                class="w-[33%] font-satoshi text-[16px] lg:text-[20px] opacity-60 border-b border-black/10 leading-[22px] p-2 lg:p-5 cursor-pointer hover:bg-gray-100 transition-colors duration-150 relative overflow-hidden">FAQs</button>
         </div>
         <div class="flex justify-between">
             <div class="flex items-center gap-2">
                 <h3 class="font-satoshi font-bold text-[24px]">All Reviews</h3>
-                <span class="font-satoshi text-[16px] leading-[22px] opacity-60">(451)</span>
+                <span class="font-satoshi text-[14px] lg:text-[16px] leading-[22px] opacity-60">(451)</span>
             </div>
             <div class="flex items-center gap-4">
                 <button class="flex items-center justify-center bg-[#F0F0F0] w-12 h-12 rounded-[62px] cursor-pointer"><svg
@@ -162,7 +162,7 @@
                             fill="black" />
                     </svg></button>
                 <button class="flex items-center justify-around bg-[#F0F0F0] w-30 h-12 rounded-[62px] cursor-pointer">
-                    <span class="font-satoshim text-[16px]">Latest</span>
+                    <span class="font-satoshim text-[14px] lg:text-[16px]">Latest</span>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -171,7 +171,7 @@
                     </svg>
                 </button>
                 <button
-                    class="flex items-center justify-around bg-black w-42 h-12 rounded-[62px] cursor-pointer font-satoshi font-medium text-[16px] text-white">Write
+                    class="flex items-center justify-around bg-black w-42 h-12 rounded-[62px] cursor-pointer font-satoshi font-medium text-[14px] lg:text-[16px] text-white">Write
                     a Review</button>
             </div>
         </div>
@@ -220,7 +220,7 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-2">
-                    <h3 class="font-satoshi font-bold text-[20px] mt-4 mb-4">Samantha D.</h3>
+                    <h3 class="font-satoshi font-bold text-[16px] lg:text-[20px] mt-4 mb-4">Samantha D.</h3>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -229,11 +229,11 @@
                     </svg>
                 </div>
 
-                <p class="font-satoshi text-[16px] text-black opacity-60">
+                <p class="font-satoshi text-[14px] lg:text-[16px] text-black opacity-60">
                     "I absolutely love this t-shirt! The design is unique and the fabric feels so comfortable. As a
                     fellow designer, I appreciate the attention to detail. It's become my favorite go-to shirt."
                 </p>
-                <p class="mt-4 pb-8 font-satoshim text-[16px] text-black opacity-60">
+                <p class="mt-4 pb-8 font-satoshim text-[14px] lg:text-[16px] text-black opacity-60">
                     Posted on August 14, 2023
                 </p>
 
@@ -282,7 +282,7 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-2">
-                    <h3 class="font-satoshi font-bold text-[20px] mt-4 mb-4">Alex M.</h3>
+                    <h3 class="font-satoshi font-bold text-[16px] lg:text-[20px] mt-4 mb-4">Alex M.</h3>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -291,12 +291,12 @@
                     </svg>
                 </div>
 
-                <p class="font-satoshi text-[16px] text-black opacity-60">
+                <p class="font-satoshi text-[14px] lg:text-[16px] text-black opacity-60">
                     "The t-shirt exceeded my expectations! The colors are vibrant and the print quality is top-notch.
                     Being a UI/UX designer myself, I'm quite picky about aesthetics, and this t-shirt definitely gets a
                     thumbs up from me."
                 </p>
-                <p class="mt-4 pb-8 font-satoshim text-[16px] text-black opacity-60">
+                <p class="mt-4 pb-8 font-satoshim text-[14px] lg:text-[16px] text-black opacity-60">
                     Posted on August 15, 2023
                 </p>
 
@@ -345,7 +345,7 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-2">
-                    <h3 class="font-satoshi font-bold text-[20px] mt-4 mb-4">Ethan R.</h3>
+                    <h3 class="font-satoshi font-bold text-[16px] lg:text-[20px] mt-4 mb-4">Ethan R.</h3>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -354,12 +354,12 @@
                     </svg>
                 </div>
 
-                <p class="font-satoshi text-[16px] text-black opacity-60">
+                <p class="font-satoshi text-[14px] lg:text-[16px] text-black opacity-60">
                     "This t-shirt is a must-have for anyone who appreciates good design. The minimalistic yet stylish
                     pattern caught my eye, and the fit is perfect. I can see the designer's touch in every aspect of
                     this shirt."
                 </p>
-                <p class="mt-4 pb-8 font-satoshim text-[16px] text-black opacity-60">
+                <p class="mt-4 pb-8 font-satoshim text-[14px] lg:text-[16px] text-black opacity-60">
                     Posted on August 16, 2023
                 </p>
 
@@ -408,7 +408,7 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-2">
-                    <h3 class="font-satoshi font-bold text-[20px] mt-4 mb-4">Olivia P.</h3>
+                    <h3 class="font-satoshi font-bold text-[16px] lg:text-[20px] mt-4 mb-4">Olivia P.</h3>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -417,12 +417,12 @@
                     </svg>
                 </div>
 
-                <p class="font-satoshi text-[16px] text-black opacity-60">
+                <p class="font-satoshi text-[14px] lg:text-[16px] text-black opacity-60">
                     "As a UI/UX enthusiast, I value simplicity and functionality. This t-shirt not only represents those
                     principles but also feels great to wear. It's evident that the designer poured their creativity into
                     making this t-shirt stand out."
                 </p>
-                <p class="mt-4 pb-8 font-satoshim text-[16px] text-black opacity-60">
+                <p class="mt-4 pb-8 font-satoshim text-[14px] lg:text-[16px] text-black opacity-60">
                     Posted on August 17, 2023
                 </p>
 
@@ -471,7 +471,7 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-2">
-                    <h3 class="font-satoshi font-bold text-[20px] mt-4 mb-4">Liam K.</h3>
+                    <h3 class="font-satoshi font-bold text-[16px] lg:text-[20px] mt-4 mb-4">Liam K.</h3>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -480,12 +480,12 @@
                     </svg>
                 </div>
 
-                <p class="font-satoshi text-[16px] text-black opacity-60">
+                <p class="font-satoshi text-[14px] lg:text-[16px] text-black opacity-60">
                     "This t-shirt is a fusion of comfort and creativity. The fabric is soft, and the design speaks
                     volumes about the designer's skill. It's like wearing a piece of art that reflects my passion for
                     both design and fashion."
                 </p>
-                <p class="mt-4 pb-8 font-satoshim text-[16px] text-black opacity-60">
+                <p class="mt-4 pb-8 font-satoshim text-[14px] lg:text-[16px] text-black opacity-60">
                     Posted on August 18, 2023
                 </p>
 
@@ -534,7 +534,7 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-2">
-                    <h3 class="font-satoshi font-bold text-[20px] mt-4 mb-4">Ava H.</h3>
+                    <h3 class="font-satoshi font-bold text-[16px] lg:text-[20px] mt-4 mb-4">Ava H.</h3>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -543,18 +543,18 @@
                     </svg>
                 </div>
 
-                <p class="font-satoshi text-[16px] text-black opacity-60">
+                <p class="font-satoshi text-[14px] lg:text-[16px] text-black opacity-60">
                     "I'm not just wearing a t-shirt; I'm wearing a piece of design philosophy. The intricate details and
                     thoughtful layout of the design make this shirt a conversation starter."
                 </p>
-                <p class="mt-4 pb-8 font-satoshim text-[16px] text-black opacity-60">
+                <p class="mt-4 pb-8 font-satoshim text-[14px] lg:text-[16px] text-black opacity-60">
                     Posted on August 19, 2023
                 </p>
 
             </div>
         </div>
         <div class="flex justify-center">
-            <button class="font-satoshim text-[16px] rounded-[62px] w-57 h-13 border border-black/10">Load More
+            <button class="font-satoshim text-[14px] lg:text-[16px] rounded-[62px] w-57 h-13 border border-black/10">Load More
                 Reviews</button>
         </div>
     </div>
@@ -566,7 +566,7 @@
                     <img class="w-auto h-60" src="{{ asset('images/polo.png') }}" alt="Logo">
                 </div>
             </div>
-            <label class="font-satoshi font-bold text-[20px]">Polo with Contrast Trims</label>
+            <label class="font-satoshi font-bold text-[16px] lg:text-[20px]">Polo with Contrast Trims</label>
             <div class="flex gap-[5px]">
                 <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -607,7 +607,7 @@
                     <img class="w-auto h-60" src="{{ asset('images/gradient-shirt.png') }}" alt="Logo">
                 </div>
             </div>
-            <label class="font-satoshi font-bold text-[20px]">Gradient Graphic T-shirt</label>
+            <label class="font-satoshi font-bold text-[16px] lg:text-[20px]">Gradient Graphic T-shirt</label>
             <div class="flex gap-[5px]">
                 <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -644,7 +644,7 @@
                     <img class="w-auto h-60" src="{{ asset('images/polo-t.png') }}" alt="Logo">
                 </div>
             </div>
-            <label class="font-satoshi font-bold text-[20px]">Polo with Tipping Details</label>
+            <label class="font-satoshi font-bold text-[16px] lg:text-[20px]">Polo with Tipping Details</label>
             <div class="flex gap-[5px]">
                 <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -687,7 +687,7 @@
                     <img class="w-auto h-60" src="{{ asset('images/black-striped-shirt.png') }}" alt="Logo">
                 </div>
             </div>
-            <label class="font-satoshi font-bold text-[20px]">Black Striped T-shirt</label>
+            <label class="font-satoshi font-bold text-[16px] lg:text-[20px]">Black Striped T-shirt</label>
             <div class="flex gap-[5px]">
                 <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
