@@ -106,24 +106,25 @@
             </p>
             <div id="sizeBtnsCont" class="flex gap-3 border-b border-black/10 pb-4">
                 <button
-                    class="flex items-center justify-center font-satoshi text-[14px] lg:text-[16px] text-black/60  bg-[#F0F0F0] px-5 py-2 lg:py-3 lg:px-7 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">Small</button>
+                    class="flex items-center justify-center font-satoshi text-[14px] lg:text-[16px] text-black/60  bg-[#F0F0F0] px-5 lg:px-7 py-2 lg:py-3 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden whitespace-nowrap">Small</button>
                 <button
-                    class="flex items-center justify-center font-satoshi text-[14px] lg:text-[16px] text-black/60  bg-[#F0F0F0] px-5 py-2 lg:py-3 lg:px-7 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">Medium</button>
+                    class="flex items-center justify-center font-satoshi text-[14px] lg:text-[16px] text-black/60  bg-[#F0F0F0] px-5 lg:px-7 py-2 lg:py-3 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden whitespace-nowrap">Medium</button>
                 <button
-                    class="flex items-center justify-center font-satoshi text-[14px] lg:text-[16px] text-black/60  bg-[#F0F0F0] px-5 py-2 lg:py-3 lg:px-7 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">Large</button>
+                    class="flex items-center justify-center font-satoshi text-[14px] lg:text-[16px] text-black/60  bg-[#F0F0F0] px-5 lg:px-7 py-2 lg:py-3 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden whitespace-nowrap">Large</button>
                 <button
-                    class="flex items-center justify-center font-satoshi text-[14px] lg:text-[16px] text-black/60  bg-[#F0F0F0] px-5 py-2 lg:py-3 lg:px-7 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden">X-Large</button>
+                    class="flex items-center justify-center font-satoshi text-[14px] lg:text-[16px] text-black/60  bg-[#F0F0F0] px-5 lg:px-7 py-2 lg:py-3 rounded-[62px] cursor-pointer hover:bg-[#EAEAEA] relative overflow-hidden whitespace-nowrap">X-Large</button>
             </div>
-            <div class="flex gap-6">
-                <button class="bg-[#F0F0F0] flex px-5 py-3 justify-between items-center w-43 rounded-[62px]">
-                    <svg class="cursor-pointer" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            <div class="flex justify-between">
+                <button class="bg-[#F0F0F0] flex px-4 lg:px-5 py-3 lg:py-4 justify-between w-full max-w-[30%] items-center  rounded-[62px]">
+                    <svg class="cursor-pointer h-[20px] lg:h-normal w-[20px] lg:w-normal" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M21.375 12C21.375 12.2984 21.2565 12.5845 21.0455 12.7955C20.8345 13.0065 20.5484 13.125 20.25 13.125H3.75C3.45163 13.125 3.16548 13.0065 2.9545 12.7955C2.74353 12.5845 2.625 12.2984 2.625 12C2.625 11.7016 2.74353 11.4155 2.9545 11.2045C3.16548 10.9935 3.45163 10.875 3.75 10.875H20.25C20.5484 10.875 20.8345 10.9935 21.0455 11.2045C21.2565 11.4155 21.375 11.7016 21.375 12Z"
                             fill="black" />
                     </svg>
                     <span class="font-satoshim text-[14px] lg:text-[16px] text-black ">1</span>
-                    <svg class="cursor-pointer" width="24" height="24" viewBox="0 0 24 24" fill="none"
+
+                    <svg class="cursor-pointer h-[20px] lg:h-normal w-[20px] lg:w-normal" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M21.375 12C21.375 12.2984 21.2565 12.5845 21.0455 12.7955C20.8345 13.0065 20.5484 13.125 20.25 13.125H13.125V20.25C13.125 20.5484 13.0065 20.8345 12.7955 21.0455C12.5845 21.2565 12.2984 21.375 12 21.375C11.7016 21.375 11.4155 21.2565 11.2045 21.0455C10.9935 20.8345 10.875 20.5484 10.875 20.25V13.125H3.75C3.45163 13.125 3.16548 13.0065 2.9545 12.7955C2.74353 12.5845 2.625 12.2984 2.625 12C2.625 11.7016 2.74353 11.4155 2.9545 11.2045C3.16548 10.9935 3.45163 10.875 3.75 10.875H10.875V3.75C10.875 3.45163 10.9935 3.16548 11.2045 2.9545C11.4155 2.74353 11.7016 2.625 12 2.625C12.2984 2.625 12.5845 2.74353 12.7955 2.9545C13.0065 3.16548 13.125 3.45163 13.125 3.75V10.875H20.25C20.5484 10.875 20.8345 10.9935 21.0455 11.2045C21.2565 11.4155 21.375 11.7016 21.375 12Z"
@@ -131,7 +132,7 @@
                     </svg>
                 </button>
                 <button
-                    class="bg-black p-5 w-100 rounded-[62px] font-satoshi font-medium text-[14px] lg:text-[16px] text-white cursor-pointer">
+                    class="bg-black py-3 lg:py-4 w-full  max-w-[65%] rounded-[62px] font-satoshi font-medium text-[14px] lg:text-[16px] text-white cursor-pointer">
                     Add to Cart
                 </button>
             </div>
@@ -140,13 +141,13 @@
     <div class="flex flex-col w-full max-w-320 mt-15 gap-8">
         <div id="detailBtnsCont" class="flex">
             <button
-                class="w-[33%] font-satoshi text-[16px] lg:text-[20px] opacity-60 border-b border-black/10 leading-[22px] p-2 lg:p-5 cursor-pointer hover:bg-gray-100 transition-colors duration-150 relative overflow-hidden">Product
+                class="w-[40%] lg:w-[33%] font-satoshi text-[15px] lg:text-[20px] opacity-60 border-b border-black/10 leading-[22px] p-2 lg:p-5 cursor-pointer hover:bg-gray-100 transition-colors duration-150 relative overflow-hidden">Product
                 Details</button>
             <button
-                class="w-[33%] font-satoshim text-[16px] lg:text-[20px] border-b leading-[22px] p-2 lg:p-5 cursor-pointer hover:bg-gray-100 transition-colors duration-150 relative overflow-hidden">Rating
+                class="w-[40%] lg:w-[33%] font-satoshim text-[15px] lg:text-[20px] border-b leading-[22px] p-2 lg:p-5 cursor-pointer hover:bg-gray-100 transition-colors duration-150 relative overflow-hidden">Rating
                 & Reviews</button>
             <button
-                class="w-[33%] font-satoshi text-[16px] lg:text-[20px] opacity-60 border-b border-black/10 leading-[22px] p-2 lg:p-5 cursor-pointer hover:bg-gray-100 transition-colors duration-150 relative overflow-hidden">FAQs</button>
+                class="w-[20%] lg:w-[33%] font-satoshi text-[15px] lg:text-[20px] opacity-60 border-b border-black/10 leading-[22px] p-2 lg:p-5 cursor-pointer hover:bg-gray-100 transition-colors duration-150 relative overflow-hidden">FAQs</button>
         </div>
         <div class="flex justify-between">
             <div class="flex items-center gap-2">
@@ -559,7 +560,7 @@
         </div>
     </div>
     <h1 class="font-integral font-bold text-[48px] text-center mt-8">You might also like</h1>
-    <div class="flex justify-between mt-8 w-320">
+    <!-- <div class="flex justify-between mt-8 w-320">
         <div class="flex flex-col gap-[8px]">
             <div class="bg-[#F0EEED] rounded-[20px] w-75 h-75 flex justify-center">
                 <div class="bg-[#F0EEED] rounded-[20px] w-75 h-75 flex justify-center items-center overflow-hidden">
@@ -728,5 +729,5 @@
                     class="flex items-center justify-center font-satoshi font-medium text-[12px] text-[#FF3333] bg-[#FFEBEB] rounded-[62px] w-[58px] h-[28px]">-20%</label>
             </div>
         </div>
-    </div>
+    </div> -->
 @endsection
