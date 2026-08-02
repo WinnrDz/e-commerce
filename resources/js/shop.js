@@ -243,3 +243,31 @@ minInput.addEventListener("input", () => {
 maxInput.addEventListener("input", () => {
     if (!isDragging2) updateCircles(null,null,maxInput.value,maxInput);
 });
+
+
+
+
+
+
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+const filtersBtn = document.getElementById("filtersBtn");
+const filters = document.getElementById("filters");
+
+filtersBtn.addEventListener("click", () => {
+    filters.classList.add(
+        "fixed",
+        "top-0",
+        "left-0",
+        "w-full",
+        "h-screen",
+        "max-w-sm",
+        "z-50",
+        "bg-white"
+    );
+    filters.classList.remove(
+        "hidden",
+    );
+})
