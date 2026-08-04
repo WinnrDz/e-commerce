@@ -78,12 +78,14 @@ circle1.style.position = "absolute";
 circle1.style.top = "50%";
 circle1.style.transform = "translate(-50%, -50%)";
 circle1.style.zIndex = "3"
+circle1.classList.add("touch-none");
+
 
 slider.appendChild(circle1);
 
 let isDragging1 = false;
 
-circle1.addEventListener("mousedown", () => {
+circle1.addEventListener("pointerdown", () => {
     isDragging1 = true;
 });
 
@@ -100,12 +102,13 @@ circle2.style.position = "absolute";
 circle2.style.top = "50%";
 circle2.style.transform = "translate(-50%, -50%)";
 circle2.style.zIndex = "3"
+circle2.classList.add("touch-none");
 
 slider.appendChild(circle2);
 
 let isDragging2 = false;
 
-circle2.addEventListener("mousedown", () => {
+circle2.addEventListener("pointerdown", () => {
     isDragging2 = true;
 });
 
@@ -224,11 +227,11 @@ function updateCircles(e,minP,maxP,inputElement) {
     }
 }
 
-document.addEventListener("mousemove", (e) => {
+document.addEventListener("pointermove", (e) => {
     updateCircles(e);
 });
 
-document.addEventListener("mouseup", () => {
+document.addEventListener("pointerup", () => {
     isDragging2 = false;
     isDragging1 = false;
     
