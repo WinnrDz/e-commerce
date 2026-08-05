@@ -258,19 +258,44 @@ maxInput.addEventListener("input", () => {
 
 const filtersBtn = document.getElementById("filtersBtn");
 const filters = document.getElementById("filters");
+const burgerSvg = document.getElementById("burgerSvg");
+const xSvg = document.getElementById("xSvg");
 
 filtersBtn.addEventListener("click", () => {
-    filters.classList.add(
-        "fixed",
-        "top-0",
-        "left-0",
-        "w-full",
-        "h-screen",
-        "max-w-sm",
-        "z-50",
-        "bg-white"
-    );
-    filters.classList.remove(
-        "hidden",
-    );
+        filters.classList.add(
+            "fixed",
+            "top-15",
+            "left-0",
+            "w-full",
+            "h-screen",
+            "max-w-sm",
+            "z-50",
+            "bg-white"
+        );
+        filters.classList.remove(
+            "hidden",
+        );
+
+        burgerSvg.classList.add("hidden");
+        xSvg.classList.remove("hidden");
+})
+
+
+xSvg.addEventListener("click", () => {
+        filters.classList.remove(
+            "fixed",
+            "top-15",
+            "left-0",
+            "w-full",
+            "h-screen",
+            "max-w-sm",
+            "z-50",
+            "bg-white"
+        );
+        filters.classList.add(
+            "hidden",
+        );
+
+        burgerSvg.classList.remove("hidden");
+        xSvg.classList.add("hidden");
 })
