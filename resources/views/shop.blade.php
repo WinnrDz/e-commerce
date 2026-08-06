@@ -533,10 +533,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex justify-between">
+                <div class="flex justify-between items-center">
                     <button class="flex items-center justify-center gap-2 px-3.5 py-2 rounded-[8px] border border-black/10">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.8332 9.99996H4.1665M9.99984 4.16663L4.1665 9.99996L9.99984 15.8333" stroke="black" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        <span class="font-satoshim text-[14px] leading-[20px]">Previous</span>
+                        <span class="hidden lg:block font-satoshim text-[14px] leading-[20px]">Previous</span>
                     </button>
                     <div class="flex flex-wrap gap-3">
                             <button
@@ -555,7 +555,7 @@
                                 class="font-satoshi text-[16px] text-black/60 w-[36px] lg:w-10 aspect-square rounded-[8px] cursor-pointer hover:bg-[#EAEAEA] overflow-hidden">10</button>
                     </div>
                     <button class="flex items-center justify-center gap-2 px-3.5 py-2 rounded-[8px] border border-black/10">
-                        <span class="font-satoshim text-[14px] leading-[20px]">Next</span>
+                        <span class="hidden lg:block font-satoshim text-[14px] leading-[20px]">Next</span>
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.1665 9.99996H15.8332M9.99984 15.8333L15.8332 9.99996L9.99984 4.16663" stroke="black" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </button>
                 </div>

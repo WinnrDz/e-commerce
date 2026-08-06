@@ -17,7 +17,7 @@
     @livewireStyles
 </head>
 
-<body class="bg-white min-w-[350px]">
+<body class="bg-white min-w-[320px]">
     <header>
         <nav class="flex justify-between items-center gap-5 font-satoshi text-[16px] bg-[#FFFFFF] px-4 lg:px-7 py-5 border-b border-black/10">
             <button id="burgerBtn" class="lg:hidden">
