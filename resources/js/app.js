@@ -1,6 +1,12 @@
 import "./bootstrap";
 import.meta.glob(["../fonts/**"]);
 
+import { createIcons, icons } from 'lucide';
+
+createIcons({
+    icons
+});
+
 if (document.getElementById("welcome")) {
     import("./welcome.js");
 }
