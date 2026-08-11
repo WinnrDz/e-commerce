@@ -11,17 +11,12 @@ class Dashboard extends Component
     public function delete(Product $product)
     {
         $product->delete();
+        
     }
 
 
     public function render()
     {
-        return view('livewire.admin.dashboard', [
-
-            'products' => Product::with('category')->get(),
-
-            'totalProducts' => Product::count()
-
-        ]);
+        return view('livewire.admin.dashboard')->layout('layouts.admin');
     }
 }

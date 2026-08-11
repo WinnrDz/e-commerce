@@ -75,7 +75,7 @@
         </div>
 
 
-        @yield('content')
+        {{ $slot }}
 
 
     </main>

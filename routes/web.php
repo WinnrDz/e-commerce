@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Admin\Dashboard;
 
 Route::get('/', function () {
     return view('layouts/welcome');
@@ -19,6 +20,4 @@ Route::get('/cart', function () {
     return view('cart');
 });
 
-Route::get('/admin', function () {
-    return view('admin.dashboard');
-});
+Route::get('/admin/dashboard', Dashboard::class);
