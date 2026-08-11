@@ -28,12 +28,16 @@
 
         <nav class="space-y-3">
             
-            <a class="flex gap-4 block px-4 py-3 rounded-xl bg-black text-white">
+            <a class="flex gap-4 block px-4 py-3 rounded-xl bg-black text-white" href="{{ route("admin.dashboard") }}">
                 <i data-lucide="house"></i>  
                 <span>Dashboard</span>
             </a>
 
-            <a class="block px-4 py-3">
+            <a class="block px-4 py-3" href="{{ route("admin.categories") }}">
+                Categories
+            </a>
+
+            <a class="block px-4 py-3" href="{{ route("admin.products") }}">
                 Products
             </a>
 

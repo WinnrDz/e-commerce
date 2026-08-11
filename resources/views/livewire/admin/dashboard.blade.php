@@ -53,11 +53,11 @@
 
         <div class="border border-black/10 rounded-2xl p-5">
             <p class="text-gray-500">
-                Customers
+                Products
             </p>
 
             <h2 class="text-2xl font-bold mt-2">
-                892
+                {{ $totalProducts }}
             </h2>
         </div>
 
@@ -103,10 +103,6 @@
                     </th>
 
                     <th>
-                        Price
-                    </th>
-
-                    <th>
                         Stock
                     </th>
 
@@ -124,45 +120,43 @@
 
             <tbody>
 
-                <tr class="border-b border-black/10">
+                @foreach ($products as $product)
+                    <tr class="border-b border-black/10">
+                        <td class="py-4 font-medium">
+                            {{ $product->name }}
+                        </td>
 
-                    <td class="py-4 font-medium">
-                        One Life Graphic T-Shirt
-                    </td>
+                        <td>
+                            {{ $product->category }}
+                        </td>
 
-                    <td>
-                        T-Shirts
-                    </td>
+                        <td>
+                            120
+                        </td>
 
-                    <td>
-                        $260
-                    </td>
+                        <td>
+                            <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">
+                                Active
+                            </span>
+                        </td>
 
-                    <td>
-                        120
-                    </td>
+                        <td>
+                            <button>
+                                👁
+                            </button>
 
-                    <td>
-                        <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">
-                            Active
-                        </span>
-                    </td>
+                            <button>
+                                ✏️
+                            </button>
 
-                    <td>
-                        <button>
-                            👁
-                        </button>
+                            <button>
+                                🗑
+                            </button>
+                        </td>
 
-                        <button>
-                            ✏️
-                        </button>
-
-                        <button>
-                            🗑
-                        </button>
-                    </td>
-
-                </tr>
+                    </tr>
+                @endforeach
+                
 
 
             </tbody>
