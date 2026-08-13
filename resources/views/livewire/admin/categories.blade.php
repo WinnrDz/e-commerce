@@ -25,7 +25,7 @@
 
     {{-- Add Category Form --}}
 
-        <div class="border border-gray-200 rounded-2xl p-6 mb-6">
+        <form wire:submit="create" class="border border-gray-200 rounded-2xl p-6 mb-6">
 
             <h2 class="text-lg font-semibold mb-4">
                 Add Category
@@ -48,7 +48,7 @@
                 </button>
 
                 <button
-                    wire:click="create"
+                    type="submit"
                     class="bg-black text-white px-5 py-2 rounded-full"
                 >
                     Save
@@ -56,7 +56,7 @@
 
             </div>
 
-        </div>
+        </form>
 
     
 

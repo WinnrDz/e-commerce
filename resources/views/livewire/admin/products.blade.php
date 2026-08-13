@@ -138,7 +138,7 @@
     </div>
 
     {{-- Add Product Form --}}
-<div class="mt-8 border border-gray-200 rounded-2xl p-6">
+<form wire:submit="create" class="mt-8 border border-gray-200 rounded-2xl p-6">
 
     {{-- Form Header --}}
     <div class="mb-6">
@@ -171,6 +171,7 @@
                 </label>
 
                 <input
+                    wire:model="name"
                     type="text"
                     placeholder="Enter product name"
                     class="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-black"
@@ -187,9 +188,13 @@
                 </label>
 
                 <select
+                    wire:model="category_id"
                     class="w-full border border-gray-200 rounded-xl px-4 py-3 bg-white outline-none focus:border-black"
                 >
-                    <option>Select category</option>
+                    <option value="">Select category</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
                 </select>
 
             </div>
@@ -203,6 +208,7 @@
                 </label>
 
                 <textarea
+                    wire:model="description"
                     rows="5"
                     placeholder="Enter product description..."
                     class="w-full border border-gray-200 rounded-xl px-4 py-3 resize-none outline-none focus:border-black"
@@ -317,6 +323,6 @@
 
     </div>
 
-</div>
+</form>
 
 </div>
