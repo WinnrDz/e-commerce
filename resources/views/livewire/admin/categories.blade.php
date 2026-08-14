@@ -2,20 +2,13 @@
 
     {{-- Header --}}
     <div class="flex justify-between items-center mb-6">
-
-        <div>
-            <h1 class="text-2xl font-bold">
-                Categories
-            </h1>
-
-            <p class="text-gray-500">
-                Manage your product categories
-            </p>
-        </div>
+        <h1 class="text-3xl font-bold">
+            Categories
+        </h1>
 
         <button
             wire:click="$set('showForm', true)"
-            class="bg-black text-white px-5 py-3 rounded-full"
+            class="bg-black text-white px-6 py-3 rounded-[12px] cursor-pointer"
         >
             + Add Category
         </button>
@@ -23,7 +16,7 @@
     </div>
 
 
-    {{-- Add Category Form --}}
+    {{-- Add Category Form 
 
         <form wire:submit="create" class="border border-gray-200 rounded-2xl p-6 mb-6">
 
@@ -42,14 +35,14 @@
 
                 <button
                     wire:click="$set('showForm', false)"
-                    class="border border-gray-200 px-5 py-2 rounded-full"
+                    class="border border-gray-200 px-5 py-2 rounded-full cursor-pointer"
                 >
                     Cancel
                 </button>
 
                 <button
                     type="submit"
-                    class="bg-black text-white px-5 py-2 rounded-full"
+                    class="bg-black text-white px-5 py-2 rounded-full cursor-pointer"
                 >
                     Save
                 </button>
@@ -58,11 +51,11 @@
 
         </form>
 
-    
+    --}}
 
 
     {{-- Categories Table --}}
-    <div class="border border-gray-200 rounded-2xl overflow-hidden">
+    <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden">
 
         <table class="w-full">
 
@@ -96,16 +89,16 @@
                         </td>
 
                         <td class="p-4">
-                            {{ $category->products_count }}
+                            {{ $category->products->count() }}
                         </td>
 
                         <td class="p-4">
 
-                            <button class="text-sm">
+                            <button class="text-sm cursor-pointer">
                                 Edit
                             </button>
 
-                            <button class="text-sm text-red-500 ml-3">
+                            <button class="text-sm text-red-500 ml-3 cursor-pointer">
                                 Delete
                             </button>
 

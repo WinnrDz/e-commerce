@@ -7,7 +7,7 @@ use App\Livewire\Admin\Categories;
 
 Route::get('/', function () {
     return view('layouts/welcome');
-});
+})->name("welcome");
 
 
 Route::get('/show', function () {
