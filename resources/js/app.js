@@ -22,9 +22,11 @@ if (document.getElementById("shop")) {
 /*---------------------------------------------------------------------------------------------------------------------------------------*/
 
 export const setupSelectableButtons = function (btns, styles) {
+    
     const ripple = styles.ripple ?? true; //default
-
+    
     for (let activeNum = 0; activeNum < btns.length; activeNum++) {
+        
         btns[activeNum].addEventListener("click", (e) => {
             /*style selected buttons (the ... spreads the array of strings)*/
 
@@ -125,6 +127,6 @@ example of calling the function
 const mobileMenu = document.getElementById("mobileMenu");
 const burgerBtn = document.getElementById("burgerBtn")
 
-burgerBtn.addEventListener("click",() => {
-    mobileMenu.classList.toggle("hidden");
+burgerBtn?.addEventListener("click",() => {
+    mobileMenu?.classList.toggle("hidden");
 })

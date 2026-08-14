@@ -15,7 +15,7 @@
 <body class="bg-white">
 
 
-<div class="flex min-h-screen">
+<div class="flex min-h-screen font-satoshi">
 
 
     {{-- Sidebar --}}
@@ -26,30 +26,31 @@
         </h1>
 
 
-        <nav class="space-y-3">
+        <nav id="navLinks" class="space-y-3">
             
-            <a class="flex gap-4 block px-4 py-3 rounded-xl bg-black text-white" href="{{ route("admin.dashboard") }}">
+            <a class="flex gap-4 block px-4 py-3 rounded-xl {{ request()->routeIs('admin.dashboard') ? 'bg-black text-white' : '' }}" href="{{ route("admin.dashboard") }}">
                 <i data-lucide="house"></i>  
                 <span>Dashboard</span>
             </a>
 
-            <a class="block px-4 py-3" href="{{ route("admin.categories") }}">
+            <a class="flex gap-4 block px-4 py-3 rounded-xl {{ request()->routeIs('admin.categories') ? 'bg-black text-white' : '' }}" href="{{ route("admin.categories") }}">
+                <i data-lucide="layout-grid"></i>
                 Categories
             </a>
 
-            <a class="block px-4 py-3" href="{{ route("admin.products") }}">
+            <a class="flex gap-4 block px-4 py-3 rounded-xl {{ request()->routeIs('admin.products') ? 'bg-black text-white' : '' }}" href="{{ route("admin.products") }}">
                 Products
             </a>
 
-            <a class="block px-4 py-3">
+            <a class="flex gap-4 block px-4 py-3 rounded-xl ">
                 Orders
             </a>
 
-            <a class="block px-4 py-3">
+            <a class="flex gap-4 block px-4 py-3 rounded-xl">
                 Customers
             </a>
 
-            <a class="block px-4 py-3">
+            <a class="flex gap-4 block px-4 py-3 rounded-xl">
                 Reviews
             </a>
 
