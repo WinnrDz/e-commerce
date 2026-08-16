@@ -19,6 +19,11 @@ class Categories extends Component
         ]);
     }
 
+    public function delete(Category $category)
+    {
+        $category->delete();
+    }
+
 
     public function render()
     {

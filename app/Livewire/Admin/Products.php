@@ -16,6 +16,8 @@ class Products extends Component
     public $category_id;
     public $description = "";
 
+    public $product_id;
+
     public function create()
     {
         Product::create([
@@ -25,11 +27,16 @@ class Products extends Component
         ]);
     }
 
+    public function delete(Product $product)
+    {
+        $product->delete();
+    }
 
     public function render()
     {
         return view('livewire.admin.products',[
-            "categories" => Category::all(),
+            "products" => Product::all(),
+            "categories" => Category::all()
         ]);
     }
 }

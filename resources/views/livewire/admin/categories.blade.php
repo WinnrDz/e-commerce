@@ -16,9 +16,9 @@
     </div>
 
 
-    {{-- Add Category Form 
+    {{-- Add Category Form --}}
 
-        <form wire:submit="create" class="border border-gray-200 rounded-2xl p-6 mb-6">
+        <form wire:submit="create" class="bg-white border border-gray-200 rounded-2xl p-6 mb-6">
 
             <h2 class="text-lg font-semibold mb-4">
                 Add Category
@@ -51,7 +51,7 @@
 
         </form>
 
-    --}}
+    
 
 
     {{-- Categories Table --}}
@@ -98,7 +98,7 @@
                                 Edit
                             </button>
 
-                            <button class="text-sm text-red-500 ml-3 cursor-pointer">
+                            <button wire:click="delete({{ $category }})" class="text-sm text-red-500 ml-3 cursor-pointer">
                                 Delete
                             </button>
 

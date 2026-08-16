@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\Products;
 use App\Livewire\Admin\Categories;
+use App\Livewire\Admin\Variants;
 
 Route::get('/', function () {
     return view('layouts/welcome');
@@ -25,3 +26,5 @@ Route::get('/cart', function () {
 Route::get('/admin/dashboard', Dashboard::class)->name("admin.dashboard");
 Route::get('/admin/products', Products::class)->name("admin.products");
 Route::get('/admin/categories', Categories::class)->name("admin.categories");
+Route::get('/admin/variants', Variants::class)->name("admin.variants");
+
