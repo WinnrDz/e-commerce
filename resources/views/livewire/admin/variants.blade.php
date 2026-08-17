@@ -122,9 +122,9 @@
 
     <select
                         wire:model="product_id"
-                        class="w-full border border-gray-200 rounded-xl px-4 py-3 bg-white outline-none focus:border-black"
+                        class="w-full border border-gray-200 rounded-xl px-4 py-3 bg-white outline-none focus:border-black mb-4"
                     >
-                        <option value="">Select category</option>
+                        <option disabled selected>Select category</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
@@ -155,4 +155,54 @@
 
 </form>
 
+
+<form wire:submit="createColor" class="bg-white mt-8 border border-gray-200 rounded-2xl p-6">
+
+    <h2 class="text-2xl font-bold mb-6">Add Color</h2>
+
+    <input
+        wire:model="color_name"
+        placeholder="Color name"
+        class="w-full border border-gray-200 rounded-xl px-4 py-3 mb-4"
+    >
+
+    <input
+        wire:model="hex_code"
+        placeholder="Hex code"
+        class="w-full border border-gray-200 rounded-xl px-4 py-3"
+    >
+
+    <div class="flex justify-end mt-6">
+        <button
+            type="submit"
+            class="bg-black text-white px-6 py-3 rounded-full"
+        >
+            Add Color
+        </button>
+    </div>
+
+
+</form>
+
+
+<form wire:submit="create" class="bg-white mt-8 border border-gray-200 rounded-2xl p-6">
+
+    <h2 class="text-2xl font-bold mb-6">Add Size</h2>
+
+    <input
+        wire:model="size"
+        placeholder="Size"
+        class="w-full border border-gray-200 rounded-xl px-4 py-3 mb-4"
+    >
+
+    <div class="flex justify-end mt-6">
+        <button
+            type="submit"
+            class="bg-black text-white px-6 py-3 rounded-full"
+        >
+            Add Size
+        </button>
+    </div>
+
+</form>
 </div>
