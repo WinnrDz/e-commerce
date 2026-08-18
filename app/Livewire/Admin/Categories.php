@@ -11,17 +11,39 @@ use App\Models\Category;
 class Categories extends Component
 {
     public $name;
+    public $editing = false;
+    public $category;
 
-    public function create()
+    
+
+    public function store()
     {
         Category::create([
             'name' => $this->name
         ]);
+
+        $this->reset(['name']);
     }
 
     public function delete(Category $category)
     {
         $category->delete();
+    }
+
+    public function edit($id)
+    {
+        $this->editing = true;
+        $this->category = Category::findOrFail($id);
+        $this->name = $this->category->name;
+    }
+
+    public function update()
+    {
+        $this->category->update([
+            'name' => $this->name
+        ]);
+
+        $this->reset(['name', 'category', 'editing']);
     }
 
 
