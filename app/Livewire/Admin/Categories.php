@@ -17,10 +17,16 @@ class Categories extends Component
     
 
     public function store()
-    {
+    {  
+        $this->validate([
+            'name' => 'required|min:3|max:255',
+        ]);
+
         Category::create([
             'name' => $this->name
         ]);
+
+        session()->flash('success', 'Category created successfully!');
 
         $this->reset(['name']);
     }
@@ -39,9 +45,15 @@ class Categories extends Component
 
     public function update()
     {
+        $this->validate([
+            'name' => 'required|min:3|max:255',
+        ]);
+
         $this->category->update([
             'name' => $this->name
         ]);
+
+        session()->flash('success', 'Category updated successfully!');
 
         $this->reset(['name', 'category', 'editing']);
     }

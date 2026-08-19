@@ -1,4 +1,10 @@
 <div class="p-6">
+    @if (session()->has('success'))
+                    <div class="bg-green-100 text-green-700 p-3 rounded mb-4">
+                        {{ session('success') }}
+                    </div>
+    @endif
+
 
     {{-- Header --}}
     <div class="flex justify-between items-center mb-6">
@@ -23,6 +29,10 @@
                     placeholder="New Category name"
                     class="border border-gray-200 rounded-xl px-4 py-3 w-full"
                 >
+                @error('name')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror
+                
 
                 <div class="flex justify-end gap-3 mt-4">
 
@@ -60,11 +70,16 @@
                     placeholder="Category name"
                     class="border border-gray-200 rounded-xl px-4 py-3 w-full"
                 >
+                @error('name')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror
+                
+                
 
                 <div class="flex justify-end gap-3 mt-4">
 
                     <button
-                        wire:click="$set('showForm', false)"
+                        {{--wire:click="$set('showForm', false)"--}}
                         class="border border-gray-200 px-5 py-2 rounded-full cursor-pointer"
                     >
                         Cancel
@@ -124,7 +139,7 @@
                                     Edit
                                 </button>
 
-                                <button wire:click="delete({{ $category }})" class="text-sm text-red-500 ml-3 cursor-pointer">
+                                <button wire:click="delete({{ $category }}) " wire:confirm="Are you sure you want to delete this category?" class="text-sm text-red-500 ml-3 cursor-pointer">
                                     Delete
                                 </button>
 
