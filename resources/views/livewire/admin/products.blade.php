@@ -1,4 +1,9 @@
 <div class="p-6">
+    @if (session()->has('success'))
+                    <div class="bg-green-100 text-green-700 p-3 rounded mb-4">
+                        {{ session('success') }}
+                    </div>
+    @endif
 
     {{-- Header --}}
     <div class="flex items-center justify-between mb-8">
@@ -16,7 +21,81 @@
     </div>
 
 
+    @if ($editing)
+        <form wire:submit="update" class="bg-white border border-gray-200 rounded-2xl p-6 mb-6">
 
+                <h2 class="text-lg font-semibold mb-4">
+                    Update Product
+                </h2>
+                <div>
+                    <label class="block text-lg font-medium mb-2">
+                        Name
+                    </label>
+
+                    <input
+                        type="text"
+                        wire:model="name"
+                        placeholder="New Product name"
+                        class="border border-gray-200 rounded-xl px-4 py-3 w-full"
+                    >
+                    @error('name')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="mt-4">
+                    <label class="block text-lg font-medium mb-2">
+                        Category
+                    </label>
+                <select
+                        wire:model="category_id"
+                        class="w-full border border-gray-200 rounded-xl px-4 py-3 bg-white outline-none focus:border-black "
+                    >
+                        <option>Select category</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                </select>
+                @error('category_id')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror
+                </div>
+
+                <div class="mt-4">
+                    <label class="block text-lg font-medium mb-2">
+                        Description
+                    </label>
+                <textarea
+                        wire:model="description"
+                        rows="5"
+                        placeholder="Enter product description..."
+                        class="w-full border border-gray-200 rounded-xl px-4 py-3 resize-none outline-none focus:border-black"
+                    ></textarea>
+                @error('description')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror   
+                </div>
+                <div class="flex justify-end gap-3 mt-4">
+
+                    <button
+                        wire:click="$set('editing', false)"
+                        class="border border-gray-200 px-5 py-2 rounded-full cursor-pointer"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="bg-black text-white px-5 py-2 rounded-full cursor-pointer"
+                    >
+                        Save
+                    </button>
+
+                </div>
+
+        </form>
+
+    @else
 
     {{-- Products --}}
     <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden">
@@ -102,11 +181,11 @@
 
                         <div class="flex gap-2">
 
-                            <button class="px-3 py-2 text-sm">
+                            <button wire:click="edit({{ $product->id }})" class="px-3 py-2 text-sm">
                                 Edit
                             </button>
 
-                            <button wire:click="delete({{ $product }})" class="px-3 py-2 text-sm text-red-500 cursor-pointer">
+                            <button wire:click="delete({{ $product }})" wire:confirm="Are you sure you want to delete this product?" class="text-sm text-red-500 ml-3 cursor-pointer" class="px-3 py-2 text-sm text-red-500 cursor-pointer">
                                 Delete
                             </button>
 
@@ -162,6 +241,9 @@
                         placeholder="Enter product name"
                         class="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-black"
                     >
+                     @error('name')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
 
                 </div>
 
@@ -182,6 +264,9 @@
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
                     </select>
+                     @error('category_id')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
 
                 </div>
 
@@ -199,7 +284,9 @@
                         placeholder="Enter product description..."
                         class="w-full border border-gray-200 rounded-xl px-4 py-3 resize-none outline-none focus:border-black"
                     ></textarea>
-
+                     @error('descripton')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
                 </div>
 
             </div>
@@ -310,7 +397,7 @@
         </div>
 
     </form>
-
+    @endif
 
 </div>
 
