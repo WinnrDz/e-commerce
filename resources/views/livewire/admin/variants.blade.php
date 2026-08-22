@@ -1,6 +1,9 @@
 <div>
-            {{-- Header of variants--}}
-    <div class="flex items-center justify-between mb-8 mt-8">
+    
+    {{-- =========================================================
+        VARIANTS HEADER
+    ========================================================== --}}
+    <div class="flex items-center justify-between mt-8 mb-6">
 
         <div>
             <h1 class="text-3xl font-bold">
@@ -14,100 +17,131 @@
 
     </div>
 
-    {{-- Variants --}}
+
+    {{-- =========================================================
+        VARIANTS TABLE
+    ========================================================== --}}
     <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden">
 
         <table class="w-full">
 
             <thead>
+
                 <tr class="border-b border-gray-200 text-left text-sm text-gray-500">
 
-                    <th class="p-5">
+                    <th class="px-6 py-4 font-medium">
                         Product
                     </th>
 
-                    <th class="p-5">
+                    <th class="px-6 py-4 font-medium">
                         Color
                     </th>
 
-                    <th class="p-5">
+                    <th class="px-6 py-4 font-medium">
                         Size
                     </th>
 
-                    <th class="p-5">
+                    <th class="px-6 py-4 font-medium">
                         Price
                     </th>
 
+                    <th class="px-6 py-4 font-medium">
+                        Actions
+                    </th>
+
                 </tr>
+
             </thead>
 
 
             <tbody>
 
-                {{-- Example product --}}
                 @foreach ($products as $product)
-                
-                <tr class="border-b border-gray-100">
 
-                    <td class="p-5">
+                    <tr class="border-b border-gray-100 last:border-0">
 
-                        <div class="flex items-center gap-4">
+                        {{-- Product --}}
+                        <td class="px-6 py-4">
 
-                            <div class="w-14 h-14 bg-gray-100 rounded-xl">
+                            <div class="flex items-center gap-4">
+
+                                <div class="w-12 h-12 bg-gray-100 rounded-xl shrink-0">
+                                </div>
+
+                                <div>
+
+                                    <p class="font-medium">
+                                        {{ $product->name }}
+                                    </p>
+
+                                    <p class="text-sm text-gray-400 mt-0.5">
+                                        #{{ $product->id }}
+                                    </p>
+
+                                </div>
+
                             </div>
 
-                            <div>
+                        </td>
 
-                                <p class="font-medium">
-                                    {{ $product->name }}
-                                </p>
 
-                                <p class="text-sm text-gray-400">
-                                    #{{ $product->id }}
-                                </p>
+                        {{-- Color --}}
+                        <td class="px-6 py-4">
+
+                            <div class="flex items-center gap-2">
+
+                                <div class="w-7 h-7 bg-black rounded-full border border-gray-200">
+                                </div>
+
+                                <span class="text-sm">
+                                    Black
+                                </span>
 
                             </div>
 
-                        </div>
-
-                    </td>
+                        </td>
 
 
-                    <td class="p-5 text-sm">
-                        {{ $product->category->name }}
-                    </td>
-
-                    <td class="p-5">
-                        50
-                    </td>
+                        {{-- Size --}}
+                        <td class="px-6 py-4 text-sm">
+                            50
+                        </td>
 
 
-                    <td class="p-5">
+                        {{-- Price --}}
+                        <td class="px-6 py-4">
 
-                        <span class="bg-green-50 text-green-600 px-3 py-1 rounded-full text-xs">
-                            Active
-                        </span>
+                            <span class="font-medium">
+                                $50
+                            </span>
 
-                    </td>
+                        </td>
 
 
-                    <td class="p-5">
+                        {{-- Actions --}}
+                        <td class="px-6 py-4">
 
-                        <div class="flex gap-2">
+                            <div class="flex items-center gap-4">
 
-                            <button class="px-3 py-2 text-sm">
-                                Edit
-                            </button>
+                                <button
+                                    class="text-sm cursor-pointer hover:underline"
+                                >
+                                    Edit
+                                </button>
 
-                            <button wire:click="delete({{ $product }})" class="px-3 py-2 text-sm text-red-500 cursor-pointer">
-                                Delete
-                            </button>
+                                <button
+                                    wire:click="delete({{ $product }})"
+                                    class="text-sm text-red-500 cursor-pointer hover:text-red-600"
+                                >
+                                    Delete
+                                </button>
 
-                        </div>
+                            </div>
 
-                    </td>
+                        </td>
 
-                </tr>
+                    </tr>
+
                 @endforeach
 
             </tbody>
@@ -116,93 +150,418 @@
 
     </div>
 
-<form wire:submit="create" class="bg-white mt-8 border border-gray-200 rounded-2xl p-6">
 
-    <h2 class="text-2xl font-bold mb-6">Add Variant</h2>
 
-    <select
-                        wire:model="product_id"
-                        class="w-full border border-gray-200 rounded-xl px-4 py-3 bg-white outline-none focus:border-black mb-4"
-                    >
-                        <option disabled selected>Select category</option>
-                        @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                        @endforeach
-                    </select>
-
-    <input
-        wire:model="price"
-        type="number"
-        placeholder="Price"
-        class="w-full border border-gray-200 rounded-xl px-4 py-3 mb-4"
+    {{-- =========================================================
+        ADD VARIANT
+    ========================================================== --}}
+    <form
+        wire:submit="create"
+        class="bg-white mt-6 border border-gray-200 rounded-2xl p-6"
     >
 
-    <input
-        wire:model="stock"
-        type="number"
-        placeholder="Stock"
-        class="w-full border border-gray-200 rounded-xl px-4 py-3"
+        <div class="flex items-center justify-between mb-5">
+
+            <h2 class="text-xl font-bold">
+                Add Variant
+            </h2>
+
+        </div>
+
+
+        <div class="flex gap-4">
+
+            <select
+                wire:model="product_id"
+                class="flex-1 border border-gray-200 rounded-xl px-4 py-3 bg-white outline-none focus:border-black"
+            >
+
+                <option disabled selected>
+                    Select category
+                </option>
+
+                @foreach ($categories as $category)
+
+                    <option value="{{ $category->id }}">
+                        {{ $category->name }}
+                    </option>
+
+                @endforeach
+
+            </select>
+
+
+            <input
+                wire:model="price"
+                type="number"
+                placeholder="Price"
+                class="w-32 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-black"
+            >
+
+
+            <input
+                wire:model="stock"
+                type="number"
+                placeholder="Stock"
+                class="w-32 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-black"
+            >
+
+
+            <button
+                type="submit"
+                class="bg-black text-white px-6 py-3 rounded-full whitespace-nowrap cursor-pointer hover:bg-gray-800"
+            >
+                Save Variant
+            </button>
+
+        </div>
+
+    </form>
+
+
+
+    {{-- =========================================================
+        COLORS HEADER
+    ========================================================== --}}
+
+    
+
+      
+
+    <div class="flex items-center justify-between mt-12 mb-6">
+
+        <h1 class="text-3xl font-bold">
+            Colors
+        </h1>
+
+    </div>
+
+    @if (session()->has('color_created'))
+                    <div class="bg-green-100 text-green-700 p-3 rounded mb-4">
+                        {{ session('color_created') }}
+                    </div>
+    @endif
+    @if (session()->has('color_updated'))
+                    <div class="bg-green-100 text-green-700 p-3 rounded mb-4">
+                        {{ session('color_updated') }}
+                    </div>
+    @endif
+
+    @if($editingColors)
+    <form wire:submit="updateColor" class="bg-white mt-6 border border-gray-200 rounded-2xl p-6">
+
+            <div class="flex items-center justify-between mb-5">
+
+                <h2 class="text-xl font-bold">
+                    Edit Color
+                </h2>
+
+            </div>
+
+
+            <div class="flex gap-4">
+
+                <input wire:model="color_name" placeholder="Color name"
+                    class="flex-1 border border-gray-200 rounded-xl px-4 py-3 h-12 outline-none focus:border-black">
+
+
+                <input type="color" wire:model="hex_code"
+                    class="w-16 h-12 border border-gray-200 rounded-xl p-1 bg-white cursor-pointer">
+
+
+                <button type="submit"
+                    class="bg-black text-white px-6 py-3 rounded-full whitespace-nowrap cursor-pointer hover:bg-gray-800">
+                    Update Color
+                </button>
+
+            </div>
+
+        </form>
+        @else  
+
+    {{-- =========================================================
+        COLORS TABLE
+    ========================================================== --}}
+    <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden">
+
+        <table class="w-full">
+
+            <thead>
+
+                <tr class="border-b border-gray-200 text-left text-sm text-gray-500">
+
+                    <th class="px-6 py-4 font-medium">
+                        Name
+                    </th>
+
+                    <th class="px-6 py-4 font-medium">
+                        Hex Code
+                    </th>
+
+                    <th class="px-6 py-4 font-medium">
+                        Color
+                    </th>
+
+                    <th class="px-6 py-4 font-medium">
+                        Actions
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                @foreach($colors as $color)
+
+                    <tr class="border-b border-gray-100 last:border-0">
+
+                        <td class="px-6 py-4 font-medium">
+                            {{ $color->name }}
+                        </td>
+
+
+                        <td class="px-6 py-4 text-sm text-gray-500">
+                            {{ $color->hex_code }}
+                        </td>
+
+
+                        <td class="px-6 py-4">
+
+                            <div
+                                class="w-8 h-8 rounded-full border border-gray-200"
+                                style="background-color: {{ $color->hex_code }}"
+                            ></div>
+
+                        </td>
+
+
+                        <td class="px-6 py-4">
+
+                            <div class="flex items-center gap-4">
+
+                                <button
+                                    wire:click="editColor({{ $color->id }})"
+                                    class="text-sm cursor-pointer hover:underline"
+                                >
+                                    Edit
+                                </button>
+
+                                <button
+                                    wire:click="deleteColor({{ $color }})"
+                                    wire:confirm="Are you sure you want to delete this category?"
+                                    class="text-sm text-red-500 cursor-pointer hover:text-red-600"
+                                >
+                                    Delete
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                @endforeach
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+
+    {{-- =========================================================
+        ADD COLOR
+    ========================================================== --}}
+    <form
+        wire:submit="createColor"
+        class="bg-white mt-6 border border-gray-200 rounded-2xl p-6"
     >
 
-    <div class="flex justify-end mt-6">
+        <div class="flex items-center justify-between mb-5">
+
+            <h2 class="text-xl font-bold">
+                Add Color
+            </h2>
+
+        </div>
+
+
+        <div class="flex gap-4">
+
+            <input
+                wire:model="color_name"
+                placeholder="Color name"
+                class="flex-1 border border-gray-200 rounded-xl px-4 py-3 h-12 outline-none focus:border-black"
+            >
+            @error('color_name')
+                <span class="text-red-500">{{ $message }}</span>
+            @enderror
+
+
+            <input
+                type="color"
+                wire:model="hex_code"
+                class="w-16 h-12 border border-gray-200 rounded-xl p-1 bg-white cursor-pointer"
+            >
+             @error('hex_code')
+                <span class="text-red-500">{{ $message }}</span>
+            @enderror
+
+
+            <button
+                type="submit"
+                class="bg-black text-white px-6 py-3 rounded-full whitespace-nowrap cursor-pointer hover:bg-gray-800"
+            >
+                Add Color
+            </button>
+
+        </div>
+
+    </form>
+    @endif
+    {{-- =========================================================
+    SIZES
+========================================================== --}}
+<div class="flex items-center justify-between mt-12 mb-6">
+
+    <h1 class="text-3xl font-bold">
+        Sizes
+    </h1>
+
+</div>
+@if (session()->has('size_created'))
+                    <div class="bg-green-100 text-green-700 p-3 rounded mb-4">
+                        {{ session('size_created') }}
+                    </div>
+    @endif
+    @if (session()->has('size_updated'))
+                    <div class="bg-green-100 text-green-700 p-3 rounded mb-4">
+                        {{ session('size_updated') }}
+                    </div>
+    @endif
+
+@if ($editingSizes)
+    <form
+    wire:submit="updateSize"
+    class="bg-white mt-6 border border-gray-200 rounded-2xl p-6">
+
+    <div class="flex gap-4">
+
+        <input
+            wire:model="size_name"
+            placeholder="Size"
+            class="flex-1 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-black"
+        >
+
         <button
             type="submit"
-            class="bg-black text-white px-6 py-3 rounded-full"
+            class="bg-black text-white px-6 py-3 rounded-full whitespace-nowrap cursor-pointer hover:bg-gray-800"
         >
-            Save Variant
+            Update Size
         </button>
+
     </div>
 
 </form>
+@else
 
 
-<form wire:submit="createColor" class="bg-white mt-8 border border-gray-200 rounded-2xl p-6">
 
-    <h2 class="text-2xl font-bold mb-6">Add Color</h2>
+{{-- Sizes table --}}
+<div class="bg-white border border-gray-200 rounded-2xl overflow-hidden">
 
-    <input
-        wire:model="color_name"
-        placeholder="Color name"
-        class="w-full border border-gray-200 rounded-xl px-4 py-3 mb-4"
-    >
+    <table class="w-full">
 
-    <input
-        wire:model="hex_code"
-        placeholder="Hex code"
-        class="w-full border border-gray-200 rounded-xl px-4 py-3"
-    >
+        <thead>
 
-    <div class="flex justify-end mt-6">
-        <button
-            type="submit"
-            class="bg-black text-white px-6 py-3 rounded-full"
+            <tr class="border-b border-gray-200 text-left text-sm text-gray-500">
+
+                <th class="px-6 py-4 font-medium">
+                    Size
+                </th>
+
+                <th class="px-6 py-4 font-medium">
+                    Actions
+                </th>
+
+            </tr>
+
+        </thead>
+
+
+        <tbody>
+
+            @foreach($sizes as $size)
+
+                <tr class="border-b border-gray-100 last:border-0">
+
+                    <td class="px-6 py-4 font-medium">
+                        {{ $size->name }}
+                    </td>
+
+
+                    <td class="px-6 py-4">
+
+                        <div class="flex items-center gap-4">
+
+                            <button
+                                wire:click="editSize({{ $size->id }})"
+                                class="text-sm cursor-pointer hover:underline"
+                            >
+                                Edit
+                            </button>
+
+                            <button
+                                wire:click="deleteSize({{ $size->id }})"
+                                wire:confirm="Are you sure you want to delete this size?"
+                                class="text-sm text-red-500 cursor-pointer hover:text-red-600"
+                            >
+                                Delete
+                            </button>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            @endforeach
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+{{-- Add Size --}}
+<form
+    wire:submit="createSize"
+    class="bg-white mt-6 border border-gray-200 rounded-2xl p-6">
+
+    <div class="flex gap-4">
+
+        <input
+            wire:model="size_name"
+            placeholder="Size"
+            class="flex-1 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-black"
         >
-            Add Color
-        </button>
-    </div>
+        @error('size_name')
+            <span class="text-red-500">{{ $message }}</span>
+        @enderror
 
-
-</form>
-
-
-<form wire:submit="create" class="bg-white mt-8 border border-gray-200 rounded-2xl p-6">
-
-    <h2 class="text-2xl font-bold mb-6">Add Size</h2>
-
-    <input
-        wire:model="size"
-        placeholder="Size"
-        class="w-full border border-gray-200 rounded-xl px-4 py-3 mb-4"
-    >
-
-    <div class="flex justify-end mt-6">
         <button
             type="submit"
-            class="bg-black text-white px-6 py-3 rounded-full"
+            class="bg-black text-white px-6 py-3 rounded-full whitespace-nowrap cursor-pointer hover:bg-gray-800"
         >
             Add Size
         </button>
+
     </div>
 
 </form>
-</div>
+
+@endif
