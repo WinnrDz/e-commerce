@@ -17,6 +17,119 @@
 
     </div>
 
+    @if (session()->has('variant_created'))
+                    <div class="bg-green-100 text-green-700 p-3 rounded mb-4">
+                        {{ session('variant_created') }}
+                    </div>
+    @endif
+    @if (session()->has('variant_updated'))
+                    <div class="bg-green-100 text-green-700 p-3 rounded mb-4">
+                        {{ session('variant_updated') }}
+                    </div>
+    @endif
+    @if ($editingVariants)
+        <form
+        wire:submit="updateVariant"
+        class="bg-white mt-6 border border-gray-200 rounded-2xl p-6">
+
+        <div class="flex items-center justify-between mb-5">
+
+            <h2 class="text-xl font-bold">
+                Edit Variant
+            </h2>
+
+        </div>
+
+
+        <div class="flex gap-4">
+            
+            <select
+                wire:model="product_id"
+                class="flex-1 border border-gray-200 rounded-xl px-4 py-3 bg-white outline-none focus:border-black"
+            >
+
+                <option value="">Select a product</option>
+
+                @foreach ($products as $product)
+
+                    <option value="{{ $product->id }}">
+                        {{ $product->name }}
+                    </option>
+
+                @endforeach
+
+            </select>
+            @error('product_id')
+                <span class="text-red-500">{{ $message }}</span>
+            @enderror
+
+
+            <select
+                wire:model="color_id"
+                class="flex-1 border border-gray-200 rounded-xl px-4 py-3 bg-white outline-none focus:border-black"
+            >
+
+                <option value="">
+                    Select Color
+                </option>
+
+                @foreach ($colors as $color)
+
+                    <option value="{{ $color->id }}">
+                        {{ $color->name }}
+                    </option>
+
+                @endforeach
+
+            </select>
+             @error('color_id')
+                <span class="text-red-500">{{ $message }}</span>
+            @enderror
+
+            <select
+                wire:model="size_id"
+                class="flex-1 border border-gray-200 rounded-xl px-4 py-3 bg-white outline-none focus:border-black"
+            >
+
+                <option value="">
+                    Select Size
+                </option>
+
+                @foreach ($sizes as $size)
+
+                    <option value="{{ $size->id }}">
+                        {{ $size->name }}
+                    </option>
+
+                @endforeach
+
+            </select>
+             @error('size_id')
+                <span class="text-red-500">{{ $message }}</span>
+            @enderror
+
+            <input
+                wire:model="price"
+                type="number"
+                placeholder="Price"
+                class="w-32 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-black"
+            >
+             @error('price')
+                <span class="text-red-500">{{ $message }}</span>
+            @enderror
+
+            <button
+                type="submit"
+                class="bg-black text-white px-6 py-3 rounded-full whitespace-nowrap cursor-pointer hover:bg-gray-800"
+            >
+                Save Variant
+            </button>
+
+        </div>
+
+    </form>
+    @else
+
 
     {{-- =========================================================
         VARIANTS TABLE
@@ -56,7 +169,7 @@
 
             <tbody>
 
-                @foreach ($products as $product)
+                @foreach ($variants as $variant)
 
                     <tr class="border-b border-gray-100 last:border-0">
 
@@ -71,11 +184,11 @@
                                 <div>
 
                                     <p class="font-medium">
-                                        {{ $product->name }}
+                                        {{ $variant->product->name }}
                                     </p>
 
                                     <p class="text-sm text-gray-400 mt-0.5">
-                                        #{{ $product->id }}
+                                        #{{ $variant->product->id }}
                                     </p>
 
                                 </div>
@@ -85,26 +198,19 @@
                         </td>
 
 
-                        {{-- Color --}}
                         <td class="px-6 py-4">
 
-                            <div class="flex items-center gap-2">
-
-                                <div class="w-7 h-7 bg-black rounded-full border border-gray-200">
-                                </div>
-
-                                <span class="text-sm">
-                                    Black
-                                </span>
-
-                            </div>
+                            <div
+                                class="w-8 h-8 rounded-full border border-gray-200"
+                                style="background-color: {{ $variant->color->hex_code }}"
+                            ></div>
 
                         </td>
 
 
                         {{-- Size --}}
                         <td class="px-6 py-4 text-sm">
-                            50
+                            {{ $variant->size->name  }}
                         </td>
 
 
@@ -112,7 +218,7 @@
                         <td class="px-6 py-4">
 
                             <span class="font-medium">
-                                $50
+                                {{ $variant->price }}
                             </span>
 
                         </td>
@@ -123,14 +229,14 @@
 
                             <div class="flex items-center gap-4">
 
-                                <button
+                                <button wire:click="editVariant({{ $variant->id }})"
                                     class="text-sm cursor-pointer hover:underline"
                                 >
                                     Edit
                                 </button>
 
                                 <button
-                                    wire:click="delete({{ $product }})"
+                                    wire:click="deleteVariant({{ $variant->id }})" wire:confirm="Are you sure you want to delete this variant?"
                                     class="text-sm text-red-500 cursor-pointer hover:text-red-600"
                                 >
                                     Delete
@@ -155,10 +261,10 @@
     {{-- =========================================================
         ADD VARIANT
     ========================================================== --}}
+    
     <form
-        wire:submit="create"
-        class="bg-white mt-6 border border-gray-200 rounded-2xl p-6"
-    >
+        wire:submit="createVariant"
+        class="bg-white mt-6 border border-gray-200 rounded-2xl p-6">
 
         <div class="flex items-center justify-between mb-5">
 
@@ -170,26 +276,71 @@
 
 
         <div class="flex gap-4">
-
+            
             <select
                 wire:model="product_id"
                 class="flex-1 border border-gray-200 rounded-xl px-4 py-3 bg-white outline-none focus:border-black"
             >
 
-                <option disabled selected>
-                    Select category
-                </option>
+                <option value="">Select a product</option>
 
-                @foreach ($categories as $category)
+                @foreach ($products as $product)
 
-                    <option value="{{ $category->id }}">
-                        {{ $category->name }}
+                    <option value="{{ $product->id }}">
+                        {{ $product->name }}
                     </option>
 
                 @endforeach
 
             </select>
+            @error('product_id')
+                <span class="text-red-500">{{ $message }}</span>
+            @enderror
 
+
+            <select
+                wire:model="color_id"
+                class="flex-1 border border-gray-200 rounded-xl px-4 py-3 bg-white outline-none focus:border-black"
+            >
+
+                <option value="">
+                    Select Color
+                </option>
+
+                @foreach ($colors as $color)
+
+                    <option value="{{ $color->id }}">
+                        {{ $color->name }}
+                    </option>
+
+                @endforeach
+
+            </select>
+             @error('color_id')
+                <span class="text-red-500">{{ $message }}</span>
+            @enderror
+
+            <select
+                wire:model="size_id"
+                class="flex-1 border border-gray-200 rounded-xl px-4 py-3 bg-white outline-none focus:border-black"
+            >
+
+                <option value="">
+                    Select Size
+                </option>
+
+                @foreach ($sizes as $size)
+
+                    <option value="{{ $size->id }}">
+                        {{ $size->name }}
+                    </option>
+
+                @endforeach
+
+            </select>
+             @error('size_id')
+                <span class="text-red-500">{{ $message }}</span>
+            @enderror
 
             <input
                 wire:model="price"
@@ -197,15 +348,9 @@
                 placeholder="Price"
                 class="w-32 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-black"
             >
-
-
-            <input
-                wire:model="stock"
-                type="number"
-                placeholder="Stock"
-                class="w-32 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-black"
-            >
-
+             @error('price')
+                <span class="text-red-500">{{ $message }}</span>
+            @enderror
 
             <button
                 type="submit"
@@ -219,7 +364,7 @@
     </form>
 
 
-
+    @endif
     {{-- =========================================================
         COLORS HEADER
     ========================================================== --}}

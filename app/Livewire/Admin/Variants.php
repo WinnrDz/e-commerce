@@ -8,6 +8,7 @@ use App\Models\Color;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 use App\Models\Size;
+use App\Models\Variant;
 
 
 #[Layout('layouts::admin')]
@@ -16,12 +17,68 @@ class Variants extends Component
     public $color_name = '';
     public $hex_code ;
     public $color_id;
-
     public $editingColors = false;
 
     public $size_name = '';
     public $size_id;
     public $editingSizes = false;
+
+    public $variant;
+    public $product_id;
+    public $price;
+    public $editingVariants = false;
+
+    public function createVariant() {
+        $this->validate([
+            'product_id' => 'required|exists:products,id',
+            'color_id' => 'required|exists:colors,id',
+            'size_id' => 'required|exists:sizes,id',
+            'price' => 'required|numeric|min:0',
+        ]);
+        Variant::create([
+            'product_id' => $this->product_id,
+            'color_id' => $this->color_id,
+            'size_id' => $this->size_id,
+            'price' => $this->price,
+        ]);
+
+        session()->flash('variant_created', 'Variant created successfully.');
+
+        $this->reset(['product_id', 'color_id', 'size_id', 'price']);
+    }
+
+    public function editVariant($id) {
+        $variant = Variant::find($id);
+        $this->variant = $variant;
+        $this->product_id = $variant->product_id;
+        $this->color_id = $variant->color_id;
+        $this->size_id = $variant->size_id;
+        $this->price = $variant->price;
+        $this->editingVariants = true;
+    }
+
+    public function updateVariant() {
+        $this->validate([
+            'product_id' => 'required|exists:products,id',
+            'color_id' => 'required|exists:colors,id',
+            'size_id' => 'required|exists:sizes,id',
+            'price' => 'required|numeric|min:0',
+        ]);
+        $this->variant->update([
+            'product_id' => $this->product_id,
+            'color_id' => $this->color_id,
+            'size_id' => $this->size_id,
+            'price' => $this->price,
+        ]);
+
+        session()->flash('variant_updated', 'Variant updated successfully.');
+        $this->reset(['variant', 'product_id', 'color_id', 'size_id', 'price']);
+        $this->editingVariants = false;
+    }
+
+    public function deleteVariant(Variant $variant) {
+        $variant->delete();
+    }
 
     public function createColor() {
         $this->validate([
@@ -107,6 +164,7 @@ class Variants extends Component
     public function render()
     {
         return view('livewire.admin.variants',[
+            "variants" => Variant::all(),
             "sizes" => Size::all(),
             "colors" => Color::all(),
             "products" => Product::all(),
