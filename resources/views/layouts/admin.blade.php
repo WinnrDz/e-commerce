@@ -48,6 +48,11 @@
                 <span>Variants<span>
             </a>
 
+            <a class="flex gap-4 px-4 py-3 rounded-xl {{ request()->routeIs('admin.carts') ? 'bg-black text-white' : '' }}" href="{{ route("admin.carts") }}">
+                <i data-lucide="shopping-cart"></i>   
+                <span>Carts<span>
+            </a>
+
             <a class="flex gap-4 px-4 py-3 rounded-xl ">
                 <i data-lucide="shopping-cart"></i> 
                 <span>Orders<span>

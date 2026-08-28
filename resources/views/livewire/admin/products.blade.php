@@ -257,8 +257,7 @@
 
                     <select
                         wire:model="category_id"
-                        class="w-full border border-gray-200 rounded-xl px-4 py-3 bg-white outline-none focus:border-black"
-                    >
+                        class="w-full border border-gray-200 rounded-xl px-4 py-3 bg-white outline-none focus:border-black">
                         <option value="">Select category</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>

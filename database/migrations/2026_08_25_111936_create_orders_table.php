@@ -20,7 +20,7 @@ return new class extends Migration
 
             $table->string('status');
             $table->decimal('total', 10, 2);
-            $table->decimal('delivery_fee', 10, 2);
+            $table->decimal('delivery_fee', 10, 2)->default(0);
 
             $table->timestamps();
         });
