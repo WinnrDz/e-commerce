@@ -15,8 +15,53 @@
     </div>
 
     {{-- Cart management --}}
+    @if ($showing)
+    <h1 class="text-2xl font-bold mb-4">
+        {{ $user->name }}
+    </h1>
+    <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden">
 
-    @if ($editing)
+            <table class="w-full">
+
+                <thead>
+                    <tr class="border-b border-gray-200 text-left">
+                        <th class="p-4">
+                            Product
+                        </th>
+                        <th class="p-4">
+                            Quantity
+                        </th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    @foreach($cart->variants as $variant)
+
+                        <tr class="border-b border-gray-100">
+
+                            <td class="p-4">
+                                {{ $variant->product->name }} {{ $variant->size->name }} {{ $variant->color->name }}
+                            </td>
+
+
+                            <td class="p-4">
+                                {{ $variant->pivot->quantity }}
+                            </td>
+
+                        </tr> 
+                            
+                    @endforeach
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+
+    @elseif ($editing)
         <form wire:submit="update" class="bg-white border border-gray-200 rounded-2xl p-6 mb-6">
 
                 <h2 class="text-lg font-semibold mb-4">
@@ -93,6 +138,7 @@
                     >
                         Save
                     </button>
+                    
 
                 </div>
 
@@ -130,6 +176,9 @@
 
                                 <button wire:click="delete({{ $cart }}) " wire:confirm="Are you sure you want to delete this cart?" class="text-sm text-red-500 ml-3 cursor-pointer">
                                     Delete
+                                </button>
+                                <button wire:click="show({{ $cart->id }})" class="text-sm text-blue-500 ml-3 cursor-pointer">
+                                    Show
                                 </button>
 
                             </td>
