@@ -53,20 +53,16 @@
                 <span>Carts<span>
             </a>
 
-            <a class="flex gap-4 px-4 py-3 rounded-xl ">
-                <i data-lucide="shopping-cart"></i> 
+            <a class="flex gap-4 px-4 py-3 rounded-xl {{ request()->routeIs('admin.orders') ? 'bg-black text-white' : '' }}" href="{{ route("admin.orders") }}">
+                <i data-lucide="shopping-bag"></i>  
                 <span>Orders<span>
             </a>
 
-            <a class="flex gap-4 px-4 py-3 rounded-xl">
-                <i data-lucide="user-round"></i>  
-                <span>Customers</span>
-            </a>
-
-            <a class="flex gap-4 px-4 py-3 rounded-xl">
+            <a class="flex gap-4 px-4 py-3 rounded-xl {{ request()->routeIs('admin.reviews') ? 'bg-black text-white' : '' }}" href="{{ route("admin.reviews") }}">
                 <i data-lucide="star"></i>  
                 <span>Reviews</span>
             </a>
+            
 
         </nav>
 
