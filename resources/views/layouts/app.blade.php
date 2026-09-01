@@ -79,7 +79,7 @@
     </header>
     
     <main class="flex flex-col  max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-        @yield('content')
+        {{ $slot }}
     </main>
     <footer class="bg-[#F0F0F0] p-12 lg:p-24 relative mt-45">
             <div class="flex flex-col lg:flex-row gap-y-8 justify-between -mt-45 mx-auto max-w-6xl w-[100%] bg-black rounded-3xl p-8 ">

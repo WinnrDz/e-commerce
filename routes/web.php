@@ -8,6 +8,7 @@ use App\Livewire\Admin\Variants;
 use App\Livewire\Admin\Carts;
 use App\Livewire\Admin\Orders;
 use App\Livewire\Admin\Reviews;
+use App\Livewire\Shop;
 
 Route::get('/', function () {
     return view('layouts/welcome');
@@ -18,9 +19,7 @@ Route::get('/show', function () {
     return view('Show');
 });
 
-Route::get('/shop', function () {
-    return view('shop');
-});
+Route::get('/shop', Shop::class)->name("shop");
 
 Route::get('/cart', function () {
     return view('cart');
