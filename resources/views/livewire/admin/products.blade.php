@@ -22,7 +22,7 @@
 
 
     @if ($editing)
-        <form wire:submit="update" class="bg-white border border-gray-200 rounded-2xl p-6 mb-6">
+        <form wire:submit="save" class="bg-white border border-gray-200 rounded-2xl p-6 mb-6">
 
                 <h2 class="text-lg font-semibold mb-4">
                     Update Product
@@ -202,40 +202,43 @@
 
     </div>
 
-    {{-- Add Product Form --}}
-    <form wire:submit="create" class="bg-white mt-8 border border-gray-200 rounded-2xl p-6">
+    
 
-        {{-- Form Header --}}
-        <div class="mb-6">
-            <h2 class="text-2xl font-bold">
-                Add Product
-            </h2>
+     {{-- Add Product Form --}}
+<form wire:submit="save" class="bg-white mt-8 border border-gray-200 rounded-2xl p-6">
+    
 
-            <p class="text-gray-500 mt-1">
-                Create a new product
-            </p>
-        </div>
+    {{-- Form Header --}}
+    <div class="mb-6">
+        <h2 class="text-2xl font-bold">
+            Add Product
+        </h2>
 
-
-        {{-- Main Form --}}
-        <div class=" gap-6">
-
-            {{-- Product Information --}}
-            <div class="border border-gray-200 rounded-2xl p-5">
-
-                <h3 class="text-lg font-semibold mb-5">
-                    Product Information
-                </h3>
+        <p class="text-gray-500 mt-1">
+            Create a new product
+        </p>
+    </div>
 
 
-                {{-- Name --}}
-                <div class="mb-5">
+    {{-- Main Form --}}
+    <div class="grid grid-cols-2 gap-6">
 
-                    <label class="block text-sm font-medium mb-2">
-                        Name
-                    </label>
+        {{-- Product Information --}}
+        <div class="border border-gray-200 rounded-2xl p-5">
 
-                    <input
+            <h3 class="text-lg font-semibold mb-5">
+                Product Information
+            </h3>
+
+
+            {{-- Name --}}
+            <div class="mb-5">
+
+                <label class="block text-sm font-medium mb-2">
+                    Name
+                </label>
+
+                <input
                         wire:model="name"
                         type="text"
                         placeholder="Enter product name"
@@ -245,17 +248,17 @@
                         <span class="text-red-500">{{ $message }}</span>
                     @enderror
 
-                </div>
+            </div>
 
 
-                {{-- Category --}}
-                <div class="mb-5">
+            {{-- Category --}}
+            <div class="mb-5">
 
-                    <label class="block text-sm font-medium mb-2">
-                        Category
-                    </label>
+                <label class="block text-sm font-medium mb-2">
+                    Category
+                </label>
 
-                    <select
+                <select
                         wire:model="category_id"
                         class="w-full border border-gray-200 rounded-xl px-4 py-3 bg-white outline-none focus:border-black">
                         <option value="">Select category</option>
@@ -267,135 +270,96 @@
                         <span class="text-red-500">{{ $message }}</span>
                     @enderror
 
-                </div>
+            </div>
 
 
-                {{-- Description --}}
-                <div>
+            {{-- Description --}}
+            <div>
 
-                    <label class="block text-sm font-medium mb-2">
-                        Description
-                    </label>
+                <label class="block text-sm font-medium mb-2">
+                    Description
+                </label>
 
-                    <textarea
+                <textarea
                         wire:model="description"
                         rows="5"
                         placeholder="Enter product description..."
                         class="w-full border border-gray-200 rounded-xl px-4 py-3 resize-none outline-none focus:border-black"
                     ></textarea>
-                     @error('descripton')
+                     @error('description')
                         <span class="text-red-500">{{ $message }}</span>
                     @enderror
-                </div>
 
             </div>
-
-
-            {{-- Right Side 
-            <div class="space-y-6">
-
-                {{-- Image 
-                <div class="border border-gray-200 rounded-2xl p-5">
-
-                    <h3 class="text-lg font-semibold mb-5">
-                        Product Image
-                    </h3>
-
-                    <label
-                        class="h-48 border-2 border-dashed border-gray-300 rounded-xl flex flex-col items-center justify-center cursor-pointer hover:bg-gray-50"
-                    >
-
-                        <span class="text-2xl">
-                            +
-                        </span>
-
-                        <span class="mt-2 font-medium">
-                            Upload image
-                        </span>
-
-                        <span class="text-sm text-gray-400 mt-1">
-                            PNG, JPG or WEBP
-                        </span>
-
-                        <input
-                            type="file"
-                            class="hidden"
-                        >
-
-                    </label>
-
-                </div>--}}
-
-
-                {{-- Pricing & Inventory 
-                <div class="border border-gray-200 rounded-2xl p-5">
-
-                    <h3 class="text-lg font-semibold mb-5">
-                        Pricing & Inventory
-                    </h3>
-
-                    <div class="grid grid-cols-2 gap-4">
-
-                        
-                        <div>
-
-                            <label class="block text-sm font-medium mb-2">
-                                Price
-                            </label>
-
-                            <input
-                                type="number"
-                                placeholder="$0.00"
-                                class="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-black"
-                            >
-
-                        </div>
-
-
-                        
-                        <div>
-
-                            <label class="block text-sm font-medium mb-2">
-                                Stock
-                            </label>
-
-                            <input
-                                type="number"
-                                placeholder="0"
-                                class="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-black"
-                            >
-
-                        </div>
-
-                    </div>
-
-                </div>
-                
-            </div>
-
-        </div>--}}
-
-
-        {{-- Buttons --}}
-        <div class="flex justify-end gap-3 mt-6">
-
-            <button
-                type="button"
-                class="border border-gray-200 px-6 py-3 rounded-full hover:bg-gray-50"
-            >
-                Cancel
-            </button>
-
-            <button
-                type="submit"
-                class="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800"
-            >
-                Save Product
-            </button>
 
         </div>
 
-    </form>
+
+        {{-- Right Side --}}
+        <div class="space-y-6">
+
+            {{-- Image --}}
+            <div class="h-full border border-gray-200 rounded-2xl p-5">
+
+                <h3 class="text-lg font-semibold mb-5">
+                    Product Image
+                </h3>
+
+                <label
+                    class="h-[80%] border-2 border-dashed border-gray-300 rounded-xl flex flex-col items-center justify-center cursor-pointer hover:bg-gray-50"
+                >
+
+                    <span class="text-2xl">
+                        +
+                    </span>
+
+                    <span class="mt-2 font-medium">
+                        Upload image
+                    </span>
+
+                    <span class="text-sm text-gray-400 mt-1">
+                        PNG, JPG or WEBP
+                    </span>
+
+                    <input
+                        type="file"
+                        wire:model="images"
+                        multiple
+                        accept="image/*"
+                    >
+                    @error('images')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
+
+                </label>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    {{-- Buttons --}}
+    <div class="flex justify-end gap-3 mt-6">
+
+        <button
+            type="button"
+            class="border border-gray-200 px-6 py-3 rounded-full hover:bg-gray-50"
+        >
+            Cancel
+        </button>
+
+        <button
+            type="submit"
+            class="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800"
+        >
+            Save Product
+        </button>
+
+    </div>
+
+</form>
     @endif
 
 </div>
