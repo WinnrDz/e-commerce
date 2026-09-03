@@ -117,6 +117,12 @@ class Products extends Component
         $this->images = [];
     }
 
+        public function removeAllImages(Product $product)
+    {
+        $this->images = [];
+        $product->images()->delete();
+    }
+
     public function render()
     {
         return view('livewire.admin.products', [
