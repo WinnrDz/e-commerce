@@ -15,15 +15,21 @@ class Product extends Model
     public function category() {
         return $this->belongsTo(Category::class);
     }
-
     public function variants() {
         return $this->hasMany(Variant::class);
     }
-
     public function reviews() {
         return $this->hasMany(Review::class);
     }
     public function images() {
         return $this->hasMany(ProductImage::class);
+    }
+
+
+        public function getAverageRatingAttribute()
+    {
+        $average = $this->reviews()->avg('rating');
+
+        return $average ? round($average * 2) / 2 : 0;
     }
 }

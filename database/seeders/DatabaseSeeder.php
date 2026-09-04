@@ -2,186 +2,307 @@
 
 namespace Database\Seeders;
 
-use App\Models\Cart;
-use App\Models\Category;
-use App\Models\Color;
-use App\Models\Order;
-use App\Models\Product;
-use App\Models\Review;
-use App\Models\Size;
-use App\Models\User;
-use App\Models\Variant;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
 
 class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        /*
-        |--------------------------------------------------------------------------
-        | ADMIN
-        |--------------------------------------------------------------------------
-        */
-
-        $admin = User::create([
-            'name' => 'Demo Admin',
-            'email' => 'admin@demo.local',
-            'password' => Hash::make('demo'),
-        ]);
-
-        /*
-        |--------------------------------------------------------------------------
-        | FAKE CUSTOMERS
-        |--------------------------------------------------------------------------
-        */
-
-        $customers = User::factory(10)->create();
-
-        /*
-        |--------------------------------------------------------------------------
-        | CATEGORIES
-        |--------------------------------------------------------------------------
-        */
-
-        $categories = [];
-
-        foreach ([
-            'T-Shirts',
-            'Jeans',
-            'Hoodies',
-            'Shoes',
-            'Accessories',
-        ] as $name) {
-            $categories[$name] = Category::create([
-                'name' => $name,
-            ]);
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | COLORS
-        |--------------------------------------------------------------------------
-        */
-
-        $colors = [];
-
-        foreach ([
-            ['name' => 'Black', 'hex_code' => '#000000'],
-            ['name' => 'White', 'hex_code' => '#FFFFFF'],
-            ['name' => 'Red', 'hex_code' => '#EF4444'],
-            ['name' => 'Blue', 'hex_code' => '#3B82F6'],
-        ] as $color) {
-            $colors[$color['name']] = Color::create($color);
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | SIZES
-        |--------------------------------------------------------------------------
-        */
-
-        $sizes = [];
-
-        foreach (['XS', 'S', 'M', 'L', 'XL'] as $name) {
-            $sizes[$name] = Size::create([
-                'name' => $name,
-            ]);
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | PRODUCTS
-        |--------------------------------------------------------------------------
-        */
-
-        $productData = [
-            ['Classic Black T-Shirt', 'A comfortable everyday cotton t-shirt.', 'T-Shirts', 19.99, 'Black'],
-            ['Essential White T-Shirt', 'A clean and simple white t-shirt.', 'T-Shirts', 19.99, 'White'],
-            ['Oversized Red T-Shirt', 'Relaxed oversized fit for casual outfits.', 'T-Shirts', 24.99, 'Red'],
-
-            ['Slim Fit Jeans', 'Modern slim-fit jeans with stretch.', 'Jeans', 49.99, 'Blue'],
-            ['Classic Black Jeans', 'Timeless black denim jeans.', 'Jeans', 54.99, 'Black'],
-            ['Relaxed Blue Jeans', 'Comfortable relaxed-fit denim.', 'Jeans', 52.99, 'Blue'],
-
-            ['Classic Black Hoodie', 'Warm and comfortable everyday hoodie.', 'Hoodies', 59.99, 'Black'],
-            ['Red Street Hoodie', 'Stylish oversized streetwear hoodie.', 'Hoodies', 64.99, 'Red'],
-            ['Essential White Hoodie', 'Minimal white hoodie with soft fabric.', 'Hoodies', 59.99, 'White'],
-
-            ['Everyday Sneakers', 'Lightweight sneakers for everyday use.', 'Shoes', 79.99, 'White'],
-            ['Black Running Shoes', 'Comfortable running shoes with a lightweight sole.', 'Shoes', 89.99, 'Black'],
-            ['Classic Blue Sneakers', 'Casual sneakers with a clean design.', 'Shoes', 74.99, 'Blue'],
-
-            ['Classic Cap', 'Minimal adjustable baseball cap.', 'Accessories', 14.99, 'Black'],
-            ['White Cap', 'Simple everyday white cap.', 'Accessories', 14.99, 'White'],
-            ['Red Crossbody Bag', 'Compact crossbody bag for everyday use.', 'Accessories', 34.99, 'Red'],
-        ];
-
-        $variants = collect();
-
-        foreach ($productData as $data) {
-
-            $product = Product::create([
-                'name' => $data[0],
-                'description' => $data[1],
-                'category_id' => $categories[$data[2]]->id,
-            ]);
+        DB::transaction(function () {
 
             /*
             |--------------------------------------------------------------------------
-            | PRODUCT VARIANTS
+            | PRODUCT IMAGES
             |--------------------------------------------------------------------------
+            |
+            | Get all images from public/images.
+            |
             */
 
-            foreach ($sizes as $size) {
+            $imageFiles = glob(public_path('images/*'));
 
-                $variant = Variant::create([
-                    'product_id' => $product->id,
-                    'color_id' => $colors[$data[4]]->id,
-                    'size_id' => $size->id,
-                    'price' => $data[3],
-                ]);
+            $imageFiles = array_filter($imageFiles, function ($file) {
+                return is_file($file);
+            });
 
-                $variants->push($variant);
-            }
-        }
-
-        /*
-        |--------------------------------------------------------------------------
-        | CUSTOMER DATA
-        |--------------------------------------------------------------------------
-        */
-
-        foreach ($customers as $customer) {
-
-            /*
-            |--------------------------------------------------------------------------
-            | CART
-            |--------------------------------------------------------------------------
-            */
-
-            $cart = Cart::create([
-                'user_id' => $customer->id,
-            ]);
-
-            /*
-            |--------------------------------------------------------------------------
-            | RANDOM CART ITEMS
-            |--------------------------------------------------------------------------
-            */
-
-            $cartVariants = $variants
-                ->random(rand(1, 4))
-                ->unique('id');
-
-            foreach ($cartVariants as $variant) {
-                $cart->variants()->attach(
-                    $variant->id,
-                    [
-                        'quantity' => rand(1, 3),
-                    ]
+            if (empty($imageFiles)) {
+                throw new \Exception(
+                    'No images found in public/images.'
                 );
             }
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | CATEGORIES
+            |--------------------------------------------------------------------------
+            */
+
+            $categories = [
+                'T-Shirts',
+                'Shirts',
+                'Jeans',
+                'Hoodies',
+                'Jackets',
+                'Shorts',
+                'Shoes',
+            ];
+
+            $categoryIds = [];
+
+            foreach ($categories as $name) {
+                $categoryIds[$name] = DB::table('categories')->insertGetId([
+                    'name' => $name,
+                ]);
+            }
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | COLORS
+            |--------------------------------------------------------------------------
+            */
+
+            $colors = [
+                'Black' => '#000000',
+                'White' => '#FFFFFF',
+                'Red' => '#EF4444',
+                'Blue' => '#3B82F6',
+                'Green' => '#22C55E',
+                'Yellow' => '#EAB308',
+                'Gray' => '#6B7280',
+            ];
+
+            $colorIds = [];
+
+            foreach ($colors as $name => $hexCode) {
+                $colorIds[$name] = DB::table('colors')->insertGetId([
+                    'name' => $name,
+                    'hex_code' => $hexCode,
+                ]);
+            }
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | SIZES
+            |--------------------------------------------------------------------------
+            */
+
+            $sizes = [
+                'XS',
+                'S',
+                'M',
+                'L',
+                'XL',
+                'XXL',
+            ];
+
+            $sizeIds = [];
+
+            foreach ($sizes as $name) {
+                $sizeIds[$name] = DB::table('sizes')->insertGetId([
+                    'name' => $name,
+                ]);
+            }
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | USERS
+            |--------------------------------------------------------------------------
+            */
+
+            $users = [];
+
+            $userNames = [
+                'John Doe',
+                'Jane Smith',
+                'Michael Johnson',
+                'Sarah Williams',
+                'Alex Brown',
+                'David Wilson',
+                'Emma Davis',
+                'Daniel Miller',
+            ];
+
+            foreach ($userNames as $name) {
+                $users[] = DB::table('users')->insertGetId([
+                    'name' => $name,
+                    'email' => strtolower(str_replace(' ', '.', $name)) . '@example.com',
+                    'password' => Hash::make('password'),
+                ]);
+            }
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | PRODUCTS
+            |--------------------------------------------------------------------------
+            */
+
+            $products = [
+                [
+                    'name' => 'Classic Cotton T-Shirt',
+                    'description' => 'A comfortable everyday cotton t-shirt with a clean and minimal design.',
+                    'category' => 'T-Shirts',
+                    'price' => 19.99,
+                    'colors' => ['Black', 'White', 'Gray'],
+                    'sizes' => ['S', 'M', 'L', 'XL'],
+                ],
+
+                [
+                    'name' => 'Oversized Streetwear T-Shirt',
+                    'description' => 'An oversized t-shirt designed for a relaxed modern streetwear look.',
+                    'category' => 'T-Shirts',
+                    'price' => 29.99,
+                    'colors' => ['Black', 'White', 'Red'],
+                    'sizes' => ['S', 'M', 'L', 'XL', 'XXL'],
+                ],
+
+                [
+                    'name' => 'Premium Oxford Shirt',
+                    'description' => 'A premium Oxford shirt suitable for both casual and formal outfits.',
+                    'category' => 'Shirts',
+                    'price' => 49.99,
+                    'colors' => ['White', 'Blue', 'Gray'],
+                    'sizes' => ['S', 'M', 'L', 'XL'],
+                ],
+
+                [
+                    'name' => 'Slim Fit Jeans',
+                    'description' => 'Modern slim fit jeans made from durable stretch denim.',
+                    'category' => 'Jeans',
+                    'price' => 59.99,
+                    'colors' => ['Blue', 'Black'],
+                    'sizes' => ['S', 'M', 'L', 'XL'],
+                ],
+
+                [
+                    'name' => 'Essential Pullover Hoodie',
+                    'description' => 'A warm and comfortable hoodie with a simple minimal design.',
+                    'category' => 'Hoodies',
+                    'price' => 54.99,
+                    'colors' => ['Black', 'Gray', 'Green'],
+                    'sizes' => ['S', 'M', 'L', 'XL', 'XXL'],
+                ],
+
+                [
+                    'name' => 'Classic Denim Jacket',
+                    'description' => 'A timeless denim jacket that works with almost any outfit.',
+                    'category' => 'Jackets',
+                    'price' => 79.99,
+                    'colors' => ['Blue', 'Black'],
+                    'sizes' => ['S', 'M', 'L', 'XL'],
+                ],
+
+                [
+                    'name' => 'Relaxed Cargo Shorts',
+                    'description' => 'Comfortable cargo shorts with multiple practical pockets.',
+                    'category' => 'Shorts',
+                    'price' => 34.99,
+                    'colors' => ['Black', 'Green', 'Gray'],
+                    'sizes' => ['S', 'M', 'L', 'XL'],
+                ],
+
+                [
+                    'name' => 'Urban Runner Sneakers',
+                    'description' => 'Lightweight sneakers designed for everyday comfort and movement.',
+                    'category' => 'Shoes',
+                    'price' => 89.99,
+                    'colors' => ['Black', 'White', 'Red'],
+                    'sizes' => ['S', 'M', 'L', 'XL'],
+                ],
+            ];
+
+            $productIds = [];
+            $variantIds = [];
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | CREATE PRODUCTS
+            |--------------------------------------------------------------------------
+            */
+
+            foreach ($products as $product) {
+
+                /*
+                |--------------------------------------------------------------------------
+                | PRODUCT
+                |--------------------------------------------------------------------------
+                */
+
+                $productId = DB::table('products')->insertGetId([
+                    'name' => $product['name'],
+                    'description' => $product['description'],
+                    'category_id' => $categoryIds[$product['category']],
+                ]);
+
+                $productIds[] = $productId;
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | PRODUCT IMAGES
+                |--------------------------------------------------------------------------
+                |
+                | Pick 2 random images from public/images.
+                |
+                */
+
+                $selectedImages = collect($imageFiles)
+                    ->shuffle()
+                    ->take(2);
+
+                foreach ($selectedImages as $image) {
+
+                    /*
+                    | Copy the image to:
+                    |
+                    | storage/app/public/products
+                    |
+                    | Laravel automatically generates
+                    | a random filename.
+                    */
+
+                    $path = Storage::disk('public')->putFile(
+                        'products',
+                        new File($image)
+                    );
+
+                    DB::table('product_images')->insert([
+                        'product_id' => $productId,
+                        'path' => $path,
+                    ]);
+                }
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | VARIANTS
+                |--------------------------------------------------------------------------
+                */
+
+                foreach ($product['colors'] as $color) {
+                    foreach ($product['sizes'] as $size) {
+
+                        $variantId = DB::table('variants')->insertGetId([
+                            'product_id' => $productId,
+                            'color_id' => $colorIds[$color],
+                            'size_id' => $sizeIds[$size],
+                            'price' => $product['price'],
+                        ]);
+
+                        $variantIds[] = $variantId;
+                    }
+                }
+            }
+
 
             /*
             |--------------------------------------------------------------------------
@@ -189,28 +310,112 @@ class DatabaseSeeder extends Seeder
             |--------------------------------------------------------------------------
             */
 
-            $reviewProducts = Product::inRandomOrder()
-                ->limit(rand(1, 3))
-                ->get();
+            DB::table('reviews')->insert([
+                [
+                    'review' => 'Really comfortable and excellent quality.',
+                    'rating' => 5,
+                    'user_id' => $users[0],
+                    'product_id' => $productIds[0],
+                ],
 
-            foreach ($reviewProducts as $product) {
+                [
+                    'review' => 'Great t-shirt for everyday wear.',
+                    'rating' => 4,
+                    'user_id' => $users[1],
+                    'product_id' => $productIds[0],
+                ],
 
-                Review::create([
-                    'review' => fake()->randomElement([
-                        'Really good quality!',
-                        'I love this product.',
-                        'Looks exactly like the pictures.',
-                        'Very comfortable and well made.',
-                        'Great product for the price.',
-                        'Would definitely buy again.',
-                        'Pretty good overall.',
-                        'Fast delivery and great quality.',
-                    ]),
-                    'rating' => rand(3, 5),
-                    'user_id' => $customer->id,
-                    'product_id' => $product->id,
+                [
+                    'review' => 'The oversized fit looks really good.',
+                    'rating' => 5,
+                    'user_id' => $users[2],
+                    'product_id' => $productIds[1],
+                ],
+
+                [
+                    'review' => 'Very nice shirt and excellent material.',
+                    'rating' => 5,
+                    'user_id' => $users[3],
+                    'product_id' => $productIds[2],
+                ],
+
+                [
+                    'review' => 'Good quality jeans and comfortable fit.',
+                    'rating' => 4,
+                    'user_id' => $users[4],
+                    'product_id' => $productIds[3],
+                ],
+
+                [
+                    'review' => 'Very warm and comfortable hoodie.',
+                    'rating' => 5,
+                    'user_id' => $users[5],
+                    'product_id' => $productIds[4],
+                ],
+
+                [
+                    'review' => 'Classic jacket. Looks great.',
+                    'rating' => 4,
+                    'user_id' => $users[6],
+                    'product_id' => $productIds[5],
+                ],
+
+                [
+                    'review' => 'Really comfortable sneakers.',
+                    'rating' => 5,
+                    'user_id' => $users[7],
+                    'product_id' => $productIds[7],
+                ],
+            ]);
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | CARTS
+            |--------------------------------------------------------------------------
+            */
+
+            $cartIds = [];
+
+            foreach ($users as $userId) {
+                $cartIds[$userId] = DB::table('carts')->insertGetId([
+                    'user_id' => $userId,
                 ]);
             }
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | CART ITEMS
+            |--------------------------------------------------------------------------
+            */
+
+            DB::table('cart_variant')->insert([
+                [
+                    'cart_id' => $cartIds[$users[0]],
+                    'variant_id' => $variantIds[0],
+                    'quantity' => 2,
+                ],
+
+                [
+                    'cart_id' => $cartIds[$users[0]],
+                    'variant_id' => $variantIds[1],
+                    'quantity' => 1,
+                ],
+
+                [
+                    'cart_id' => $cartIds[$users[1]],
+                    'variant_id' => $variantIds[20],
+                    'quantity' => 1,
+                ],
+
+                [
+                    'cart_id' => $cartIds[$users[2]],
+                    'variant_id' => $variantIds[30],
+                    'quantity' => 2,
+                ],
+            ]);
+
 
             /*
             |--------------------------------------------------------------------------
@@ -218,60 +423,70 @@ class DatabaseSeeder extends Seeder
             |--------------------------------------------------------------------------
             */
 
-            $numberOfOrders = rand(1, 3);
+            $order1 = DB::table('orders')->insertGetId([
+                'user_id' => $users[0],
+                'status' => 'delivered',
+                'total' => 69.97,
+                'delivery_fee' => 5.00,
+            ]);
 
-            for ($i = 0; $i < $numberOfOrders; $i++) {
+            $order2 = DB::table('orders')->insertGetId([
+                'user_id' => $users[1],
+                'status' => 'processing',
+                'total' => 84.98,
+                'delivery_fee' => 5.00,
+            ]);
 
-                $orderVariants = $variants
-                    ->random(rand(1, 4))
-                    ->unique('id');
+            $order3 = DB::table('orders')->insertGetId([
+                'user_id' => $users[2],
+                'status' => 'pending',
+                'total' => 94.99,
+                'delivery_fee' => 5.00,
+            ]);
 
-                $total = 0;
 
-                foreach ($orderVariants as $variant) {
-                    $quantity = rand(1, 3);
+            /*
+            |--------------------------------------------------------------------------
+            | ORDER ITEMS
+            |--------------------------------------------------------------------------
+            */
 
-                    $total += $variant->price * $quantity;
-                }
+            DB::table('order_variant')->insert([
+                [
+                    'order_id' => $order1,
+                    'variant_id' => $variantIds[0],
+                    'quantity' => 2,
+                    'price' => 19.99,
+                ],
 
-                /*
-                |--------------------------------------------------------------------------
-                | ORDER
-                |--------------------------------------------------------------------------
-                */
+                [
+                    'order_id' => $order1,
+                    'variant_id' => $variantIds[5],
+                    'quantity' => 1,
+                    'price' => 29.99,
+                ],
 
-                $order = Order::create([
-                    'user_id' => $customer->id,
-                    'total' => $total,
-                    'status' => fake()->randomElement([
-                        'pending',
-                        'processing',
-                        'shipped',
-                        'completed',
-                        'cancelled',
-                    ]),
-                ]);
+                [
+                    'order_id' => $order2,
+                    'variant_id' => $variantIds[20],
+                    'quantity' => 1,
+                    'price' => 49.99,
+                ],
 
-                /*
-                |--------------------------------------------------------------------------
-                | ORDER ITEMS
-                |--------------------------------------------------------------------------
-                */
+                [
+                    'order_id' => $order2,
+                    'variant_id' => $variantIds[21],
+                    'quantity' => 1,
+                    'price' => 29.99,
+                ],
 
-                foreach ($orderVariants as $variant) {
-
-                    $quantity = rand(1, 3);
-
-                    $order->variants()->attach(
-                        $variant->id,
-                        [
-                            'quantity' => $quantity,
-                            'price' => $variant->price,
-                        ]
-                    );
-                }
-            }
-        }
+                [
+                    'order_id' => $order3,
+                    'variant_id' => $variantIds[40],
+                    'quantity' => 1,
+                    'price' => 89.99,
+                ],
+            ]);
+        });
     }
 }
-
