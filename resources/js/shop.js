@@ -222,8 +222,13 @@ function updateCircles(e,minP,maxP,inputElement) {
             minPrice.style.visibility = "";
             collisionPrice.style.display = "none";
         }
-        minInput.value = Number(minPrice.innerHTML.replace("$", "")) ;
-        maxInput.value = Number(maxPrice.innerHTML.replace("$", "")) ;
+
+        if (!inputElement) {
+            minInput.value = Number(minPrice.innerHTML.replace("$", "")) ;
+            minInput.dispatchEvent(new Event('input', { bubbles: true }));
+            maxInput.value = Number(maxPrice.innerHTML.replace("$", "")) ;
+            maxInput.dispatchEvent(new Event('input', { bubbles: true }));
+        }
     }
 }
 

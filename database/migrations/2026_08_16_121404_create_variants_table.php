@@ -26,7 +26,7 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnDelete();
 
-            $table->decimal('price', 10, 2);
+            $table->decimal('added_price', 10, 2);
 
             $table->unique(['product_id', 'color_id', 'size_id']);
 

@@ -44,7 +44,7 @@
                         <h2 class="font-satoshi font-bold text-[20px]">Price</h2>
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.4694 9.46939L7.4694 4.46939C7.53908 4.39947 7.62188 4.34399 7.71304 4.30614C7.8042 4.26828 7.90194 4.2488 8.00065 4.2488C8.09936 4.2488 8.1971 4.26828 8.28827 4.30614C8.37943 4.34399 8.46223 4.39947 8.5319 4.46939L13.5319 9.46939C13.6728 9.61028 13.752 9.80138 13.752 10.0006C13.752 10.1999 13.6728 10.391 13.5319 10.5319C13.391 10.6728 13.1999 10.7519 13.0007 10.7519C12.8014 10.7519 12.6103 10.6728 12.4694 10.5319L8.00003 6.06251L3.53065 10.5325C3.38976 10.6734 3.19866 10.7526 2.9994 10.7526C2.80015 10.7526 2.60905 10.6734 2.46815 10.5325C2.32726 10.3916 2.2481 10.2005 2.2481 10.0013C2.2481 9.80201 2.32726 9.61091 2.46815 9.47001L2.4694 9.46939Z" fill="black"/></svg>
                     </div>
-                    <div id="slider" class="bg-[#F0F0F0] w-[100%] h-2 rounded-[20px] relative">
+                    <div wire:ignore id="slider" class="bg-[#F0F0F0] w-[100%] h-2 rounded-[20px] relative"> 
                         <span id="minPrice" class="font-satoshi font-medium text-[14px] text-center w-9 left-12.5 top-4 -translate-x-[50%] absolute">100$</span>
                         <span id="maxPrice" class="font-satoshi font-medium text-[14px] text-center w-9 left-55 top-4 -translate-x-[50%] absolute">400$</span>
                         <span id="collisionPrice" class="font-satoshi font-medium text-[14px] text-center top-4 -translate-x-[50%] absolute whitespace-nowrap hidden">200$</span>
@@ -52,7 +52,7 @@
                     <form class="flex justify-between relative font-satoshi text-[16px]">
                         <div>
                             <label>From ($)</label>
-                            <input type="number" id="minInput" placeholder="Min" max="460" min="0" value="100"
+                            <input wire:model.live="minInput" type="number" id="minInput" placeholder="Min" max="460" min="0" value="100"
                             class="bg-[#F0F0F0] text-center w-28 h-10 rounded-[8px] border focus:outline-none" />
                         </div>
                         
@@ -60,7 +60,7 @@
 
                         <div>
                             <label>To ($)</label>
-                            <input type="number" id="maxInput" placeholder="Max" max="460" min="0" value="400"
+                            <input wire:model.live="maxInput" type="number" id="maxInput" placeholder="Max" max="460" min="0" value="400"
                             class="bg-[#F0F0F0] text-center w-28 h-10 rounded-[8px] border focus:outline-none" />
                         </div>
                     </form>
@@ -176,7 +176,7 @@
                                 <label class="font-satoshi text-[14px]">{{ $rating }}/<span class="opacity-60">5</span></label>
                             </div>
                             <div class="flex items-center gap-[8px]">
-                                <label class="font-satoshi font-bold text-[20px] lg:text-[24px]">{{ $product->variants->first()->price }}$</label>
+                                <label class="font-satoshi font-bold text-[20px] lg:text-[24px]">{{ $product->base_price }}$</label>
                             </div>
                         </div>
                     @endforeach

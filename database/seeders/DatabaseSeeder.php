@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
 
@@ -16,11 +15,17 @@ class DatabaseSeeder extends Seeder
 
             /*
             |--------------------------------------------------------------------------
+            | CLEAR STORAGE
+            |--------------------------------------------------------------------------
+            */
+
+            Storage::disk('public')->deleteDirectory('products');
+
+
+            /*
+            |--------------------------------------------------------------------------
             | PRODUCT IMAGES
             |--------------------------------------------------------------------------
-            |
-            | Get all images from public/images.
-            |
             */
 
             $imageFiles = glob(public_path('images/*'));
@@ -133,8 +138,6 @@ class DatabaseSeeder extends Seeder
             foreach ($userNames as $name) {
                 $users[] = DB::table('users')->insertGetId([
                     'name' => $name,
-                    'email' => strtolower(str_replace(' ', '.', $name)) . '@example.com',
-                    'password' => Hash::make('password'),
                 ]);
             }
 
@@ -146,11 +149,12 @@ class DatabaseSeeder extends Seeder
             */
 
             $products = [
+
                 [
                     'name' => 'Classic Cotton T-Shirt',
                     'description' => 'A comfortable everyday cotton t-shirt with a clean and minimal design.',
                     'category' => 'T-Shirts',
-                    'price' => 19.99,
+                    'base_price' => 19.99,
                     'colors' => ['Black', 'White', 'Gray'],
                     'sizes' => ['S', 'M', 'L', 'XL'],
                 ],
@@ -159,7 +163,7 @@ class DatabaseSeeder extends Seeder
                     'name' => 'Oversized Streetwear T-Shirt',
                     'description' => 'An oversized t-shirt designed for a relaxed modern streetwear look.',
                     'category' => 'T-Shirts',
-                    'price' => 29.99,
+                    'base_price' => 29.99,
                     'colors' => ['Black', 'White', 'Red'],
                     'sizes' => ['S', 'M', 'L', 'XL', 'XXL'],
                 ],
@@ -168,7 +172,7 @@ class DatabaseSeeder extends Seeder
                     'name' => 'Premium Oxford Shirt',
                     'description' => 'A premium Oxford shirt suitable for both casual and formal outfits.',
                     'category' => 'Shirts',
-                    'price' => 49.99,
+                    'base_price' => 49.99,
                     'colors' => ['White', 'Blue', 'Gray'],
                     'sizes' => ['S', 'M', 'L', 'XL'],
                 ],
@@ -177,7 +181,7 @@ class DatabaseSeeder extends Seeder
                     'name' => 'Slim Fit Jeans',
                     'description' => 'Modern slim fit jeans made from durable stretch denim.',
                     'category' => 'Jeans',
-                    'price' => 59.99,
+                    'base_price' => 59.99,
                     'colors' => ['Blue', 'Black'],
                     'sizes' => ['S', 'M', 'L', 'XL'],
                 ],
@@ -186,7 +190,7 @@ class DatabaseSeeder extends Seeder
                     'name' => 'Essential Pullover Hoodie',
                     'description' => 'A warm and comfortable hoodie with a simple minimal design.',
                     'category' => 'Hoodies',
-                    'price' => 54.99,
+                    'base_price' => 54.99,
                     'colors' => ['Black', 'Gray', 'Green'],
                     'sizes' => ['S', 'M', 'L', 'XL', 'XXL'],
                 ],
@@ -195,7 +199,7 @@ class DatabaseSeeder extends Seeder
                     'name' => 'Classic Denim Jacket',
                     'description' => 'A timeless denim jacket that works with almost any outfit.',
                     'category' => 'Jackets',
-                    'price' => 79.99,
+                    'base_price' => 79.99,
                     'colors' => ['Blue', 'Black'],
                     'sizes' => ['S', 'M', 'L', 'XL'],
                 ],
@@ -204,7 +208,7 @@ class DatabaseSeeder extends Seeder
                     'name' => 'Relaxed Cargo Shorts',
                     'description' => 'Comfortable cargo shorts with multiple practical pockets.',
                     'category' => 'Shorts',
-                    'price' => 34.99,
+                    'base_price' => 34.99,
                     'colors' => ['Black', 'Green', 'Gray'],
                     'sizes' => ['S', 'M', 'L', 'XL'],
                 ],
@@ -213,11 +217,12 @@ class DatabaseSeeder extends Seeder
                     'name' => 'Urban Runner Sneakers',
                     'description' => 'Lightweight sneakers designed for everyday comfort and movement.',
                     'category' => 'Shoes',
-                    'price' => 89.99,
+                    'base_price' => 89.99,
                     'colors' => ['Black', 'White', 'Red'],
                     'sizes' => ['S', 'M', 'L', 'XL'],
                 ],
             ];
+
 
             $productIds = [];
             $variantIds = [];
@@ -241,6 +246,7 @@ class DatabaseSeeder extends Seeder
                     'name' => $product['name'],
                     'description' => $product['description'],
                     'category_id' => $categoryIds[$product['category']],
+                    'base_price' => $product['base_price'],
                 ]);
 
                 $productIds[] = $productId;
@@ -252,6 +258,7 @@ class DatabaseSeeder extends Seeder
                 |--------------------------------------------------------------------------
                 |
                 | Pick 2 random images from public/images.
+                | Laravel generates a random filename when storing them.
                 |
                 */
 
@@ -260,15 +267,6 @@ class DatabaseSeeder extends Seeder
                     ->take(2);
 
                 foreach ($selectedImages as $image) {
-
-                    /*
-                    | Copy the image to:
-                    |
-                    | storage/app/public/products
-                    |
-                    | Laravel automatically generates
-                    | a random filename.
-                    */
 
                     $path = Storage::disk('public')->putFile(
                         'products',
@@ -286,6 +284,13 @@ class DatabaseSeeder extends Seeder
                 |--------------------------------------------------------------------------
                 | VARIANTS
                 |--------------------------------------------------------------------------
+                |
+                | added_price is 0 by default.
+                |
+                | Final price:
+                |
+                | base_price + added_price
+                |
                 */
 
                 foreach ($product['colors'] as $color) {
@@ -295,7 +300,7 @@ class DatabaseSeeder extends Seeder
                             'product_id' => $productId,
                             'color_id' => $colorIds[$color],
                             'size_id' => $sizeIds[$size],
-                            'price' => $product['price'],
+                            'added_price' => 0.00,
                         ]);
 
                         $variantIds[] = $variantId;
