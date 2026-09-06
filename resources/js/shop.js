@@ -304,3 +304,19 @@ xSvg.addEventListener("click", () => {
         burgerSvg.classList.remove("hidden");
         xSvg.classList.add("hidden");
 })
+
+
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+const Colors = document.querySelectorAll(".color");
+
+Colors.forEach(color => {
+    color.addEventListener("click",  () => {
+        Colors.forEach(e => {
+           e.firstElementChild.classList.add("hidden");
+        });
+
+
+        color.firstElementChild.classList.remove("hidden");
+    })
+});

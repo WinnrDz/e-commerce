@@ -70,22 +70,10 @@
                         <h2 class="font-satoshi font-bold text-[20px]">Color</h2>
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.4694 9.46939L7.4694 4.46939C7.53908 4.39947 7.62188 4.34399 7.71304 4.30614C7.8042 4.26828 7.90194 4.2488 8.00065 4.2488C8.09936 4.2488 8.1971 4.26828 8.28827 4.30614C8.37943 4.34399 8.46223 4.39947 8.5319 4.46939L13.5319 9.46939C13.6728 9.61028 13.752 9.80138 13.752 10.0006C13.752 10.1999 13.6728 10.391 13.5319 10.5319C13.391 10.6728 13.1999 10.7519 13.0007 10.7519C12.8014 10.7519 12.6103 10.6728 12.4694 10.5319L8.00003 6.06251L3.53065 10.5325C3.38976 10.6734 3.19866 10.7526 2.9994 10.7526C2.80015 10.7526 2.60905 10.6734 2.46815 10.5325C2.32726 10.3916 2.2481 10.2005 2.2481 10.0013C2.2481 9.80201 2.32726 9.61091 2.46815 9.47001L2.4694 9.46939Z" fill="black"/></svg>
                     </div>
-                    <div class="flex flex-col gap-4">
-                        <div class="flex justify-between">
-                            <div class="h-9.25 w-9.25 rounded-full bg-[#00C12B] border border-black/20 border-2 flex items-center justify-center"></div>
-                            <div class="h-9.25 w-9.25 rounded-full bg-[#F50606] border border-black/20 border-2 flex items-center justify-center"></div>
-                            <div class="h-9.25 w-9.25 rounded-full bg-[#F5DD06] border border-black/20 border-2 flex items-center justify-center"></div>
-                            <div class="h-9.25 w-9.25 rounded-full bg-[#F57906] border border-black/20 border-2 flex items-center justify-center"></div>
-                            <div class="h-9.25 w-9.25 rounded-full bg-[#06CAF5] border border-black/20 border-2 flex items-center justify-center"></div>
-                        </div>
-
-                        <div class="flex justify-between">
-                            <div class="h-9.25 w-9.25 rounded-full bg-[#063AF5] border border-black/20 border-2 flex items-center justify-center"> <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">s<path d="M14.5306 5.03063L6.5306 13.0306C6.46092 13.1005 6.37813 13.156 6.28696 13.1939C6.1958 13.2317 6.09806 13.2512 5.99935 13.2512C5.90064 13.2512 5.8029 13.2317 5.71173 13.1939C5.62057 13.156 5.53778 13.1005 5.4681 13.0306L1.9681 9.53063C1.89833 9.46087 1.84299 9.37804 1.80524 9.28689C1.76748 9.19574 1.74805 9.09804 1.74805 8.99938C1.74805 8.90072 1.76748 8.80302 1.80524 8.71187C1.84299 8.62072 1.89833 8.53789 1.9681 8.46813C2.03786 8.39837 2.12069 8.34302 2.21184 8.30527C2.30299 8.26751 2.40069 8.24808 2.49935 8.24808C2.59801 8.24808 2.69571 8.26751 2.78686 8.30527C2.87801 8.34302 2.96083 8.39837 3.0306 8.46813L5.99997 11.4375L13.4693 3.96938C13.6102 3.82848 13.8013 3.74933 14.0006 3.74933C14.1999 3.74933 14.391 3.82848 14.5318 3.96938C14.6727 4.11028 14.7519 4.30137 14.7519 4.50063C14.7519 4.69989 14.6727 4.89098 14.5318 5.03188L14.5306 5.03063Z" fill="white"/></svg></div>
-                            <div class="h-9.25 w-9.25 rounded-full bg-[#7D06F5] border border-black/20 border-2 flex items-center justify-center"></div>
-                            <div class="h-9.25 w-9.25 rounded-full bg-[#F506A4] border border-black/20 border-2 flex items-center justify-center"></div>
-                            <div class="h-9.25 w-9.25 rounded-full bg-[#FFFFFF] border border-black/20 border-2 flex items-center justify-center"></div>
-                            <div class="h-9.25 w-9.25 rounded-full bg-[#000000] border border-black/20 border-2 flex items-center justify-center"></div>
-                        </div>
+                    <div class="flex flex-wrap gap-4">
+                        @foreach ($colors as $color)
+                            <div wire:click="selectColor({{ $color->id }})" class="color h-9.25 w-9.25 rounded-full border border-black/20 border-2 flex items-center justify-center" style="background-color: {{ $color->hex_code }}"><svg class="hidden" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.5306 5.03063L6.5306 13.0306C6.46092 13.1005 6.37813 13.156 6.28696 13.1939C6.1958 13.2317 6.09806 13.2512 5.99935 13.2512C5.90064 13.2512 5.8029 13.2317 5.71173 13.1939C5.62057 13.156 5.53778 13.1005 5.4681 13.0306L1.9681 9.53063C1.89833 9.46087 1.84299 9.37804 1.80524 9.28689C1.76748 9.19574 1.74805 9.09804 1.74805 8.99938C1.74805 8.90072 1.76748 8.80302 1.80524 8.71187C1.84299 8.62072 1.89833 8.53789 1.9681 8.46813C2.03786 8.39837 2.12069 8.34302 2.21184 8.30527C2.30299 8.26751 2.40069 8.24808 2.49935 8.24808C2.59801 8.24808 2.69571 8.26751 2.78686 8.30527C2.87801 8.34302 2.96083 8.39837 3.0306 8.46813L5.99997 11.4375L13.4693 3.96938C13.6102 3.82848 13.8013 3.74933 14.0006 3.74933C14.1999 3.74933 14.391 3.82848 14.5318 3.96938C14.6727 4.11028 14.7519 4.30137 14.7519 4.50063C14.7519 4.69989 14.6727 4.89098 14.5318 5.03188L14.5306 5.03063Z" fill="{{ strtolower($color->hex_code) === '#ffffff' ? 'black' : 'white' }}"/></svg></div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="flex flex-col gap-5 mt-5 mx-6 pb-8 border-b border-black/10">
