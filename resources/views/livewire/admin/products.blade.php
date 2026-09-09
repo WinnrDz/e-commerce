@@ -100,6 +100,18 @@
 
                     </div>
 
+                    <div>
+                        <label class="block text-sm font-medium mb-2">
+                            Price
+                        </label>
+
+                        <input wire:model="base_price" type="number" placeholder="Enter product price"
+                            class="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-black">
+                        @error('base_price')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
+                    </div>
+
                 </div>
 
 
@@ -385,6 +397,18 @@
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
 
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2">
+                            Price
+                        </label>
+
+                        <input wire:model="base_price" type="number" placeholder="Enter product price"
+                            class="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-black">
+                        @error('base_price')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                     </div>
 
                 </div>

@@ -31,18 +31,6 @@ example of calling the function
     });
     */
 
-const sizeBtnsCont = document.getElementById("sizeBtnsCont");
-const sizeBtnsArray = Array.from(sizeBtnsCont.children);
-
-
-
-setupSelectableButtons(sizeBtnsArray, {
-        active: ["text-white","bg-black"],
-        inactive: ["text-black/60","hover:bg-[#EAEAEA]"],
-        rippleColor : "rgba(255, 255, 255, 0.3)",
-        ripple: false
-    });
-
 
 
 

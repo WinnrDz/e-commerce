@@ -18,6 +18,7 @@ class Products extends Component
     public $name = "";
     public $category_id;
     public $description = "";
+    public $base_price = 0;
 
     public $editing = false;
     public $product;
@@ -30,6 +31,7 @@ class Products extends Component
             'name' => 'required|min:3|max:255',
             'category_id' => 'required|exists:categories,id',
             'description' => 'required',
+            'base_price' => 'required|numeric|min:0',
             'images.*' => 'image|max:5120',
         ]);
 
@@ -40,6 +42,7 @@ class Products extends Component
                 'name' => $this->name,
                 'category_id' => $this->category_id,
                 'description' => $this->description,
+                'base_price' => $this->base_price,
             ]);
 
             $message = 'Product created successfully!';
@@ -53,6 +56,7 @@ class Products extends Component
                 'name' => $this->name,
                 'category_id' => $this->category_id,
                 'description' => $this->description,
+                'base_price' => $this->base_price,
             ]);
 
             $message = 'Product updated successfully!';
@@ -113,7 +117,7 @@ class Products extends Component
         $this->name = $this->product->name;
         $this->category_id = $this->product->category_id;
         $this->description = $this->product->description;
-
+        $this->base_price = $this->product->base_price;
         $this->images = [];
     }
 
