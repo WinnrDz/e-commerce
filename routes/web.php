@@ -9,15 +9,14 @@ use App\Livewire\Admin\Carts;
 use App\Livewire\Admin\Orders;
 use App\Livewire\Admin\Reviews;
 use App\Livewire\Shop;
+use App\Livewire\Show;
 
 Route::get('/', function () {
     return view('layouts/welcome');
 })->name("welcome");
 
 
-Route::get('/show', function () {
-    return view('Show');
-});
+Route::get('/show/{id}', Show::class)->name('show');
 
 Route::get('/shop', Shop::class)->name("shop");
 

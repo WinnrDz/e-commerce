@@ -65,6 +65,11 @@ class Shop extends Component
         $this->resetPage();
     }
 
+    public function show($id) 
+    {
+        return redirect()->route('show', $id);
+    }
+
     public function render()
     {
         return view('livewire.shop', [

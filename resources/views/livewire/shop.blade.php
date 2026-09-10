@@ -100,9 +100,9 @@
                 <div class="flex flex-wrap justify-between w-full gap-y-8 max-w-239 pb-6 border-b border-black/10">
                     @foreach ($products as $product)    
                                 @php
-                                $rating = $product->getAverageRatingAttribute();
+                                    $rating = $product->getAverageRatingAttribute();
                                 @endphp
-                        <div class="flex flex-col w-full max-w-[45%] lg:max-w-[30%] gap-[8px]">
+                        <div wire:click="show({{ $product->id }})"  class="flex flex-col w-full max-w-[45%] lg:max-w-[30%] gap-[8px] cursor-pointer">
                                 <div class="bg-[#F0EEED] p-4 rounded-[20px] aspect-square flex justify-center items-center overflow-hidden">
                                     <img class="w-full h-full object-contain" src="{{ Storage::url($product->images->first()->path ?? '')}}" alt="Logo">
                                 </div>
