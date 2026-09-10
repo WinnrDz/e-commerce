@@ -87,7 +87,7 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col gap-6">
+            <div class="lg:min-w-[925px] flex flex-col gap-6">
                 <div class="flex justify-between items-center">
                     <div class="flex gap-4">
                         <h1 class="font-satoshi font-bold text-[20px] lg:text-[24px] lg:text-[32px]">Casual</h1>
@@ -123,31 +123,24 @@
                         </div>
                     @endforeach
                     
-                    {{ $products->links() }}
                 </div>
                 <div class="flex justify-between items-center">
-                    <button class="flex items-center justify-center gap-2 px-3.5 py-2 rounded-[8px] border border-black/10">
+                    <button wire:click="previousPage"
+                            @disabled($products->onFirstPage()) 
+                    class="flex items-center justify-center gap-2 px-3.5 py-2 rounded-[8px] border border-black/10 cursor-pointer">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.8332 9.99996H4.1665M9.99984 4.16663L4.1665 9.99996L9.99984 15.8333" stroke="black" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         <span class="hidden lg:block font-satoshim text-[14px] leading-[20px]">Previous</span>
                     </button>
                     <div class="flex flex-wrap gap-3">
-                            <button
-                                class="font-satoshi text-[16px] text-black/60 bg-[#F0F0F0] w-[36px] lg:w-10 aspect-square rounded-[8px] cursor-pointer hover:bg-[#EAEAEA] overflow-hidden">1</button>
-                            <button
-                                class="font-satoshi text-[16px] text-black/60 w-[36px] lg:w-10 aspect-square rounded-[8px] cursor-pointer hover:bg-[#EAEAEA] overflow-hidden">2</button>
-                            <button
-                                class="font-satoshi text-[16px] text-black/60 w-[36px] lg:w-10 aspect-square rounded-[8px] cursor-pointer hover:bg-[#EAEAEA] overflow-hidden hidden lg:inline-block">3</button>
-                            <span
-                                class="flex items-center justify-center font-satoshi text-[16px] text-black/60 w-[36px] lg:w-10 aspect-square rounded-[8px] ">...</span>
-                            <button
-                                class="font-satoshi text-[16px] text-black/60 w-[36px] lg:w-10 aspect-square rounded-[8px] cursor-pointer hover:bg-[#EAEAEA] overflow-hidden hidden lg:inline-block">8</button>
-                            <button
-                                class="font-satoshi text-[16px] text-black/60 w-[36px] lg:w-10 aspect-square rounded-[8px] cursor-pointer hover:bg-[#EAEAEA] overflow-hidden">9</button>
-                                <button
-                                class="font-satoshi text-[16px] text-black/60 w-[36px] lg:w-10 aspect-square rounded-[8px] cursor-pointer hover:bg-[#EAEAEA] overflow-hidden">10</button>
+                        @for ($page = 1; $page <= $products->lastPage(); $page++)
+                        <button
+                            wire:click="gotoPage({{ $page }})"
+                            class="{{ $products->currentPage() === $page ? ' bg-[#F0F0F0]' : 'text-black/60' }} font-satoshi text-[16px] w-[36px] lg:w-10 aspect-square rounded-[8px] cursor-pointer hover:bg-[#EAEAEA] overflow-hidden">{{ $page }}</button>
+
+                        @endfor
                     </div>
-                    <button class="flex items-center justify-center gap-2 px-3.5 py-2 rounded-[8px] border border-black/10">
-                        <span class="hidden lg:block font-satoshim text-[14px] leading-[20px]">Next</span>
+                    <button wire:click="nextPage" @disabled(!$products->hasMorePages()) class="flex items-center justify-center gap-2 px-3.5 py-2 rounded-[8px] border border-black/10">
+                        <span class="hidden lg:block font-satoshim text-[14px] leading-[20px] cursor-pointer">Next</span>
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.1665 9.99996H15.8332M9.99984 15.8333L15.8332 9.99996L9.99984 4.16663" stroke="black" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </button>
 

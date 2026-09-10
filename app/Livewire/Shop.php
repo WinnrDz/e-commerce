@@ -22,6 +22,15 @@ class Shop extends Component
     public $size_ids = [];
     public $category_ids = [];
 
+    public function updatedMinInput()
+    {
+        $this->resetPage();
+    }
+
+    public function updatedMaxInput()
+    {
+        $this->resetPage();
+    }
 
     public function selectColor($id)
     {
@@ -30,6 +39,8 @@ class Shop extends Component
         } else {
             $this->color_ids[] = $id;
         }
+
+        $this->resetPage();
     }
 
     public function selectSize($id)
@@ -39,6 +50,8 @@ class Shop extends Component
         } else {
             $this->size_ids[] = $id;
         }
+
+        $this->resetPage();
     }
 
     public function selectCategory($id)
@@ -48,6 +61,8 @@ class Shop extends Component
         } else {
             $this->category_ids[] = $id;
         }
+
+        $this->resetPage();
     }
 
     public function render()
