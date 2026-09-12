@@ -40,8 +40,9 @@ const previewCont = document.getElementById("previewCont");
 const previewArray = Array.from(previewCont.children);
 const previewImage = document.getElementById("previewImage");
 
-window.preview = function (num) {
-    for (let i = 0; i < 3; i++) {
+window.preview = function (num,ImgsCount) {
+    console.log(previewArray);
+    for (let i = 0; i < ImgsCount; i++) {
         previewArray[i].classList.remove("border", "black");
     }
     previewArray[num].classList.add("border", "black");

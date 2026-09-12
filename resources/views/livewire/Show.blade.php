@@ -20,20 +20,16 @@
         </svg>
         <a class="font-satoshi text-[14px] lg:text-[16px] text-black ">T-shirts</a>
     </div>
-    <div class="flex flex-col lg:flex-row gap-6 lg:gap-4">
-        <div id="previewCont" class="flex flex-row justify-center lg:justify-start lg:flex-col gap-8 order-2 lg:order-1 h-[106px] lg:h-auto">
-            <div class="bg-[#F0EEED] p-2 w-full max-w-[111px] lg:min-w-38 h-full lg:max-h-41 rounded-[20px] border black flex justify-center items-center overflow-hidden cursor-pointer"
-                onclick="preview(0)">
-                <img src="{{ asset('images/life-shirt.png') }}" alt="Logo">
-            </div>
-            <div class="bg-[#F0EEED] p-2 w-full max-w-[111px] lg:min-w-38 h-full lg:max-h-41 rounded-[20px] flex justify-center items-center overflow-hidden cursor-pointer"
-                onclick="preview(1)">
-                <img src="{{ asset('images/dead-shirt.png') }}" alt="Logo">
-            </div>
-            <div class="bg-[#F0EEED] p-2 w-full max-w-[111px] lg:min-w-38 h-full lg:max-h-41 rounded-[20px] flex justify-center items-center overflow-hidden cursor-pointer"
-                onclick="preview(2)">
-                <img src="{{ asset('images/life-guy.png') }}"
-                    alt="Logo">
+    <div class="flex flex-col lg:flex-row gap-6 lg:gap-4 lg:h-[555px]">
+        <div class="overflow-x-hidden lg:[direction:rtl] lg:min-w-[180px]">
+            <div id="previewCont" class="flex flex-row justify-center lg:justify-start items-center lg:flex-col gap-8 order-2 lg:order-1 h-[106px] lg:h-auto lg:[direction:ltr]">
+                @foreach($product->images as $image)
+                    <div class="bg-[#F0EEED] p-2 w-full max-w-[111px] lg:min-w-38 h-full lg:max-h-41 rounded-[20px] flex justify-center items-center overflow-hidden cursor-pointer"
+                        onclick="preview({{ $loop->iteration - 1 }}, {{ $product->images->count() }})">
+                        
+                        <img src="{{ Storage::url($image->path ?? '')}}" alt="Logo">
+                    </div>
+                @endforeach
             </div>
         </div>
         <div id="zoomable"
