@@ -105,9 +105,9 @@ const detailBtnsCont = document.getElementById("detailBtnsCont");
 const detailBtnsArray = Array.from(detailBtnsCont.children);
 
 const sizeBtnsCont = document.getElementById("sizeBtnsCont");
+/*
 const sizeBtnsArray = Array.from(sizeBtnsCont.children);
-
-
+*/
 
 
 
@@ -118,13 +118,14 @@ const sizeBtnsArray = Array.from(sizeBtnsCont.children);
         
     });
 
+    /* Removed ripple effect for size buttons as it may interfere with the Livewire click events.
     setupSelectableButtons(sizeBtnsArray, {
         active: ["text-white","bg-black"],
         inactive: ["text-black/60","hover:bg-[#EAEAEA]"],
         rippleColor : "rgba(255, 255, 255, 0.3)",
         ripple: false
     });
-    
+    */
 
 
 /*------------------------------------------------------------------------------------------------------------------------------------------------*/

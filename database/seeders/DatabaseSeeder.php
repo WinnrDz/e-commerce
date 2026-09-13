@@ -256,10 +256,6 @@ class DatabaseSeeder extends Seeder
                 |--------------------------------------------------------------------------
                 | PRODUCT IMAGES
                 |--------------------------------------------------------------------------
-                |
-                | Pick 2 random images from public/images.
-                | Laravel generates a random filename when storing them.
-                |
                 */
 
                 $selectedImages = collect($imageFiles)
@@ -284,13 +280,6 @@ class DatabaseSeeder extends Seeder
                 |--------------------------------------------------------------------------
                 | VARIANTS
                 |--------------------------------------------------------------------------
-                |
-                | added_price is 0 by default.
-                |
-                | Final price:
-                |
-                | base_price + added_price
-                |
                 */
 
                 foreach ($product['colors'] as $color) {
@@ -321,6 +310,8 @@ class DatabaseSeeder extends Seeder
                     'rating' => 5,
                     'user_id' => $users[0],
                     'product_id' => $productIds[0],
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
@@ -328,6 +319,8 @@ class DatabaseSeeder extends Seeder
                     'rating' => 4,
                     'user_id' => $users[1],
                     'product_id' => $productIds[0],
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
@@ -335,6 +328,8 @@ class DatabaseSeeder extends Seeder
                     'rating' => 5,
                     'user_id' => $users[2],
                     'product_id' => $productIds[1],
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
@@ -342,6 +337,8 @@ class DatabaseSeeder extends Seeder
                     'rating' => 5,
                     'user_id' => $users[3],
                     'product_id' => $productIds[2],
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
@@ -349,6 +346,8 @@ class DatabaseSeeder extends Seeder
                     'rating' => 4,
                     'user_id' => $users[4],
                     'product_id' => $productIds[3],
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
@@ -356,6 +355,8 @@ class DatabaseSeeder extends Seeder
                     'rating' => 5,
                     'user_id' => $users[5],
                     'product_id' => $productIds[4],
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
@@ -363,6 +364,8 @@ class DatabaseSeeder extends Seeder
                     'rating' => 4,
                     'user_id' => $users[6],
                     'product_id' => $productIds[5],
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
 
                 [
@@ -370,6 +373,8 @@ class DatabaseSeeder extends Seeder
                     'rating' => 5,
                     'user_id' => $users[7],
                     'product_id' => $productIds[7],
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
             ]);
 
