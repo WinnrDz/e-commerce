@@ -10,6 +10,7 @@ use App\Livewire\Admin\Orders;
 use App\Livewire\Admin\Reviews;
 use App\Livewire\Shop;
 use App\Livewire\Show;
+use App\Livewire\Cart;
 
 Route::get('/', function () {
     return view('layouts/welcome');
@@ -20,9 +21,7 @@ Route::get('/show/{id}', Show::class)->name('show');
 
 Route::get('/shop', Shop::class)->name("shop");
 
-Route::get('/cart', function () {
-    return view('cart');
-});
+Route::get('/cart', Cart::class)->name("cart");
 
 Route::get('/admin/dashboard', Dashboard::class)->name("admin.dashboard");
 Route::get('/admin/products', Products::class)->name("admin.products");

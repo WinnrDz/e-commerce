@@ -25,7 +25,7 @@ class Variants extends Component
 
     public $variant;
     public $product_id;
-    public $price;
+    public $added_price;
     public $editingVariants = false;
 
     public function createVariant() {
@@ -33,18 +33,18 @@ class Variants extends Component
             'product_id' => 'required|exists:products,id',
             'color_id' => 'required|exists:colors,id',
             'size_id' => 'required|exists:sizes,id',
-            'price' => 'required|numeric|min:0',
+            'added_price' => 'required|numeric|min:0',
         ]);
         Variant::create([
             'product_id' => $this->product_id,
             'color_id' => $this->color_id,
             'size_id' => $this->size_id,
-            'price' => $this->price,
+            'added_price' => $this->added_price,
         ]);
 
         session()->flash('variant_created', 'Variant created successfully.');
 
-        $this->reset(['product_id', 'color_id', 'size_id', 'price']);
+        $this->reset(['product_id', 'color_id', 'size_id', 'added_price']);
     }
 
     public function editVariant($id) {
@@ -53,7 +53,7 @@ class Variants extends Component
         $this->product_id = $variant->product_id;
         $this->color_id = $variant->color_id;
         $this->size_id = $variant->size_id;
-        $this->price = $variant->price;
+        $this->added_price = $variant->added_price;
         $this->editingVariants = true;
     }
 
@@ -62,17 +62,17 @@ class Variants extends Component
             'product_id' => 'required|exists:products,id',
             'color_id' => 'required|exists:colors,id',
             'size_id' => 'required|exists:sizes,id',
-            'price' => 'required|numeric|min:0',
+            'added_price' => 'required|numeric|min:0',
         ]);
         $this->variant->update([
             'product_id' => $this->product_id,
             'color_id' => $this->color_id,
             'size_id' => $this->size_id,
-            'price' => $this->price,
+            'added_price' => $this->added_price,
         ]);
 
         session()->flash('variant_updated', 'Variant updated successfully.');
-        $this->reset(['variant', 'product_id', 'color_id', 'size_id', 'price']);
+        $this->reset(['variant', 'product_id', 'color_id', 'size_id', 'added_price']);
         $this->editingVariants = false;
     }
 

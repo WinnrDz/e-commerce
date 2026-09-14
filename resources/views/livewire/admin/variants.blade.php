@@ -109,12 +109,12 @@
             @enderror
 
             <input
-                wire:model="price"
+                wire:model="added_price"
                 type="number"
-                placeholder="Price"
+                placeholder="Added Price"
                 class="w-32 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-black"
             >
-             @error('price')
+             @error('added_price')
                 <span class="text-red-500">{{ $message }}</span>
             @enderror
 
@@ -155,7 +155,7 @@
                     </th>
 
                     <th class="px-6 py-4 font-medium">
-                        Price
+                        Added Price
                     </th>
 
                     <th class="px-6 py-4 font-medium">
@@ -218,7 +218,7 @@
                         <td class="px-6 py-4">
 
                             <span class="font-medium">
-                                {{ $variant->price }}
+                                {{ $variant->added_price }}
                             </span>
 
                         </td>

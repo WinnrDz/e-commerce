@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Variant extends Model
 {
      protected $fillable = [
-        'price',
+        'added_price',
         'product_id',
         'color_id',
         'size_id'
@@ -23,5 +23,14 @@ class Variant extends Model
 
     public function size() {
         return $this->belongsTo(Size::class);
+    }
+
+    public function carts() {
+        return $this->belongsToMany(Cart::class)
+                    ->withPivot('quantity');
+    }
+
+    public function price() {
+        return $this->product->base_price + $this->added_price;
     }
 }
