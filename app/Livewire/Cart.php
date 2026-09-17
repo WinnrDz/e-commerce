@@ -4,7 +4,6 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use livewire\Attributes\Layout;
-use App\Models\Variant;
 
 #[Layout('layouts::app')]
 class Cart extends Component
