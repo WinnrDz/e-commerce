@@ -18,7 +18,14 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnDelete();
 
-            $table->string('status');
+            $table->enum('status', [
+                'pending',
+                'confirmed',
+                'shipped',
+                'delivered',
+                'cancelled',
+            ]);
+
             $table->decimal('total', 10, 2);
             $table->decimal('delivery_fee', 10, 2)->default(0);
 

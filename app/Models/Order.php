@@ -22,4 +22,9 @@ class Order extends Model
         return $this->belongsToMany(Variant::class)
                     ->withPivot(['quantity','price']);
     }
+
+        public function itemsCount()
+    {
+        return $this->variants->sum('pivot.quantity');
+    }
 }

@@ -236,12 +236,6 @@ class DatabaseSeeder extends Seeder
 
             foreach ($products as $product) {
 
-                /*
-                |--------------------------------------------------------------------------
-                | PRODUCT
-                |--------------------------------------------------------------------------
-                */
-
                 $productId = DB::table('products')->insertGetId([
                     'name' => $product['name'],
                     'description' => $product['description'],
@@ -436,22 +430,55 @@ class DatabaseSeeder extends Seeder
             $order1 = DB::table('orders')->insertGetId([
                 'user_id' => $users[0],
                 'status' => 'delivered',
-                'total' => 69.97,
+                'total' => 169.95,
                 'delivery_fee' => 5.00,
+                'created_at' => now()->subDays(32),
+                'updated_at' => now()->subDays(32),
             ]);
 
             $order2 = DB::table('orders')->insertGetId([
                 'user_id' => $users[1],
-                'status' => 'processing',
-                'total' => 84.98,
+                'status' => 'confirmed',
+                'total' => 134.97,
                 'delivery_fee' => 5.00,
+                'created_at' => now()->subDays(7),
+                'updated_at' => now()->subDays(7),
             ]);
 
             $order3 = DB::table('orders')->insertGetId([
                 'user_id' => $users[2],
                 'status' => 'pending',
-                'total' => 94.99,
+                'total' => 179.97,
                 'delivery_fee' => 5.00,
+                'created_at' => now()->subDays(2),
+                'updated_at' => now()->subDays(2),
+            ]);
+
+            $order4 = DB::table('orders')->insertGetId([
+                'user_id' => $users[3],
+                'status' => 'shipped',
+                'total' => 149.97,
+                'delivery_fee' => 5.00,
+                'created_at' => now()->subDays(4),
+                'updated_at' => now()->subDays(4),
+            ]);
+
+            $order5 = DB::table('orders')->insertGetId([
+                'user_id' => $users[4],
+                'status' => 'cancelled',
+                'total' => 99.98,
+                'delivery_fee' => 5.00,
+                'created_at' => now()->subDays(15),
+                'updated_at' => now()->subDays(15),
+            ]);
+
+            $order6 = DB::table('orders')->insertGetId([
+                'user_id' => $users[5],
+                'status' => 'delivered',
+                'total' => 224.96,
+                'delivery_fee' => 5.00,
+                'created_at' => now()->subDays(45),
+                'updated_at' => now()->subDays(45),
             ]);
 
 
@@ -462,6 +489,12 @@ class DatabaseSeeder extends Seeder
             */
 
             DB::table('order_variant')->insert([
+
+                /*
+                | Order 1
+                | Multiple variants of the same product + another product
+                */
+
                 [
                     'order_id' => $order1,
                     'variant_id' => $variantIds[0],
@@ -473,8 +506,21 @@ class DatabaseSeeder extends Seeder
                     'order_id' => $order1,
                     'variant_id' => $variantIds[5],
                     'quantity' => 1,
-                    'price' => 29.99,
+                    'price' => 19.99,
                 ],
+
+                [
+                    'order_id' => $order1,
+                    'variant_id' => $variantIds[12],
+                    'quantity' => 1,
+                    'price' => 49.99,
+                ],
+
+
+                /*
+                | Order 2
+                | Multiple different products
+                */
 
                 [
                     'order_id' => $order2,
@@ -487,7 +533,34 @@ class DatabaseSeeder extends Seeder
                     'order_id' => $order2,
                     'variant_id' => $variantIds[21],
                     'quantity' => 1,
-                    'price' => 29.99,
+                    'price' => 49.99,
+                ],
+
+                [
+                    'order_id' => $order2,
+                    'variant_id' => $variantIds[30],
+                    'quantity' => 1,
+                    'price' => 54.99,
+                ],
+
+
+                /*
+                | Order 3
+                | T-Shirt + Jeans + Shoes
+                */
+
+                [
+                    'order_id' => $order3,
+                    'variant_id' => $variantIds[2],
+                    'quantity' => 1,
+                    'price' => 19.99,
+                ],
+
+                [
+                    'order_id' => $order3,
+                    'variant_id' => $variantIds[25],
+                    'quantity' => 1,
+                    'price' => 59.99,
                 ],
 
                 [
@@ -495,6 +568,87 @@ class DatabaseSeeder extends Seeder
                     'variant_id' => $variantIds[40],
                     'quantity' => 1,
                     'price' => 89.99,
+                ],
+
+
+                /*
+                | Order 4
+                | Multiple variants of same product + jacket
+                */
+
+                [
+                    'order_id' => $order4,
+                    'variant_id' => $variantIds[6],
+                    'quantity' => 2,
+                    'price' => 29.99,
+                ],
+
+                [
+                    'order_id' => $order4,
+                    'variant_id' => $variantIds[10],
+                    'quantity' => 1,
+                    'price' => 29.99,
+                ],
+
+                [
+                    'order_id' => $order4,
+                    'variant_id' => $variantIds[36],
+                    'quantity' => 1,
+                    'price' => 79.99,
+                ],
+
+
+                /*
+                | Order 5
+                | Shirt + Shorts
+                */
+
+                [
+                    'order_id' => $order5,
+                    'variant_id' => $variantIds[16],
+                    'quantity' => 1,
+                    'price' => 49.99,
+                ],
+
+                [
+                    'order_id' => $order5,
+                    'variant_id' => $variantIds[45],
+                    'quantity' => 1,
+                    'price' => 34.99,
+                ],
+
+
+                /*
+                | Order 6
+                | Multiple products + multiple quantities
+                */
+
+                [
+                    'order_id' => $order6,
+                    'variant_id' => $variantIds[1],
+                    'quantity' => 2,
+                    'price' => 19.99,
+                ],
+
+                [
+                    'order_id' => $order6,
+                    'variant_id' => $variantIds[15],
+                    'quantity' => 1,
+                    'price' => 49.99,
+                ],
+
+                [
+                    'order_id' => $order6,
+                    'variant_id' => $variantIds[28],
+                    'quantity' => 1,
+                    'price' => 59.99,
+                ],
+
+                [
+                    'order_id' => $order6,
+                    'variant_id' => $variantIds[50],
+                    'quantity' => 1,
+                    'price' => 34.99,
                 ],
             ]);
         });

@@ -22,10 +22,6 @@ Route::get('/shop', Shop::class)->name("shop");
 Route::get('/cart', Cart::class)->name("cart");
 Route::get('/orders', App\Livewire\Orders::class)->name("orders");
 
-Route::get('/ordersRaw', function () {
-    return view('orders');
-})->name("ordersRaw");
-
 Route::get('/admin/dashboard', Dashboard::class)->name("admin.dashboard");
 Route::get('/admin/products', Products::class)->name("admin.products");
 Route::get('/admin/categories', Categories::class)->name("admin.categories");
@@ -33,3 +29,17 @@ Route::get('/admin/variants', Variants::class)->name("admin.variants");
 Route::get('/admin/carts', Carts::class)->name("admin.carts");
 Route::get('/admin/orders', Orders::class)->name("admin.orders");
 Route::get('/admin/reviews', Reviews::class)->name("admin.reviews");
+
+
+
+
+
+
+/* these are for frontend */
+Route::get('/ordersRaw', function () {
+    return view('orders');
+})->name("ordersRaw");
+
+Route::get('/orderRaw', function () {
+    return view('order');
+})->name("orderRaw");
