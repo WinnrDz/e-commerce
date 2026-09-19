@@ -227,6 +227,9 @@ class DatabaseSeeder extends Seeder
             $productIds = [];
             $variantIds = [];
 
+            // Stores the actual price of every variant.
+            $variantPrices = [];
+
 
             /*
             |--------------------------------------------------------------------------
@@ -279,14 +282,23 @@ class DatabaseSeeder extends Seeder
                 foreach ($product['colors'] as $color) {
                     foreach ($product['sizes'] as $size) {
 
+                        $addedPrice = 0.00;
+
                         $variantId = DB::table('variants')->insertGetId([
                             'product_id' => $productId,
                             'color_id' => $colorIds[$color],
                             'size_id' => $sizeIds[$size],
-                            'added_price' => 0.00,
+                            'added_price' => $addedPrice,
                         ]);
 
                         $variantIds[] = $variantId;
+
+                        /*
+                        | Actual variant price:
+                        | product base price + variant added price
+                        */
+                        $variantPrices[$variantId] =
+                            $product['base_price'] + $addedPrice;
                     }
                 }
             }
@@ -384,7 +396,7 @@ class DatabaseSeeder extends Seeder
             foreach ($users as $userId) {
                 $cartIds[$userId] = DB::table('carts')->insertGetId([
                     'user_id' => $userId,
-                ]);
+            ]);
             }
 
 
@@ -423,234 +435,224 @@ class DatabaseSeeder extends Seeder
 
             /*
             |--------------------------------------------------------------------------
-            | ORDERS
+            | DELIVERY FEE
             |--------------------------------------------------------------------------
             */
 
-            $order1 = DB::table('orders')->insertGetId([
-                'user_id' => $users[0],
-                'status' => 'delivered',
-                'total' => 169.95,
-                'delivery_fee' => 5.00,
-                'created_at' => now()->subDays(32),
-                'updated_at' => now()->subDays(32),
-            ]);
-
-            $order2 = DB::table('orders')->insertGetId([
-                'user_id' => $users[1],
-                'status' => 'confirmed',
-                'total' => 134.97,
-                'delivery_fee' => 5.00,
-                'created_at' => now()->subDays(7),
-                'updated_at' => now()->subDays(7),
-            ]);
-
-            $order3 = DB::table('orders')->insertGetId([
-                'user_id' => $users[2],
-                'status' => 'pending',
-                'total' => 179.97,
-                'delivery_fee' => 5.00,
-                'created_at' => now()->subDays(2),
-                'updated_at' => now()->subDays(2),
-            ]);
-
-            $order4 = DB::table('orders')->insertGetId([
-                'user_id' => $users[3],
-                'status' => 'shipped',
-                'total' => 149.97,
-                'delivery_fee' => 5.00,
-                'created_at' => now()->subDays(4),
-                'updated_at' => now()->subDays(4),
-            ]);
-
-            $order5 = DB::table('orders')->insertGetId([
-                'user_id' => $users[4],
-                'status' => 'cancelled',
-                'total' => 99.98,
-                'delivery_fee' => 5.00,
-                'created_at' => now()->subDays(15),
-                'updated_at' => now()->subDays(15),
-            ]);
-
-            $order6 = DB::table('orders')->insertGetId([
-                'user_id' => $users[5],
-                'status' => 'delivered',
-                'total' => 224.96,
-                'delivery_fee' => 5.00,
-                'created_at' => now()->subDays(45),
-                'updated_at' => now()->subDays(45),
-            ]);
+            $deliveryFee = 5.00;
 
 
             /*
             |--------------------------------------------------------------------------
-            | ORDER ITEMS
+            | ORDERS
+            |--------------------------------------------------------------------------
+            |
+            | The total is NOT manually entered anymore.
+            | It is calculated after inserting the order items.
+            |
+            */
+
+            $orders = [
+                [
+                    'user_id' => $users[0],
+                    'status' => 'delivered',
+                    'days_ago' => 32,
+                    'items' => [
+                        [
+                            'variant_id' => $variantIds[0],
+                            'quantity' => 2,
+                        ],
+                        [
+                            'variant_id' => $variantIds[5],
+                            'quantity' => 1,
+                        ],
+                        [
+                            'variant_id' => $variantIds[12],
+                            'quantity' => 1,
+                        ],
+                    ],
+                ],
+
+                [
+                    'user_id' => $users[1],
+                    'status' => 'confirmed',
+                    'days_ago' => 7,
+                    'items' => [
+                        [
+                            'variant_id' => $variantIds[20],
+                            'quantity' => 1,
+                        ],
+                        [
+                            'variant_id' => $variantIds[21],
+                            'quantity' => 1,
+                        ],
+                        [
+                            'variant_id' => $variantIds[30],
+                            'quantity' => 1,
+                        ],
+                    ],
+                ],
+
+                [
+                    'user_id' => $users[2],
+                    'status' => 'pending',
+                    'days_ago' => 2,
+                    'items' => [
+                        [
+                            'variant_id' => $variantIds[2],
+                            'quantity' => 1,
+                        ],
+                        [
+                            'variant_id' => $variantIds[25],
+                            'quantity' => 1,
+                        ],
+                        [
+                            'variant_id' => $variantIds[40],
+                            'quantity' => 1,
+                        ],
+                    ],
+                ],
+
+                [
+                    'user_id' => $users[3],
+                    'status' => 'shipped',
+                    'days_ago' => 4,
+                    'items' => [
+                        [
+                            'variant_id' => $variantIds[6],
+                            'quantity' => 2,
+                        ],
+                        [
+                            'variant_id' => $variantIds[10],
+                            'quantity' => 1,
+                        ],
+                        [
+                            'variant_id' => $variantIds[36],
+                            'quantity' => 1,
+                        ],
+                    ],
+                ],
+
+                [
+                    'user_id' => $users[4],
+                    'status' => 'cancelled',
+                    'days_ago' => 15,
+                    'items' => [
+                        [
+                            'variant_id' => $variantIds[16],
+                            'quantity' => 1,
+                        ],
+                        [
+                            'variant_id' => $variantIds[45],
+                            'quantity' => 1,
+                        ],
+                    ],
+                ],
+
+                [
+                    'user_id' => $users[5],
+                    'status' => 'delivered',
+                    'days_ago' => 45,
+                    'items' => [
+                        [
+                            'variant_id' => $variantIds[1],
+                            'quantity' => 2,
+                        ],
+                        [
+                            'variant_id' => $variantIds[15],
+                            'quantity' => 1,
+                        ],
+                        [
+                            'variant_id' => $variantIds[28],
+                            'quantity' => 1,
+                        ],
+                        [
+                            'variant_id' => $variantIds[50],
+                            'quantity' => 1,
+                        ],
+                    ],
+                ],
+            ];
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | CREATE ORDERS + ORDER ITEMS
             |--------------------------------------------------------------------------
             */
 
-            DB::table('order_variant')->insert([
+            foreach ($orders as $orderData) {
 
-                /*
-                | Order 1
-                | Multiple variants of the same product + another product
-                */
-
-                [
-                    'order_id' => $order1,
-                    'variant_id' => $variantIds[0],
-                    'quantity' => 2,
-                    'price' => 19.99,
-                ],
-
-                [
-                    'order_id' => $order1,
-                    'variant_id' => $variantIds[5],
-                    'quantity' => 1,
-                    'price' => 19.99,
-                ],
-
-                [
-                    'order_id' => $order1,
-                    'variant_id' => $variantIds[12],
-                    'quantity' => 1,
-                    'price' => 49.99,
-                ],
+                $createdAt = now()->subDays($orderData['days_ago']);
 
 
                 /*
-                | Order 2
-                | Multiple different products
+                |--------------------------------------------------------------------------
+                | CREATE ORDER
+                |--------------------------------------------------------------------------
                 */
 
-                [
-                    'order_id' => $order2,
-                    'variant_id' => $variantIds[20],
-                    'quantity' => 1,
-                    'price' => 49.99,
-                ],
-
-                [
-                    'order_id' => $order2,
-                    'variant_id' => $variantIds[21],
-                    'quantity' => 1,
-                    'price' => 49.99,
-                ],
-
-                [
-                    'order_id' => $order2,
-                    'variant_id' => $variantIds[30],
-                    'quantity' => 1,
-                    'price' => 54.99,
-                ],
+                $orderId = DB::table('orders')->insertGetId([
+                    'user_id' => $orderData['user_id'],
+                    'status' => $orderData['status'],
+                    'total' => 0,
+                    'delivery_fee' => $deliveryFee,
+                    'created_at' => $createdAt,
+                    'updated_at' => $createdAt,
+                ]);
 
 
                 /*
-                | Order 3
-                | T-Shirt + Jeans + Shoes
+                |--------------------------------------------------------------------------
+                | CREATE ORDER ITEMS
+                |--------------------------------------------------------------------------
                 */
 
-                [
-                    'order_id' => $order3,
-                    'variant_id' => $variantIds[2],
-                    'quantity' => 1,
-                    'price' => 19.99,
-                ],
+                $subtotal = 0;
 
-                [
-                    'order_id' => $order3,
-                    'variant_id' => $variantIds[25],
-                    'quantity' => 1,
-                    'price' => 59.99,
-                ],
+                foreach ($orderData['items'] as $item) {
 
-                [
-                    'order_id' => $order3,
-                    'variant_id' => $variantIds[40],
-                    'quantity' => 1,
-                    'price' => 89.99,
-                ],
+                    $variantId = $item['variant_id'];
+                    $quantity = $item['quantity'];
+
+                    // Get the actual price of this variant.
+                    $price = $variantPrices[$variantId];
+
+                    DB::table('order_variant')->insert([
+                        'order_id' => $orderId,
+                        'variant_id' => $variantId,
+                        'quantity' => $quantity,
+                        'price' => $price,
+                    ]);
+
+                    /*
+                    | Line total = price × quantity
+                    */
+                    $subtotal += $price * $quantity;
+                }
 
 
                 /*
-                | Order 4
-                | Multiple variants of same product + jacket
+                |--------------------------------------------------------------------------
+                | CALCULATE ORDER TOTAL
+                |--------------------------------------------------------------------------
                 */
 
-                [
-                    'order_id' => $order4,
-                    'variant_id' => $variantIds[6],
-                    'quantity' => 2,
-                    'price' => 29.99,
-                ],
-
-                [
-                    'order_id' => $order4,
-                    'variant_id' => $variantIds[10],
-                    'quantity' => 1,
-                    'price' => 29.99,
-                ],
-
-                [
-                    'order_id' => $order4,
-                    'variant_id' => $variantIds[36],
-                    'quantity' => 1,
-                    'price' => 79.99,
-                ],
+                $total = $subtotal + $deliveryFee;
 
 
                 /*
-                | Order 5
-                | Shirt + Shorts
+                |--------------------------------------------------------------------------
+                | UPDATE ORDER TOTAL
+                |--------------------------------------------------------------------------
                 */
 
-                [
-                    'order_id' => $order5,
-                    'variant_id' => $variantIds[16],
-                    'quantity' => 1,
-                    'price' => 49.99,
-                ],
-
-                [
-                    'order_id' => $order5,
-                    'variant_id' => $variantIds[45],
-                    'quantity' => 1,
-                    'price' => 34.99,
-                ],
-
-
-                /*
-                | Order 6
-                | Multiple products + multiple quantities
-                */
-
-                [
-                    'order_id' => $order6,
-                    'variant_id' => $variantIds[1],
-                    'quantity' => 2,
-                    'price' => 19.99,
-                ],
-
-                [
-                    'order_id' => $order6,
-                    'variant_id' => $variantIds[15],
-                    'quantity' => 1,
-                    'price' => 49.99,
-                ],
-
-                [
-                    'order_id' => $order6,
-                    'variant_id' => $variantIds[28],
-                    'quantity' => 1,
-                    'price' => 59.99,
-                ],
-
-                [
-                    'order_id' => $order6,
-                    'variant_id' => $variantIds[50],
-                    'quantity' => 1,
-                    'price' => 34.99,
-                ],
-            ]);
+                DB::table('orders')
+                    ->where('id', $orderId)
+                    ->update([
+                        'total' => round($total, 2),
+                    ]);
+            }
         });
     }
 }

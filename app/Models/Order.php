@@ -23,8 +23,15 @@ class Order extends Model
                     ->withPivot(['quantity','price']);
     }
 
-        public function itemsCount()
+    public function itemsCount()
     {
         return $this->variants->sum('pivot.quantity');
+    }
+
+    public function subtotal()
+    {
+        return $this->variants->sum(function ($variant) {
+            return $variant->pivot->quantity * $variant->pivot->price;
+        });
     }
 }

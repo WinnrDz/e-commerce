@@ -21,6 +21,7 @@ Route::get('/show/{id}', Show::class)->name('show');
 Route::get('/shop', Shop::class)->name("shop");
 Route::get('/cart', Cart::class)->name("cart");
 Route::get('/orders', App\Livewire\Orders::class)->name("orders");
+Route::get('/order/{orderId}', App\Livewire\Order::class)->name('order');
 
 Route::get('/admin/dashboard', Dashboard::class)->name("admin.dashboard");
 Route::get('/admin/products', Products::class)->name("admin.products");
@@ -42,4 +43,8 @@ Route::get('/ordersRaw', function () {
 
 Route::get('/orderRaw', function () {
     return view('order');
-})->name("orderRaw");
+})->name("order");
+
+Route::get('/aiOrder', function () {
+    return view('aiOrder');
+})->name("aiOrder");
