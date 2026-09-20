@@ -51,9 +51,9 @@
                             <span class="font-satoshi font-bold text-[24px]">${{ $order->total }}</span>
                             <span class="font-satoshim text-[13px] text-black/60">Paid with Visa **** 4242</span>
                         </div>
-                        <button class="font-satoshim text-[16px] bg-black text-white font-medium py-3 px-6 rounded-full max-h-12 mt-auto">
+                        <a href="{{ route('order', $order->id) }}" class="font-satoshim text-[16px] bg-black text-white font-medium py-3 px-6 rounded-full max-h-12 mt-auto">
                             View Details
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

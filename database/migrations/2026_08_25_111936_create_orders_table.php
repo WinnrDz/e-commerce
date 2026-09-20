@@ -24,7 +24,7 @@ return new class extends Migration
                 'shipped',
                 'delivered',
                 'cancelled',
-            ]);
+            ])->default('pending');
 
             $table->decimal('total', 10, 2);
             $table->decimal('delivery_fee', 10, 2)->default(0);

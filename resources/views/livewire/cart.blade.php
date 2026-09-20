@@ -9,6 +9,30 @@
         <a class="font-satoshi text-[16px] text-black ">Cart</a>
     </div>
     <div class="flex flex-col items-center justify-center">
+        @if ($cart->variants->isEmpty())
+            <div class="flex flex-col w-full items-center">
+                
+                    <div class="max-w-[600px] w-full mb-20">
+                        <img
+                            src="{{ session('success') ? asset('images/thanks.png') : asset('images/empty.png') }}"
+                            alt="thanks"
+                        >
+                    </div>
+                
+                <div class="flex flex-row justify-center gap-10  w-full">
+                        <a href={{ route("shop") }} class="flex items-center justify-center gap-3 bg-black text-white font-satoshim text-[16px] w-full max-w-[300px] py-4  rounded-[62px] cursor-pointer">
+                            <span>Continue Shopping</span>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.2959 4.45404L21.0459 11.204C21.1508 11.3086 21.234 11.4327 21.2908 11.5695C21.3476 11.7062 21.3768 11.8529 21.3768 12.0009C21.3768 12.149 21.3476 12.2956 21.2908 12.4323C21.234 12.5691 21.1508 12.6933 21.0459 12.7978L14.2959 19.5478C14.0846 19.7591 13.7979 19.8779 13.4991 19.8779C13.2002 19.8779 12.9135 19.7591 12.7022 19.5478C12.4908 19.3364 12.3721 19.0498 12.3721 18.7509C12.3721 18.452 12.4908 18.1654 12.7022 17.954L17.5313 13.125L3.75 13.125C3.45163 13.125 3.16548 13.0065 2.9545 12.7955C2.74353 12.5845 2.625 12.2983 2.625 12C2.625 11.7016 2.74353 11.4155 2.95451 11.2045C3.16548 10.9935 3.45163 10.875 3.75 10.875L17.5313 10.875L12.7013 6.04592C12.4899 5.83457 12.3712 5.54793 12.3712 5.24904C12.3712 4.95016 12.4899 4.66351 12.7013 4.45217C12.9126 4.24082 13.1992 4.12209 13.4981 4.12209C13.797 4.12209 14.0837 4.24082 14.295 4.45217L14.2959 4.45404Z" fill="white"/></svg>
+                        </a>
+                        @if (session('success'))
+                            <a href="{{ route('order', $order_id) }}" class="flex items-center justify-center gap-3 bg-black text-white font-satoshim text-[16px] w-full max-w-[300px] py-4  rounded-[62px] cursor-pointer">
+                                <span>View Order</span>                        
+                            </a>
+                        @endif
+                </div>
+                
+            </div>
+        @else
         <h1 class="font-integral font-bold text-[40px] w-[100%]">Your cart</h1>
         <div class="flex flex-col lg:flex-row items-start gap-8 mt-10 w-full">
             <div class="flex flex-col items-center py-5 px-4 gap-6 w-full max-w-178.75 border border-black/10 rounded-[20px]">
@@ -65,11 +89,12 @@
                     </div>
                     <button class="bg-black text-white font-satoshim text-[16px] w-29.75 rounded-[62px]">Apply</button>
                 </form>
-                <button class="flex items-center justify-center gap-3 bg-black text-white font-satoshim text-[16px] w-full py-4  rounded-[62px]">
+                <button wire:click="createOrder()" class="flex items-center justify-center gap-3 bg-black text-white font-satoshim text-[16px] w-full py-4  rounded-[62px] cursor-pointer">
                     <span>Confirm order</span>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.2959 4.45404L21.0459 11.204C21.1508 11.3086 21.234 11.4327 21.2908 11.5695C21.3476 11.7062 21.3768 11.8529 21.3768 12.0009C21.3768 12.149 21.3476 12.2956 21.2908 12.4323C21.234 12.5691 21.1508 12.6933 21.0459 12.7978L14.2959 19.5478C14.0846 19.7591 13.7979 19.8779 13.4991 19.8779C13.2002 19.8779 12.9135 19.7591 12.7022 19.5478C12.4908 19.3364 12.3721 19.0498 12.3721 18.7509C12.3721 18.452 12.4908 18.1654 12.7022 17.954L17.5313 13.125L3.75 13.125C3.45163 13.125 3.16548 13.0065 2.9545 12.7955C2.74353 12.5845 2.625 12.2983 2.625 12C2.625 11.7016 2.74353 11.4155 2.95451 11.2045C3.16548 10.9935 3.45163 10.875 3.75 10.875L17.5313 10.875L12.7013 6.04592C12.4899 5.83457 12.3712 5.54793 12.3712 5.24904C12.3712 4.95016 12.4899 4.66351 12.7013 4.45217C12.9126 4.24082 13.1992 4.12209 13.4981 4.12209C13.797 4.12209 14.0837 4.24082 14.295 4.45217L14.2959 4.45404Z" fill="white"/></svg>
                 </button>
             </div>
         </div>
+        @endif
     </div>
 </div>
