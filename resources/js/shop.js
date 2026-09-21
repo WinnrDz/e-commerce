@@ -57,7 +57,7 @@ const slider = document.getElementById("slider");
 const circle1 = document.createElement("div");
 
 circle1.style.width = "20px";
-circle1.style.left = "50px"
+circle1.style.left = "0px"
 circle1.style.height = "20px";
 circle1.style.backgroundColor = "black";
 circle1.style.borderRadius = "50%";

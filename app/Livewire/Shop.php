@@ -9,18 +9,22 @@ use livewire\Attributes\Layout;
 use App\Models\Product;
 use App\Models\Size;
 use Livewire\WithPagination;
+use Livewire\Attributes\Url;
 
 #[Layout('layouts::app')]
 class Shop extends Component
 {
     use WithPagination;
 
-    public $minInput = 50;
+    public $minInput = 0;
     public $maxInput = 400;
 
     public $color_ids = [];
     public $size_ids = [];
     public $category_ids = [];
+
+    #[Url]
+    public $search = '';
 
     public function updatedMinInput()
     {
@@ -87,6 +91,8 @@ class Shop extends Component
                 $query->whereHas('category', function($query) {
                     $query->whereIn('id',$this->category_ids);
                 });
+            })->when($this->search, function ($query) {
+                $query->where('name', 'like', '%' . $this->search . '%');
             })
             ->paginate(9),
 
