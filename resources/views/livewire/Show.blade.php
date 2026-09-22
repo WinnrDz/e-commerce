@@ -1,4 +1,128 @@
-<div>
+<div>    
+    @if (session()->has('success'))
+        <div class="font-satoshi fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
+
+            <div class="relative w-full max-w-md rounded-3xl bg-white p-7 shadow-2xl">
+
+                <!-- Close -->
+                <button
+                    onclick="this.closest('.fixed').remove()"
+                    class="absolute right-5 top-5 flex h-8 w-8 items-center justify-center rounded-full text-2xl text-gray-500 transition hover:bg-gray-100 hover:text-black"
+                >
+                    &times;
+                </button>
+
+
+                <!-- Success Icon -->
+                <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+
+                    <div class="flex h-11 w-11 items-center justify-center rounded-full bg-green-500">
+
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-7 w-7 text-white"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="3"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M5 13l4 4L19 7"
+                            />
+                        </svg>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Title -->
+                <div class="mt-5 text-center">
+
+                    <h2 class="text-2xl font-bold text-black">
+                        Added to Cart!
+                    </h2>
+
+                    <p class="mt-2 text-sm text-gray-500">
+                        The product has been added to your cart successfully.
+                    </p>
+
+                </div>
+
+
+                <!-- Product -->
+                <div class="mt-6 flex items-center gap-4 rounded-2xl bg-gray-50 p-3">
+
+                    <!-- Image -->
+                    <div class="flex h-20 w-20 shrink-0 items-center justify-center rounded-xl bg-white">
+
+                        <img
+                            src="{{ Storage::url($product->images->first()->path) }}"
+                            alt="{{ $product->name }}"
+                            class="h-full w-full object-contain"
+                        >
+
+                    </div>
+
+
+                    <!-- Info -->
+                    <div class="min-w-0 flex-1">
+
+                        <h3 class="truncate font-semibold text-black">
+                            {{ $product->name }}
+                        </h3>
+
+                        <p class="mt-1 text-sm text-gray-500">
+                            {{ $selectedColor->name ?? 'Black' }}
+                            <span class="mx-1">•</span>
+                            {{ $selectedSize->name ?? 'M' }}
+                            <span class="mx-1">•</span>
+                            Qty: {{ $quantity }}
+                        </p>
+
+                    </div>
+
+
+                    <!-- Price -->
+                    <div class="text-right">
+
+                        <p class="font-semibold text-black">
+                            {{ number_format($product->base_price * $quantity, 2) }}$
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Buttons -->
+                <div class="mt-6 space-y-3">
+
+                    <!-- View Cart -->
+                    <a
+                        href="{{ route('cart') }}"
+                        class="flex h-12 w-full items-center justify-center rounded-full bg-black text-sm font-medium text-white transition hover:bg-gray-800"
+                    >
+                        View Cart
+                    </a>
+
+
+                    <!-- Continue Shopping -->
+                    <button
+                        onclick="this.closest('.fixed').remove()"
+                        class="flex h-12 w-full items-center justify-center rounded-full bg-gray-100 text-sm font-medium text-black transition hover:bg-gray-200"
+                    >
+                        Continue Shopping
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+    @endif
     <div id="show" class="mb-15 pt-4 mt-0 flex items-center gap-4 ">
         <a href="{{ route("welcome") }}" class="font-satoshi text-[14px] lg:text-[16px] text-black opacity-60 cursor-pointer">Home</a>
         <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -39,15 +39,32 @@ class Show extends Component
     }
 
 
-    public function addVariant() {
-        $this->variant = Variant::where('color_id',$this->color_id)
+    public function addVariant()
+    {
+        $this->variant = Variant::where('color_id', $this->color_id)
                                 ->where('size_id', $this->size_id)
                                 ->where('product_id', $this->product->id)
                                 ->first();
 
-        $this->cart->variants()->attach($this->variant->id, [
-            'quantity' => $this->quantity
-        ]);
+        $existingVariant = $this->cart->variants()
+                                    ->where('id', $this->variant->id)
+                                    ->first();
+
+        if ($existingVariant) {
+            $quantity = $existingVariant->pivot->quantity + $this->quantity;
+
+            $this->cart->variants()->updateExistingPivot(
+                $this->variant->id,
+                ['quantity' => $quantity]
+            );
+        } else {
+            $this->cart->variants()->attach(
+                $this->variant->id,
+                ['quantity' => $this->quantity]
+            );
+        }
+
+        session()->flash('success', 'Variant added to cart successfully.');
     }
 
     public function mount($id)
