@@ -273,11 +273,34 @@
                             fill="black" />
                     </svg>
                 </button>
-                <button
+                <button 
+                    wire:click="toggleReviewForm()"
                     class="flex items-center justify-around bg-black px-[16px] lg:px-[20px] py-[12px] lg:py-[16px] rounded-[62px] cursor-pointer font-satoshi font-medium text-[14px] lg:text-[16px] text-white">Write
                     a Review</button>
             </div>
         </div>
+        @if ($isReviewing)
+            <form wire:submit="submitReview" class="flex flex-col border border-black/20 rounded-[20px] p-5">
+                <div class="font-satoshi font-bold text-[20px] text-black mb-5">Your Rating</div>
+                <div class="flex gap-2">                
+                    <div wire:click="rate(1)"><svg class="cursor-pointer" width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="{{ $reviewRating >= 1 ? '#FFC633' : '#FFFFFF' }}" stroke="#000000" stroke-width="1" stroke-linejoin="round" /> </svg></div>
+                    <div wire:click="rate(2)"><svg class="cursor-pointer" width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="{{ $reviewRating >= 2 ? '#FFC633' : '#FFFFFF' }}" stroke="#000000" stroke-width="1" stroke-linejoin="round" /> </svg></div>
+                    <div wire:click="rate(3)"><svg class="cursor-pointer" width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="{{ $reviewRating >= 3 ? '#FFC633' : '#FFFFFF' }}" stroke="#000000" stroke-width="1" stroke-linejoin="round" /> </svg></div>
+                    <div wire:click="rate(4)"><svg class="cursor-pointer" width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="{{ $reviewRating >= 4 ? '#FFC633' : '#FFFFFF' }}" stroke="#000000" stroke-width="1" stroke-linejoin="round" /> </svg></div>
+                    <div wire:click="rate(5)"><svg class="cursor-pointer" width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M10.7369 0L13.9354 6.8872L21.4739 7.80085L15.9121 12.971L17.3727 20.4229L10.7369 16.731L4.10114 20.4229L5.56173 12.971L-3.8147e-06 7.80085L7.53849 6.8872L10.7369 0Z" fill="{{ $reviewRating >= 5 ? '#FFC633' : '#FFFFFF' }}" stroke="#000000" stroke-width="1" stroke-linejoin="round" /> </svg></div>
+                </div>
+                <div class="font-satoshi font-bold text-[20px] text-black mt-5">Your Review</div>
+                <textarea wire:model="review" class="border border-black/10 rounded-[10px] p-4 mt-5" placeholder="Write your review here..."></textarea>
+                <div class="flex flex-col lg:flex-row gap-4 justify-between">
+                    <button type="submit" class="bg-black py-3 lg:py-4 w-full  max-w-[65%] rounded-[62px] font-satoshi font-medium text-[14px] lg:text-[16px] text-white cursor-pointer mt-5">
+                        Submit Review
+                    </button>
+                    <button wire:click="cancelReview" class="bg-[#F0F0F0] py-3 lg:py-4 w-full  max-w-[35%] rounded-[62px] font-satoshi font-medium text-[14px] lg:text-[16px] text-black cursor-pointer mt-5">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        @endif
         <div class="flex flex-wrap gap-y-6 justify-between">
             @foreach($product->reviews as $review)
                 <div class="border border-black/10 rounded-[20px] w-[100%] lg:w-[49%] p-6 flex flex-col justify-around">

@@ -18,6 +18,10 @@ class Show extends Component
     public $variant;
     public $quantity = 1;
 
+    public $review;
+    public $reviewRating = 1;
+    public $isReviewing = false;
+
     public function selectColor($id)
     {
         $this->color_id = $id;
@@ -65,6 +69,35 @@ class Show extends Component
         }
 
         session()->flash('success', 'Variant added to cart successfully.');
+    }
+
+    public function cancelReview() {
+        $this->review = null;
+        $this->reviewRating = null;
+        $this->isReviewing = false;
+    }
+
+    public function toggleReviewForm() {
+        $this->isReviewing = !$this->isReviewing;
+    }
+
+    public function rate($rating) {
+        $this->reviewRating = $rating;
+    }
+
+    public function submitReview() {
+        $this->validate([
+            'review' => 'required|string|max:1000',
+            'reviewRating' => 'required|integer|min:1|max:5',
+        ]);
+
+        $this->product->reviews()->create([
+            'user_id' => 1,
+            'review' => $this->review,
+            'rating' => $this->reviewRating,
+        ]);
+
+        $this->cancelReview();
     }
 
     public function mount($id)
