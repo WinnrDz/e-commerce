@@ -279,6 +279,11 @@
                     a Review</button>
             </div>
         </div>
+        @if (session()->has('reviewSuccess'))
+            <div class="bg-[#E6F4EA] border border-[#B7E1C9] rounded-[20px] p-4">
+                <p class="font-satoshi text-[14px] lg:text-[16px] text-[#2D572C]">{{ session('reviewSuccess') }}</p>
+            </div>
+        @endif
         @if ($isReviewing)
             <form wire:submit="submitReview" class="flex flex-col border border-black/20 rounded-[20px] p-5">
                 <div class="font-satoshi font-bold text-[20px] text-black mb-5">Your Rating</div>
@@ -291,6 +296,9 @@
                 </div>
                 <div class="font-satoshi font-bold text-[20px] text-black mt-5">Your Review</div>
                 <textarea wire:model="review" class="border border-black/10 rounded-[10px] p-4 mt-5" placeholder="Write your review here..."></textarea>
+                @error('review') 
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
                 <div class="flex flex-col lg:flex-row gap-4 justify-between">
                     <button type="submit" class="bg-black py-3 lg:py-4 w-full  max-w-[65%] rounded-[62px] font-satoshi font-medium text-[14px] lg:text-[16px] text-white cursor-pointer mt-5">
                         Submit Review

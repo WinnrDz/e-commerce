@@ -22,6 +22,7 @@ Route::get('/shop', Shop::class)->name("shop");
 Route::get('/cart', Cart::class)->name("cart");
 Route::get('/orders', App\Livewire\Orders::class)->name("orders");
 Route::get('/order/{orderId}', App\Livewire\Order::class)->name('order');
+Route::get('/account', App\Livewire\Account::class)->name('account');
 
 Route::get('/admin/dashboard', Dashboard::class)->name("admin.dashboard");
 Route::get('/admin/products', Products::class)->name("admin.products");

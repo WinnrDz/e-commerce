@@ -98,6 +98,8 @@ class Show extends Component
         ]);
 
         $this->cancelReview();
+
+        session()->flash('reviewSuccess', 'Review submitted successfully.');
     }
 
     public function mount($id)
