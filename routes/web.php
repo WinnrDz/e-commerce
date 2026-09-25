@@ -20,8 +20,8 @@ Route::get('/', function () {
 Route::get('/show/{id}', Show::class)->name('show');
 Route::get('/shop', Shop::class)->name("shop");
 Route::get('/cart', Cart::class)->name("cart");
-Route::get('/orders', App\Livewire\Orders::class)->name("orders");
-Route::get('/order/{orderId}', App\Livewire\Order::class)->name('order');
+Route::get('/orders', App\Livewire\Account\Orders::class)->name("account.orders");
+Route::get('/order/{orderId}', App\Livewire\Account\Order::class)->name('account.order');
 Route::get('/account', App\Livewire\Account::class)->name('account');
 
 Route::get('/admin/dashboard', Dashboard::class)->name("admin.dashboard");
