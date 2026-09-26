@@ -23,6 +23,7 @@ Route::get('/cart', Cart::class)->name("cart");
 Route::get('/orders', App\Livewire\Account\Orders::class)->name("account.orders");
 Route::get('/order/{orderId}', App\Livewire\Account\Order::class)->name('account.order');
 Route::get('/account', App\Livewire\Account::class)->name('account');
+Route::get('/account/reviews', App\Livewire\Account\Reviews::class)->name('account.reviews');
 
 Route::get('/admin/dashboard', Dashboard::class)->name("admin.dashboard");
 Route::get('/admin/products', Products::class)->name("admin.products");
@@ -44,7 +45,7 @@ Route::get('/ordersRaw', function () {
 
 Route::get('/orderRaw', function () {
     return view('order');
-})->name("order");
+})->name("orderRaw");
 
 Route::get('/aiOrder', function () {
     return view('aiOrder');

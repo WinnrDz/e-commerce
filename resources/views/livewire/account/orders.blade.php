@@ -69,7 +69,7 @@
                         </div>
 
                         <a
-                            href="{{ route('order', $order->id) }}"
+                            href="{{ route('account.order', $order->id) }}"
                             class="font-satoshim text-[15px] bg-black text-white font-medium py-2.5 px-5 rounded-full max-h-11 mt-auto whitespace-nowrap"
                         >
                             View Details
