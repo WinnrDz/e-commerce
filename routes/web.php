@@ -8,6 +8,7 @@ use App\Livewire\Admin\Variants;
 use App\Livewire\Admin\Carts;
 use App\Livewire\Admin\Orders;
 use App\Livewire\Admin\Reviews;
+use App\Livewire\Admin\Tags;
 use App\Livewire\Shop;
 use App\Livewire\Show;
 use App\Livewire\Cart;
@@ -32,6 +33,7 @@ Route::get('/admin/variants', Variants::class)->name("admin.variants");
 Route::get('/admin/carts', Carts::class)->name("admin.carts");
 Route::get('/admin/orders', Orders::class)->name("admin.orders");
 Route::get('/admin/reviews', Reviews::class)->name("admin.reviews");
+Route::get('/admin/tags', Tags::class)->name("admin.tags");
 
 
 

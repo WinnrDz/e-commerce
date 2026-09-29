@@ -62,6 +62,10 @@
                 <i data-lucide="star"></i>  
                 <span>Reviews</span>
             </a>
+            <a class="flex gap-4 px-4 py-3 rounded-xl {{ request()->routeIs('admin.tags') ? 'bg-black text-white' : '' }}" href="{{ route("admin.tags") }}">
+                <i data-lucide="tag"></i>  
+                <span>Tags</span>
+            </a>
             
 
         </nav>
