@@ -64,17 +64,78 @@
                     Add Tag
                 </h2>
 
-                <input
-                    type="text"
-                    wire:model="name"
-                    placeholder="Tag name"
-                    class="border border-gray-200 rounded-xl px-4 py-3 w-full"
-                >
-                @error('name')
-                    <span class="text-red-500">{{ $message }}</span>
-                @enderror
-                
-                
+                <div class="flex flex-row gap-5 items-start">
+                    <input
+                        type="text"
+                        wire:model="name"
+                        placeholder="Tag name"
+                        class="border border-gray-200 rounded-xl px-4 py-3 w-1/2"
+                    >
+
+                    @error('name')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
+
+                    <div x-data="{ open: false }" class="flex flex-col gap-4 w-1/2">
+
+                        <button type="button" @click="open = !open" class="flex justify-between gap-3 border border-gray-200 rounded-xl px-4 py-3 w-full cursor-pointer">
+                            <div class="font-satoshim">Select Products</div>
+                            <i data-lucide="chevron-down"></i>
+                        </button>
+
+                        <div x-show="open" id="product-list" class="border border-gray-200 rounded-xl overflow-hidden ">
+
+                            <label class="flex items-center gap-4 px-5 py-4 cursor-pointer hover:bg-gray-50">
+                                <input
+                                    type="checkbox"
+                                    class="appearance-none w-5 h-5 border border-gray-300 cursor-pointer
+                                    checked:bg-black checked:border-black
+                                    checked:before:content-['✓']
+                                    checked:before:text-white
+                                    checked:before:flex
+                                    checked:before:items-center
+                                    checked:before:justify-center
+                                    checked:before:text-xs
+                                    checked:before:font-bold"
+                                >
+                                <span>Example Product</span>
+                            </label>
+
+                            <label class="flex items-center gap-4 px-5 py-4 cursor-pointer hover:bg-gray-50">
+                                <input
+                                    type="checkbox"
+                                    class="appearance-none w-5 h-5 border border-gray-300 cursor-pointer
+                                    checked:bg-black checked:border-black
+                                    checked:before:content-['✓']
+                                    checked:before:text-white
+                                    checked:before:flex
+                                    checked:before:items-center
+                                    checked:before:justify-center
+                                    checked:before:text-xs
+                                    checked:before:font-bold"
+                                >
+                                <span>Example Product</span>
+                            </label>
+
+                            <label class="flex items-center gap-4 px-5 py-4 cursor-pointer hover:bg-gray-50">
+                                <input
+                                    type="checkbox"
+                                    class="appearance-none w-5 h-5 border border-gray-300 cursor-pointer
+                                    checked:bg-black checked:border-black
+                                    checked:before:content-['✓']
+                                    checked:before:text-white
+                                    checked:before:flex
+                                    checked:before:items-center
+                                    checked:before:justify-center
+                                    checked:before:text-xs
+                                    checked:before:font-bold"
+                                >
+                                <span>Example Product</span>
+                            </label>
+
+                        </div>
+                    </div>
+                </div>
 
                 <div class="flex justify-end gap-3 mt-4">
 
