@@ -5,6 +5,7 @@ namespace App\Livewire\Admin;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Models\Tag;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Livewire\WithFileUploads;
@@ -24,6 +25,8 @@ class Products extends Component
     public $product;
 
     public $images = [];
+
+    public $tag_ids = [];
 
     public function save()
     {
@@ -45,6 +48,10 @@ class Products extends Component
                 'base_price' => $this->base_price,
             ]);
 
+            if (!empty($this->tag_ids)) {
+                $product->tags()->attach($this->tag_ids);
+            }
+
             $message = 'Product created successfully!';
         }
 
@@ -58,6 +65,12 @@ class Products extends Component
                 'description' => $this->description,
                 'base_price' => $this->base_price,
             ]);
+
+            if (!empty($this->tag_ids)) {
+                $product->tags()->sync($this->tag_ids);
+            } else {
+                $product->tags()->detach();
+            }
 
             $message = 'Product updated successfully!';
         }
@@ -132,6 +145,7 @@ class Products extends Component
         return view('livewire.admin.products', [
             'products' => Product::all(),
             'categories' => Category::all(),
+            'tags' => Tag::all(),
         ]);
     }
 }

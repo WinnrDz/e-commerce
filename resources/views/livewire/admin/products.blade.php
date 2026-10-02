@@ -84,6 +84,48 @@
 
                     </div>
 
+                    {{-- Tags --}}
+
+                    <div class="mb-5">
+
+                        <label class="block text-sm font-medium mb-2">
+                            Tags
+                        </label>
+
+                        <div x-data="{ open: false }" class="flex flex-col gap-4 w-full">
+
+                            <button type="button" @click="open = !open"
+                                class="flex justify-between gap-3 border border-gray-200 rounded-xl px-4 py-3 w-full cursor-pointer">
+                                <div class="font-satoshim">Select Tags (optional)</div>
+                                <span>
+                                    <i x-show="!open" data-lucide="chevron-down"></i>
+                                    <i x-show="open" data-lucide="chevron-up"></i>
+                                </span>
+                            </button>
+
+                            <div x-show="open" id="tag-list"
+                                class="border border-gray-200 rounded-xl overflow-hidden ">
+                                @foreach ($tags as $tag)
+                                    <label class="flex items-center gap-4 px-5 py-4 cursor-pointer hover:bg-gray-50">
+                                        <input type="checkbox" wire:model="tag_ids" value="{{ $tag->id }}"
+                                            class="appearance-none w-5 h-5 border border-gray-300 cursor-pointer
+                                    checked:bg-black checked:border-black
+                                    checked:before:content-['✓']
+                                    checked:before:text-white
+                                    checked:before:flex
+                                    checked:before:items-center
+                                    checked:before:justify-center
+                                    checked:before:text-xs
+                                    checked:before:font-bold">
+                                        <span>{{ $tag->name }}</span>
+                                    </label>
+                                @endforeach
+
+                            </div>
+                        </div>
+                    </div>
+
+
 
                     {{-- Description --}}
                     <div>
@@ -105,7 +147,7 @@
                             Price
                         </label>
 
-                        <input wire:model="base_price" type="number" placeholder="Enter product price"
+                        <input wire:model="base_price" placeholder="Enter product price"
                             class="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-black">
                         @error('base_price')
                             <span class="text-red-500">{{ $message }}</span>
@@ -143,39 +185,32 @@
                             <span class="text-sm text-gray-400 mt-1">
                                 PNG, JPG or WEBP
                             </span>
-                            
+
                             <div class="flex flex-wrap gap-2 mt-4">
                                 {{-- Existing images --}}
-                                    @foreach ($product->images as $image)
-                                        <img
-                                            src="{{ Storage::url($image->path) }}"
-                                            class="w-32 h-32 object-cover rounded-lg mt-4"
-                                        >
-                                    @endforeach
+                                @foreach ($product->images as $image)
+                                    <img src="{{ Storage::url($image->path) }}"
+                                        class="w-32 h-32 object-cover rounded-lg mt-4">
+                                @endforeach
 
-                                    {{-- New temporary images --}}
-                                    @foreach ($images as $image)
-                                        <img
-                                            src="{{ $image->temporaryUrl() }}"
-                                            class="w-32 h-32 object-cover rounded-lg mt-4"
-                                        >
-                                    @endforeach
+                                {{-- New temporary images --}}
+                                @foreach ($images as $image)
+                                    <img src="{{ $image->temporaryUrl() }}"
+                                        class="w-32 h-32 object-cover rounded-lg mt-4">
+                                @endforeach
                             </div>
 
 
                             <input type="file" wire:model="images" multiple accept="image/*" class="hidden">
 
                         </label>
-                        
-                                <button
-                                    type="button"
-                                    wire:click="removeAllImages({{ $product }})"
-                                    wire:confirm="Are you sure you want to remove all images?"
-                                    class="text-sm text-red-500 hover:text-red-600"
-                                >
-                                    Remove all
-                                </button>
-                            
+
+                        <button type="button" wire:click="removeAllImages({{ $product }})"
+                            wire:confirm="Are you sure you want to remove all images?"
+                            class="text-sm text-red-500 hover:text-red-600">
+                            Remove all
+                        </button>
+
 
                         @error('images')
                             <span class="text-sm text-red-500 mt-2 block">
@@ -224,11 +259,7 @@
                         </th>
 
                         <th class="p-5">
-                            Stock
-                        </th>
-
-                        <th class="p-5">
-                            Status
+                            Tags
                         </th>
 
                         <th class="p-5">
@@ -277,16 +308,9 @@
                             </td>
 
                             <td class="p-5">
-                                50
-                            </td>
-
-
-                            <td class="p-5">
-
-                                <span class="bg-green-50 text-green-600 px-3 py-1 rounded-full text-xs">
-                                    Active
-                                </span>
-
+                                @foreach ($product->tags as $tag)
+                                    <span class="bg-black text-white px-3 py-2 rounded-2xl">{{ $tag->name }}</span>
+                                @endforeach
                             </td>
 
 
@@ -383,6 +407,45 @@
 
                     </div>
 
+                    {{-- tags --}}
+                    <div class="mb-5">
+
+                        <label class="block text-sm font-medium mb-2">
+                            Tags
+                        </label>
+
+                        <div x-data="{ open: false }" class="flex flex-col gap-4 w-full">
+
+                            <button type="button" @click="open = !open"
+                                class="flex justify-between gap-3 border border-gray-200 rounded-xl px-4 py-3 w-full cursor-pointer">
+                                <div class="font-satoshim">Select Tags (optional)</div>
+                                <span>
+                                    <i x-show="!open" data-lucide="chevron-down"></i>
+                                    <i x-show="open" data-lucide="chevron-up"></i>
+                                </span>
+                            </button>
+
+                            <div x-show="open" id="tag-list"
+                                class="border border-gray-200 rounded-xl overflow-hidden ">
+                                @foreach ($tags as $tag)
+                                    <label class="flex items-center gap-4 px-5 py-4 cursor-pointer hover:bg-gray-50">
+                                        <input type="checkbox" wire:model="tag_ids" value="{{ $tag->id }}"
+                                            class="appearance-none w-5 h-5 border border-gray-300 cursor-pointer
+                                    checked:bg-black checked:border-black
+                                    checked:before:content-['✓']
+                                    checked:before:text-white
+                                    checked:before:flex
+                                    checked:before:items-center
+                                    checked:before:justify-center
+                                    checked:before:text-xs
+                                    checked:before:font-bold">
+                                        <span>{{ $tag->name }}</span>
+                                    </label>
+                                @endforeach
+
+                            </div>
+                        </div>
+                    </div>
 
                     {{-- Description --}}
                     <div>
@@ -404,7 +467,7 @@
                             Price
                         </label>
 
-                        <input wire:model="base_price" type="number" placeholder="Enter product price"
+                        <input wire:model="base_price" placeholder="Enter product price"
                             class="w-full border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-black">
                         @error('base_price')
                             <span class="text-red-500">{{ $message }}</span>

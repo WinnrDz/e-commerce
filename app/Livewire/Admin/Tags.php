@@ -13,6 +13,8 @@ class Tags extends Component
     public $editing = false;
     public $tag;
 
+    public $product_ids = [];
+
     
 
     public function store()
@@ -21,9 +23,13 @@ class Tags extends Component
             'name' => 'required|min:3|max:255',
         ]);
 
-        Tag::create([
+        $tag = Tag::create([
             'name' => $this->name
         ]);
+
+        if (!empty($this->product_ids)) {
+            $tag->products()->attach($this->product_ids);
+        }
 
         session()->flash('success', 'Tag created successfully!');
 
@@ -40,6 +46,7 @@ class Tags extends Component
         $this->editing = true;
         $this->tag = Tag::findOrFail($id);
         $this->name = $this->tag->name;
+        $this->product_ids = $this->tag->products()->pluck('products.id')->toArray();
     }
 
     public function update()
@@ -52,6 +59,12 @@ class Tags extends Component
             'name' => $this->name
         ]);
 
+        if (!empty($this->product_ids)) {
+            $this->tag->products()->sync($this->product_ids);
+        } else {
+            $this->tag->products()->detach();
+        }
+
         session()->flash('success', 'Tag updated successfully!');
 
         $this->reset(['name', 'tag', 'editing']);
@@ -62,6 +75,7 @@ class Tags extends Component
     {
         return view('livewire.admin.tags',[
             'tags' => Tag::all(),
+            'products' => \App\Models\Product::all()
         ]);
     }
 }

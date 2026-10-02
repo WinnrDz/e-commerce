@@ -118,6 +118,30 @@ class DatabaseSeeder extends Seeder
 
             /*
             |--------------------------------------------------------------------------
+            | TAGS
+            |--------------------------------------------------------------------------
+            */
+
+            $tags = [
+                'New',
+                'Popular',
+                'Best Seller',
+                'Trending',
+                'Sale',
+                'Featured',
+            ];
+
+            $tagIds = [];
+
+            foreach ($tags as $name) {
+                $tagIds[$name] = DB::table('tags')->insertGetId([
+                    'name' => $name,
+                ]);
+            }
+
+
+            /*
+            |--------------------------------------------------------------------------
             | USERS
             |--------------------------------------------------------------------------
             */
@@ -157,6 +181,7 @@ class DatabaseSeeder extends Seeder
                     'base_price' => 19.99,
                     'colors' => ['Black', 'White', 'Gray'],
                     'sizes' => ['S', 'M', 'L', 'XL'],
+                    'tags' => ['Popular', 'Best Seller'],
                 ],
 
                 [
@@ -166,6 +191,7 @@ class DatabaseSeeder extends Seeder
                     'base_price' => 29.99,
                     'colors' => ['Black', 'White', 'Red'],
                     'sizes' => ['S', 'M', 'L', 'XL', 'XXL'],
+                    'tags' => ['New', 'Trending'],
                 ],
 
                 [
@@ -175,6 +201,7 @@ class DatabaseSeeder extends Seeder
                     'base_price' => 49.99,
                     'colors' => ['White', 'Blue', 'Gray'],
                     'sizes' => ['S', 'M', 'L', 'XL'],
+                    'tags' => ['Featured', 'Popular'],
                 ],
 
                 [
@@ -184,6 +211,7 @@ class DatabaseSeeder extends Seeder
                     'base_price' => 59.99,
                     'colors' => ['Blue', 'Black'],
                     'sizes' => ['S', 'M', 'L', 'XL'],
+                    'tags' => ['Popular'],
                 ],
 
                 [
@@ -193,6 +221,7 @@ class DatabaseSeeder extends Seeder
                     'base_price' => 54.99,
                     'colors' => ['Black', 'Gray', 'Green'],
                     'sizes' => ['S', 'M', 'L', 'XL', 'XXL'],
+                    'tags' => ['New', 'Featured'],
                 ],
 
                 [
@@ -202,6 +231,7 @@ class DatabaseSeeder extends Seeder
                     'base_price' => 79.99,
                     'colors' => ['Blue', 'Black'],
                     'sizes' => ['S', 'M', 'L', 'XL'],
+                    'tags' => ['Trending', 'Popular'],
                 ],
 
                 [
@@ -211,6 +241,7 @@ class DatabaseSeeder extends Seeder
                     'base_price' => 34.99,
                     'colors' => ['Black', 'Green', 'Gray'],
                     'sizes' => ['S', 'M', 'L', 'XL'],
+                    'tags' => ['Sale', 'Popular'],
                 ],
 
                 [
@@ -220,6 +251,7 @@ class DatabaseSeeder extends Seeder
                     'base_price' => 89.99,
                     'colors' => ['Black', 'White', 'Red'],
                     'sizes' => ['S', 'M', 'L', 'XL'],
+                    'tags' => ['New', 'Best Seller', 'Featured'],
                 ],
             ];
 
@@ -269,6 +301,21 @@ class DatabaseSeeder extends Seeder
                     DB::table('product_images')->insert([
                         'product_id' => $productId,
                         'path' => $path,
+                    ]);
+                }
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | PRODUCT TAGS
+                |--------------------------------------------------------------------------
+                */
+
+                foreach ($product['tags'] as $tag) {
+
+                    DB::table('product_tag')->insert([
+                        'product_id' => $productId,
+                        'tag_id' => $tagIds[$tag],
                     ]);
                 }
 
@@ -396,7 +443,7 @@ class DatabaseSeeder extends Seeder
             foreach ($users as $userId) {
                 $cartIds[$userId] = DB::table('carts')->insertGetId([
                     'user_id' => $userId,
-            ]);
+                ]);
             }
 
 
@@ -446,10 +493,6 @@ class DatabaseSeeder extends Seeder
             |--------------------------------------------------------------------------
             | ORDERS
             |--------------------------------------------------------------------------
-            |
-            | The total is NOT manually entered anymore.
-            | It is calculated after inserting the order items.
-            |
             */
 
             $orders = [
@@ -615,7 +658,6 @@ class DatabaseSeeder extends Seeder
                     $variantId = $item['variant_id'];
                     $quantity = $item['quantity'];
 
-                    // Get the actual price of this variant.
                     $price = $variantPrices[$variantId];
 
                     DB::table('order_variant')->insert([
@@ -625,9 +667,6 @@ class DatabaseSeeder extends Seeder
                         'price' => $price,
                     ]);
 
-                    /*
-                    | Line total = price × quantity
-                    */
                     $subtotal += $price * $quantity;
                 }
 
