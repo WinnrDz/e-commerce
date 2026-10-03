@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\Size;
 use Livewire\WithPagination;
 use Livewire\Attributes\Url;
+use App\Models\Tag;
 
 #[Layout('layouts::app')]
 class Shop extends Component
@@ -22,6 +23,9 @@ class Shop extends Component
     public $color_ids = [];
     public $size_ids = [];
     public $category_ids = [];
+
+    #[Url]
+    public $tag_ids = [];
 
     #[Url]
     public $search = '';
@@ -69,6 +73,17 @@ class Shop extends Component
         $this->resetPage();
     }
 
+    public function selectTag($id)
+    {
+        if (in_array($id, $this->tag_ids)) {
+            $this->tag_ids = array_diff($this->tag_ids, [$id]);
+        } else {
+            $this->tag_ids[] = $id;
+        }
+
+        $this->resetPage();
+    }
+
     public function show($id) 
     {
         return redirect()->route('show', $id);
@@ -91,6 +106,10 @@ class Shop extends Component
                 $query->whereHas('category', function($query) {
                     $query->whereIn('id',$this->category_ids);
                 });
+            })->when($this->tag_ids, function ($query) {
+                $query->whereHas('tags', function($query) {
+                    $query->whereIn('tag_id', $this->tag_ids);
+                });
             })->when($this->search, function ($query) {
                 $query->where('name', 'like', '%' . $this->search . '%');
             })
@@ -98,7 +117,8 @@ class Shop extends Component
 
             'categories' => Category::all(),
             'colors' => Color::all(),
-            'sizes' => Size::all()
+            'sizes' => Size::all(),
+            'tags' => Tag::all(),
         ]);
     }
 }

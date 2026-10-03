@@ -13,11 +13,9 @@ use App\Livewire\Shop;
 use App\Livewire\Show;
 use App\Livewire\Cart;
 
-Route::get('/', function () {
-    return view('layouts/welcome');
-})->name("welcome");
 
 
+Route::get('/', App\Livewire\Welcome::class)->name('welcome');
 Route::get('/show/{id}', Show::class)->name('show');
 Route::get('/shop', Shop::class)->name("shop");
 Route::get('/cart', Cart::class)->name("cart");
