@@ -215,26 +215,30 @@
         <h1 class="font-integral font-bold text-[32px] lg:text-[48px] p-10 lg:p-25 text-center">BROWSE BY DRESS
             styles</h1>
         <div class="flex flex-wrap justify-center gap-8 pb-16">
-            <div class="w-full max-w-[80%] lg:max-w-[30%] bg-white rounded-[20px] h-75 relative overflow-hidden">
+            <a href="{{ route('shop') }}?tag_ids[]={{ $casual->id }}"
+                class="w-full max-w-[80%] lg:max-w-[30%] bg-white rounded-[20px] h-75 relative overflow-hidden">
                 <div class="font-satoshi font-bold text-[36px] absolute top-0 left-0 z-10 p-8">Casual</div>
                 <img class="absolute -bottom-55 right-0 w-auto h-160 object-cover"
                     src="{{ asset('images/tato-guy.png') }}" alt="Logo">
-            </div>
-            <div class="w-full max-w-[80%] lg:max-w-[50%] bg-[#FCFCFC] rounded-[20px] h-75 relative overflow-hidden">
+            </a>
+            <a href="{{ route('shop') }}?tag_ids[]={{ $formal->id }}"
+                class="w-full max-w-[80%] lg:max-w-[50%] bg-[#FCFCFC] rounded-[20px] h-75 relative overflow-hidden">
                 <div class="font-satoshi font-bold text-[36px] absolute top-0 left-0 z-10 p-8">Formal</div>
                 <img class="absolute lg:-bottom-90 -right-20 lg:right-0 lg:w-auto lg:h-200 object-cover"
                     src="{{ asset('images/suit-guy.png') }}" alt="Logo">
-            </div>
-            <div class="w-full max-w-[80%] lg:max-w-[50%] bg-white rounded-[20px] h-75 relative overflow-hidden">
+            </a>
+            <a href="{{ route('shop') }}?tag_ids[]={{ $party->id }}"
+                class="w-full max-w-[80%] lg:max-w-[50%] bg-white rounded-[20px] h-75 relative overflow-hidden">
                 <div class="font-satoshi font-bold text-[36px] absolute top-0 left-0 z-10 p-8">Party</div>
                 <img class="absolute -bottom-40 right-0 w-auto h-160 object-cover"
                     src="{{ asset('images/cool-guy.png') }}" alt="Logo">
-            </div>
-            <div class="w-full max-w-[80%] lg:max-w-[30%] bg-white rounded-[20px] h-75 relative overflow-hidden">
+            </a>
+            <a href="{{ route('shop') }}?tag_ids[]={{ $gym->id }}"
+                class="w-full max-w-[80%] lg:max-w-[30%] bg-white rounded-[20px] h-75 relative overflow-hidden">
                 <div class="font-satoshi font-bold text-[36px] absolute top-0 left-0 z-10 p-8">Gym</div>
                 <img class="absolute -bottom-50 -right-10 w-auto h-160 object-cover"
                     src="{{ asset('images/gym-guy.png') }}" alt="Logo">
-            </div>
+            </a>
         </div>
     </div>
     <div class="flex items-center w-full justify-between">

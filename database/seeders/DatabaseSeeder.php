@@ -129,6 +129,10 @@ class DatabaseSeeder extends Seeder
                 'Trending',
                 'Sale',
                 'Featured',
+                'Casual',
+                'Formal',
+                'Party',
+                'Gym',
             ];
 
             $tagIds = [];
@@ -181,7 +185,7 @@ class DatabaseSeeder extends Seeder
                     'base_price' => 19.99,
                     'colors' => ['Black', 'White', 'Gray'],
                     'sizes' => ['S', 'M', 'L', 'XL'],
-                    'tags' => ['Popular', 'Best Seller'],
+                    'tags' => ['Popular', 'Best Seller', 'Casual'],
                 ],
 
                 [
@@ -191,7 +195,7 @@ class DatabaseSeeder extends Seeder
                     'base_price' => 29.99,
                     'colors' => ['Black', 'White', 'Red'],
                     'sizes' => ['S', 'M', 'L', 'XL', 'XXL'],
-                    'tags' => ['New', 'Trending'],
+                    'tags' => ['New', 'Trending', 'Casual', 'Party'],
                 ],
 
                 [
@@ -201,7 +205,7 @@ class DatabaseSeeder extends Seeder
                     'base_price' => 49.99,
                     'colors' => ['White', 'Blue', 'Gray'],
                     'sizes' => ['S', 'M', 'L', 'XL'],
-                    'tags' => ['Featured', 'Popular'],
+                    'tags' => ['Featured', 'Popular', 'Casual', 'Formal'],
                 ],
 
                 [
@@ -211,7 +215,7 @@ class DatabaseSeeder extends Seeder
                     'base_price' => 59.99,
                     'colors' => ['Blue', 'Black'],
                     'sizes' => ['S', 'M', 'L', 'XL'],
-                    'tags' => ['Popular'],
+                    'tags' => ['Popular', 'Casual'],
                 ],
 
                 [
@@ -221,7 +225,7 @@ class DatabaseSeeder extends Seeder
                     'base_price' => 54.99,
                     'colors' => ['Black', 'Gray', 'Green'],
                     'sizes' => ['S', 'M', 'L', 'XL', 'XXL'],
-                    'tags' => ['New', 'Featured'],
+                    'tags' => ['New', 'Featured', 'Casual', 'Gym'],
                 ],
 
                 [
@@ -231,7 +235,7 @@ class DatabaseSeeder extends Seeder
                     'base_price' => 79.99,
                     'colors' => ['Blue', 'Black'],
                     'sizes' => ['S', 'M', 'L', 'XL'],
-                    'tags' => ['Trending', 'Popular'],
+                    'tags' => ['Trending', 'Popular', 'Casual', 'Party'],
                 ],
 
                 [
@@ -241,7 +245,7 @@ class DatabaseSeeder extends Seeder
                     'base_price' => 34.99,
                     'colors' => ['Black', 'Green', 'Gray'],
                     'sizes' => ['S', 'M', 'L', 'XL'],
-                    'tags' => ['Sale', 'Popular'],
+                    'tags' => ['Sale', 'Popular', 'Casual', 'Gym'],
                 ],
 
                 [
@@ -251,7 +255,7 @@ class DatabaseSeeder extends Seeder
                     'base_price' => 89.99,
                     'colors' => ['Black', 'White', 'Red'],
                     'sizes' => ['S', 'M', 'L', 'XL'],
-                    'tags' => ['New', 'Best Seller', 'Featured'],
+                    'tags' => ['New', 'Best Seller', 'Featured', 'Casual', 'Gym'],
                 ],
             ];
 

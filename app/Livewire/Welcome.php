@@ -22,6 +22,11 @@ class Welcome extends Component
         })->get();
         $sellingtag = Tag::where('name','Best Seller')->first();
 
-        return view('livewire.welcome', compact('newproducts','newtag','sellingproducts','sellingtag'));
+        $casual = Tag::where('name','Casual')->first();
+        $formal = Tag::where('name','Formal')->first();
+        $party = Tag::where('name','Party')->first();
+        $gym = Tag::where('name','Gym')->first();
+
+        return view('livewire.welcome', compact('newproducts','newtag','sellingproducts','sellingtag', 'casual','formal','party','gym'));
     }
 }
