@@ -109,7 +109,7 @@
         <h1 class="font-integral font-bold text-[28px] lg:text-[48px] m-10 lg:m-20">NEW ARRIVALS</h1>
         <div class="flex flex-wrap justify-center gap-8 w-full max-w-[1300px]">
             @foreach ($newproducts as $product)
-                <div class="flex flex-col items-center  gap-2">
+                <a class="flex flex-col items-center gap-2 cursor-pointer" href="{{ route('show', $product->id) }}">
                     <div
                         class="flex items-center justify-center bg-[#F0EEED] w-full h-full max-w-[150px] max-h-[150px] lg:max-h-[300px] lg:min-w-[300px] rounded-[20px]">
                         <img class="w-full h-full object-contain p-4"
@@ -151,7 +151,7 @@
                         <label class="font-satoshi text-[14px]">4.5/<span class="opacity-60">5</span></label>
                     </div>
                     <label class="font-satoshi font-bold text-[20px] lg:text-[24px]">120$</label>
-                </div>
+                </a>
             @endforeach
         </div>
         <a href="{{ route('shop') }}?tag_ids[]={{ $newtag->id }}"

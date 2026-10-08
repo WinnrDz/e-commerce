@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,21 +25,32 @@ class DatabaseSeeder extends Seeder
 
             /*
             |--------------------------------------------------------------------------
-            | PRODUCT IMAGES
+            | CLEAR DATABASE
             |--------------------------------------------------------------------------
             */
 
-            $imageFiles = glob(public_path('images/*'));
+            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
-            $imageFiles = array_filter($imageFiles, function ($file) {
-                return is_file($file);
-            });
-
-            if (empty($imageFiles)) {
-                throw new \Exception(
-                    'No images found in public/images.'
-                );
+            foreach ([
+                'order_variant',
+                'cart_variant',
+                'reviews',
+                'product_tag',
+                'variants',
+                'product_images',
+                'orders',
+                'carts',
+                'products',
+                'tags',
+                'sizes',
+                'colors',
+                'categories',
+                'users',
+            ] as $table) {
+                DB::table($table)->delete();
             }
+
+            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
 
             /*
@@ -51,10 +63,12 @@ class DatabaseSeeder extends Seeder
                 'T-Shirts',
                 'Shirts',
                 'Jeans',
+                'Pants',
                 'Hoodies',
                 'Jackets',
-                'Shorts',
+                'Coats',
                 'Shoes',
+                'Shorts',
             ];
 
             $categoryIds = [];
@@ -70,9 +84,19 @@ class DatabaseSeeder extends Seeder
             |--------------------------------------------------------------------------
             | COLORS
             |--------------------------------------------------------------------------
+            |
+            | Product colors are detected automatically from image filenames.
+            |
+            | Example:
+            |
+            | Black.png  -> Black
+            | Green.png  -> Green
+            | Khaki.png  -> Khaki
+            | Camel.png  -> Camel
+            |
             */
 
-            $colors = [
+            $colorDefinitions = [
                 'Black' => '#000000',
                 'White' => '#FFFFFF',
                 'Red' => '#EF4444',
@@ -80,11 +104,22 @@ class DatabaseSeeder extends Seeder
                 'Green' => '#22C55E',
                 'Yellow' => '#EAB308',
                 'Gray' => '#6B7280',
+                'Brown' => '#92400E',
+                'Beige' => '#D6C2A5',
+                'Khaki' => '#C3B091',
+                'Navy' => '#1E3A5F',
+                'Olive' => '#556B2F',
+                'Orange' => '#F97316',
+                'Purple' => '#A855F7',
+                'Pink' => '#EC4899',
+
+                // Added because Tailored Long Overcoat contains Camel.png
+                'Camel' => '#C19A6B',
             ];
 
             $colorIds = [];
 
-            foreach ($colors as $name => $hexCode) {
+            foreach ($colorDefinitions as $name => $hexCode) {
                 $colorIds[$name] = DB::table('colors')->insertGetId([
                     'name' => $name,
                     'hex_code' => $hexCode,
@@ -123,7 +158,7 @@ class DatabaseSeeder extends Seeder
             */
 
             $tags = [
-                'New',
+                'new',
                 'Popular',
                 'Best Seller',
                 'Trending',
@@ -132,6 +167,10 @@ class DatabaseSeeder extends Seeder
                 'Casual',
                 'Formal',
                 'Party',
+                'Streetwear',
+                'Winter',
+                'Premium',
+                'Outdoor',
                 'Gym',
             ];
 
@@ -174,97 +213,159 @@ class DatabaseSeeder extends Seeder
             |--------------------------------------------------------------------------
             | PRODUCTS
             |--------------------------------------------------------------------------
+            |
+            | Colors are NOT manually defined here.
+            |
+            | They are detected automatically from:
+            |
+            | public/images/Mockups/{folder}/Color.png
+            |
             */
 
             $products = [
 
                 [
-                    'name' => 'Classic Cotton T-Shirt',
-                    'description' => 'A comfortable everyday cotton t-shirt with a clean and minimal design.',
+                    'folder' => 'Cargo Pants',
+                    'name' => 'Urban Utility Cargo Pants',
+                    'description' => 'Relaxed utility cargo pants with a contemporary silhouette, practical pockets and an effortless streetwear feel.',
+                    'category' => 'Pants',
+                    'base_price' => 54.99,
+                    'sizes' => ['S', 'M', 'L', 'XL', 'XXL'],
+                    'tags' => ['new', 'Trending', 'Streetwear', 'Casual', 'Gym'],
+                ],
+
+                [
+                    'folder' => 'Chino Pants',
+                    'name' => 'Essential Slim Chino Pants',
+                    'description' => 'Clean-cut chino pants made for everyday styling, combining a polished appearance with comfortable movement.',
+                    'category' => 'Pants',
+                    'base_price' => 49.99,
+                    'sizes' => ['S', 'M', 'L', 'XL'],
+                    'tags' => ['Popular', 'Casual', 'Formal'],
+                ],
+
+                [
+                    'folder' => 'Classic Denim Trucker Jacket',
+                    'name' => 'Classic Denim Trucker Jacket',
+                    'description' => 'A timeless denim trucker jacket with a structured fit and authentic everyday character.',
+                    'category' => 'Jackets',
+                    'base_price' => 79.99,
+                    'sizes' => ['S', 'M', 'L', 'XL'],
+                    'tags' => ['Best Seller', 'Popular', 'Casual', 'Trending'],
+                ],
+
+                [
+                    'folder' => 'Classic Leather Biker Jacket',
+                    'name' => 'Classic Leather Biker Jacket',
+                    'description' => 'A bold leather biker jacket with a refined finish and unmistakable timeless attitude.',
+                    'category' => 'Jackets',
+                    'base_price' => 149.99,
+                    'sizes' => ['S', 'M', 'L', 'XL'],
+                    'tags' => ['Premium', 'Featured', 'Trending', 'Streetwear', 'Party'],
+                ],
+
+                [
+                    'folder' => 'Crew-Neck T-Shirt',
+                    'name' => 'Essential Crew-Neck T-Shirt',
+                    'description' => 'A versatile everyday crew-neck t-shirt with a clean silhouette and soft comfortable feel.',
                     'category' => 'T-Shirts',
-                    'base_price' => 19.99,
-                    'colors' => ['Black', 'White', 'Gray'],
+                    'base_price' => 24.99,
+                    'sizes' => ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+                    'tags' => ['Best Seller', 'Popular', 'Casual'],
+                ],
+
+                [
+                    'folder' => 'Denim Jeans',
+                    'name' => 'Classic Straight-Leg Denim Jeans',
+                    'description' => 'Reliable everyday denim with a classic straight-leg profile designed to work with almost any wardrobe.',
+                    'category' => 'Jeans',
+                    'base_price' => 64.99,
                     'sizes' => ['S', 'M', 'L', 'XL'],
                     'tags' => ['Popular', 'Best Seller', 'Casual'],
                 ],
 
                 [
-                    'name' => 'Oversized Streetwear T-Shirt',
-                    'description' => 'An oversized t-shirt designed for a relaxed modern streetwear look.',
-                    'category' => 'T-Shirts',
-                    'base_price' => 29.99,
-                    'colors' => ['Black', 'White', 'Red'],
-                    'sizes' => ['S', 'M', 'L', 'XL', 'XXL'],
-                    'tags' => ['New', 'Trending', 'Casual', 'Party'],
-                ],
-
-                [
-                    'name' => 'Premium Oxford Shirt',
-                    'description' => 'A premium Oxford shirt suitable for both casual and formal outfits.',
-                    'category' => 'Shirts',
-                    'base_price' => 49.99,
-                    'colors' => ['White', 'Blue', 'Gray'],
-                    'sizes' => ['S', 'M', 'L', 'XL'],
-                    'tags' => ['Featured', 'Popular', 'Casual', 'Formal'],
-                ],
-
-                [
-                    'name' => 'Slim Fit Jeans',
-                    'description' => 'Modern slim fit jeans made from durable stretch denim.',
-                    'category' => 'Jeans',
+                    'folder' => 'Hoodie',
+                    'name' => 'Heavyweight Essential Hoodie',
+                    'description' => 'A cozy heavyweight hoodie with a relaxed fit, perfect for layering through cooler days.',
+                    'category' => 'Hoodies',
                     'base_price' => 59.99,
-                    'colors' => ['Blue', 'Black'],
-                    'sizes' => ['S', 'M', 'L', 'XL'],
-                    'tags' => ['Popular', 'Casual'],
+                    'sizes' => ['S', 'M', 'L', 'XL', 'XXL'],
+                    'tags' => ['new', 'Popular', 'Casual', 'Gym', 'Winter'],
                 ],
 
                 [
-                    'name' => 'Essential Pullover Hoodie',
-                    'description' => 'A warm and comfortable hoodie with a simple minimal design.',
+                    'folder' => 'Leather Lace-Up Boots',
+                    'name' => 'Heritage Leather Lace-Up Boots',
+                    'description' => 'Durable leather lace-up boots combining rugged construction with a clean modern profile.',
+                    'category' => 'Shoes',
+                    'base_price' => 119.99,
+                    'sizes' => ['S', 'M', 'L', 'XL'],
+                    'tags' => ['Premium', 'Featured', 'Outdoor', 'Formal'],
+                ],
+
+                [
+                    'folder' => 'Olive Bomber Jacket',
+                    'name' => 'Olive Flight Bomber Jacket',
+                    'description' => 'A modern bomber jacket in an understated olive tone, designed for effortless everyday layering.',
+                    'category' => 'Jackets',
+                    'base_price' => 89.99,
+                    'sizes' => ['S', 'M', 'L', 'XL'],
+                    'tags' => ['new', 'Trending', 'Streetwear', 'Casual'],
+                ],
+
+                [
+                    'folder' => 'Oversized Crewneck Sweatshirt',
+                    'name' => 'Oversized Essential Crewneck',
+                    'description' => 'A relaxed oversized sweatshirt with a contemporary shape and comfortable everyday construction.',
                     'category' => 'Hoodies',
                     'base_price' => 54.99,
-                    'colors' => ['Black', 'Gray', 'Green'],
                     'sizes' => ['S', 'M', 'L', 'XL', 'XXL'],
-                    'tags' => ['New', 'Featured', 'Casual', 'Gym'],
+                    'tags' => ['new', 'Trending', 'Streetwear', 'Casual', 'Party'],
                 ],
 
                 [
-                    'name' => 'Classic Denim Jacket',
-                    'description' => 'A timeless denim jacket that works with almost any outfit.',
+                    'folder' => 'Quilted Puffer Jacket',
+                    'name' => 'Alpine Quilted Puffer Jacket',
+                    'description' => 'A warm quilted puffer jacket designed to provide lightweight insulation without sacrificing a clean silhouette.',
                     'category' => 'Jackets',
-                    'base_price' => 79.99,
-                    'colors' => ['Blue', 'Black'],
-                    'sizes' => ['S', 'M', 'L', 'XL'],
-                    'tags' => ['Trending', 'Popular', 'Casual', 'Party'],
+                    'base_price' => 109.99,
+                    'sizes' => ['S', 'M', 'L', 'XL', 'XXL'],
+                    'tags' => ['new', 'Winter', 'Featured', 'Outdoor'],
                 ],
 
                 [
-                    'name' => 'Relaxed Cargo Shorts',
-                    'description' => 'Comfortable cargo shorts with multiple practical pockets.',
-                    'category' => 'Shorts',
-                    'base_price' => 34.99,
-                    'colors' => ['Black', 'Green', 'Gray'],
-                    'sizes' => ['S', 'M', 'L', 'XL'],
-                    'tags' => ['Sale', 'Popular', 'Casual', 'Gym'],
-                ],
-
-                [
-                    'name' => 'Urban Runner Sneakers',
-                    'description' => 'Lightweight sneakers designed for everyday comfort and movement.',
+                    'folder' => 'Sneakers',
+                    'name' => 'Everyday Court Sneakers',
+                    'description' => 'Minimal everyday sneakers with a versatile low-profile design made for comfort and daily movement.',
                     'category' => 'Shoes',
-                    'base_price' => 89.99,
-                    'colors' => ['Black', 'White', 'Red'],
+                    'base_price' => 84.99,
                     'sizes' => ['S', 'M', 'L', 'XL'],
-                    'tags' => ['New', 'Best Seller', 'Featured', 'Casual', 'Gym'],
+                    'tags' => ['Best Seller', 'Popular', 'Casual', 'Gym'],
+                ],
+
+                [
+                    'folder' => 'Tailored Long Overcoat',
+                    'name' => 'Modern Tailored Long Overcoat',
+                    'description' => 'A sophisticated long overcoat with a refined tailored silhouette, ideal for elevated everyday outfits.',
+                    'category' => 'Coats',
+                    'base_price' => 139.99,
+                    'sizes' => ['S', 'M', 'L', 'XL'],
+                    'tags' => ['Premium', 'Featured', 'Formal', 'Winter'],
                 ],
             ];
 
 
+            /*
+            |--------------------------------------------------------------------------
+            | PRODUCT / VARIANT STORAGE
+            |--------------------------------------------------------------------------
+            */
+
             $productIds = [];
             $variantIds = [];
-
-            // Stores the actual price of every variant.
             $variantPrices = [];
+            $variantsByProduct = [];
 
 
             /*
@@ -274,6 +375,130 @@ class DatabaseSeeder extends Seeder
             */
 
             foreach ($products as $product) {
+
+                /*
+                |--------------------------------------------------------------------------
+                | PRODUCT IMAGE FOLDER
+                |--------------------------------------------------------------------------
+                */
+
+                $folderPath = public_path(
+                    'images/Mockups/' . $product['folder']
+                );
+
+                if (!is_dir($folderPath)) {
+                    throw new \Exception(
+                        "Product image folder not found: {$folderPath}"
+                    );
+                }
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | FIND IMAGES
+                |--------------------------------------------------------------------------
+                */
+
+                $images = glob($folderPath . '/*');
+
+                $images = array_filter($images, function ($file) {
+                    return is_file($file);
+                });
+
+                if (empty($images)) {
+                    throw new \Exception(
+                        "No images found in: {$folderPath}"
+                    );
+                }
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | SORT IMAGES
+                |--------------------------------------------------------------------------
+                */
+
+                usort($images, function ($a, $b) {
+                    return strnatcasecmp(
+                        basename($a),
+                        basename($b)
+                    );
+                });
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | DETECT PRODUCT COLORS FROM FILENAMES
+                |--------------------------------------------------------------------------
+                |
+                | Example:
+                |
+                | Cargo Pants/
+                |     Black.png
+                |     Green.png
+                |
+                | becomes:
+                |
+                | ['Black', 'Green']
+                |
+                */
+
+                $productColors = [];
+
+                foreach ($images as $image) {
+
+                    $colorName = pathinfo(
+                        basename($image),
+                        PATHINFO_FILENAME
+                    );
+
+                    $colorName = trim($colorName);
+
+                    if ($colorName === '') {
+                        continue;
+                    }
+
+                    /*
+                    |--------------------------------------------------------------------------
+                    | CHECK COLOR EXISTS
+                    |--------------------------------------------------------------------------
+                    */
+
+                    if (!isset($colorIds[$colorName])) {
+                        throw new \Exception(
+                            "Unknown color '{$colorName}' found in " .
+                            "{$product['folder']}/" .
+                            basename($image) .
+                            ". Add this color to \$colorDefinitions."
+                        );
+                    }
+
+                    $productColors[] = $colorName;
+                }
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | REMOVE DUPLICATE COLORS
+                |--------------------------------------------------------------------------
+                */
+
+                $productColors = array_values(
+                    array_unique($productColors)
+                );
+
+                if (empty($productColors)) {
+                    throw new \Exception(
+                        "No colors detected for product: {$product['name']}"
+                    );
+                }
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | CREATE PRODUCT
+                |--------------------------------------------------------------------------
+                */
 
                 $productId = DB::table('products')->insertGetId([
                     'name' => $product['name'],
@@ -287,24 +512,25 @@ class DatabaseSeeder extends Seeder
 
                 /*
                 |--------------------------------------------------------------------------
-                | PRODUCT IMAGES
+                | COPY PRODUCT IMAGES
                 |--------------------------------------------------------------------------
                 */
 
-                $selectedImages = collect($imageFiles)
-                    ->shuffle()
-                    ->take(2);
+                $productSlug = Str::slug($product['name']);
 
-                foreach ($selectedImages as $image) {
+                foreach ($images as $image) {
 
-                    $path = Storage::disk('public')->putFile(
-                        'products',
-                        new File($image)
+                    $filename = basename($image);
+
+                    Storage::disk('public')->putFileAs(
+                        "products/{$productSlug}",
+                        new File($image),
+                        $filename
                     );
 
                     DB::table('product_images')->insert([
                         'product_id' => $productId,
-                        'path' => $path,
+                        'path' => "products/{$productSlug}/{$filename}",
                     ]);
                 }
 
@@ -317,6 +543,12 @@ class DatabaseSeeder extends Seeder
 
                 foreach ($product['tags'] as $tag) {
 
+                    if (!isset($tagIds[$tag])) {
+                        throw new \Exception(
+                            "Tag '{$tag}' does not exist."
+                        );
+                    }
+
                     DB::table('product_tag')->insert([
                         'product_id' => $productId,
                         'tag_id' => $tagIds[$tag],
@@ -326,11 +558,34 @@ class DatabaseSeeder extends Seeder
 
                 /*
                 |--------------------------------------------------------------------------
-                | VARIANTS
+                | CREATE VARIANTS
                 |--------------------------------------------------------------------------
+                |
+                | Variants are generated from the ACTUAL image colors.
+                |
+                | Example:
+                |
+                | Black.png
+                | Green.png
+                |
+                | Creates:
+                |
+                | Black + S
+                | Black + M
+                | Black + L
+                | Black + XL
+                |
+                | Green + S
+                | Green + M
+                | Green + L
+                | Green + XL
+                |
                 */
 
-                foreach ($product['colors'] as $color) {
+                $variantsByProduct[$productId] = [];
+
+                foreach ($productColors as $color) {
+
                     foreach ($product['sizes'] as $size) {
 
                         $addedPrice = 0.00;
@@ -344,10 +599,8 @@ class DatabaseSeeder extends Seeder
 
                         $variantIds[] = $variantId;
 
-                        /*
-                        | Actual variant price:
-                        | product base price + variant added price
-                        */
+                        $variantsByProduct[$productId][] = $variantId;
+
                         $variantPrices[$variantId] =
                             $product['base_price'] + $addedPrice;
                     }
@@ -361,79 +614,55 @@ class DatabaseSeeder extends Seeder
             |--------------------------------------------------------------------------
             */
 
-            DB::table('reviews')->insert([
+            $reviewTexts = [
                 [
-                    'review' => 'Really comfortable and excellent quality.',
-                    'rating' => 5,
-                    'user_id' => $users[0],
-                    'product_id' => $productIds[0],
-                    'created_at' => now(),
-                    'updated_at' => now(),
+                    5,
+                    'The quality is excellent. Looks even better in person.',
                 ],
+                [
+                    5,
+                    'Really happy with the fit and overall quality.',
+                ],
+                [
+                    4,
+                    'Great piece for everyday wear. Very comfortable.',
+                ],
+                [
+                    5,
+                    'Exactly what I was looking for. Highly recommended.',
+                ],
+                [
+                    4,
+                    'Nice material and a really good fit.',
+                ],
+                [
+                    5,
+                    'Looks premium and feels great to wear.',
+                ],
+            ];
 
-                [
-                    'review' => 'Great t-shirt for everyday wear.',
-                    'rating' => 4,
-                    'user_id' => $users[1],
-                    'product_id' => $productIds[0],
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
+            foreach ($productIds as $index => $productId) {
 
-                [
-                    'review' => 'The oversized fit looks really good.',
-                    'rating' => 5,
-                    'user_id' => $users[2],
-                    'product_id' => $productIds[1],
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
+                $numberOfReviews = rand(1, 3);
 
-                [
-                    'review' => 'Very nice shirt and excellent material.',
-                    'rating' => 5,
-                    'user_id' => $users[3],
-                    'product_id' => $productIds[2],
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
+                for ($i = 0; $i < $numberOfReviews; $i++) {
 
-                [
-                    'review' => 'Good quality jeans and comfortable fit.',
-                    'rating' => 4,
-                    'user_id' => $users[4],
-                    'product_id' => $productIds[3],
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
+                    $review = $reviewTexts[
+                        ($index + $i) % count($reviewTexts)
+                    ];
 
-                [
-                    'review' => 'Very warm and comfortable hoodie.',
-                    'rating' => 5,
-                    'user_id' => $users[5],
-                    'product_id' => $productIds[4],
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-
-                [
-                    'review' => 'Classic jacket. Looks great.',
-                    'rating' => 4,
-                    'user_id' => $users[6],
-                    'product_id' => $productIds[5],
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-
-                [
-                    'review' => 'Really comfortable sneakers.',
-                    'rating' => 5,
-                    'user_id' => $users[7],
-                    'product_id' => $productIds[7],
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-            ]);
+                    DB::table('reviews')->insert([
+                        'review' => $review[1],
+                        'rating' => $review[0],
+                        'user_id' => $users[
+                            ($index + $i) % count($users)
+                        ],
+                        'product_id' => $productId,
+                        'created_at' => now()->subDays(rand(1, 90)),
+                        'updated_at' => now(),
+                    ]);
+                }
+            }
 
 
             /*
@@ -445,6 +674,7 @@ class DatabaseSeeder extends Seeder
             $cartIds = [];
 
             foreach ($users as $userId) {
+
                 $cartIds[$userId] = DB::table('carts')->insertGetId([
                     'user_id' => $userId,
                 ]);
@@ -457,31 +687,49 @@ class DatabaseSeeder extends Seeder
             |--------------------------------------------------------------------------
             */
 
-            DB::table('cart_variant')->insert([
-                [
-                    'cart_id' => $cartIds[$users[0]],
-                    'variant_id' => $variantIds[0],
-                    'quantity' => 2,
+            $cartExamples = [
+                0 => [
+                    $productIds[0],
+                    $productIds[4],
                 ],
 
-                [
-                    'cart_id' => $cartIds[$users[0]],
-                    'variant_id' => $variantIds[1],
-                    'quantity' => 1,
+                1 => [
+                    $productIds[2],
+                    $productIds[5],
                 ],
 
-                [
-                    'cart_id' => $cartIds[$users[1]],
-                    'variant_id' => $variantIds[20],
-                    'quantity' => 1,
+                2 => [
+                    $productIds[6],
+                    $productIds[9],
                 ],
 
-                [
-                    'cart_id' => $cartIds[$users[2]],
-                    'variant_id' => $variantIds[30],
-                    'quantity' => 2,
+                3 => [
+                    $productIds[7],
                 ],
-            ]);
+            ];
+
+            foreach ($cartExamples as $userIndex => $cartProducts) {
+
+                foreach ($cartProducts as $productId) {
+
+                    if (empty($variantsByProduct[$productId])) {
+                        continue;
+                    }
+
+                    $variantId = $variantsByProduct[$productId][
+                        rand(
+                            0,
+                            count($variantsByProduct[$productId]) - 1
+                        )
+                    ];
+
+                    DB::table('cart_variant')->insert([
+                        'cart_id' => $cartIds[$users[$userIndex]],
+                        'variant_id' => $variantId,
+                        'quantity' => rand(1, 2),
+                    ]);
+                }
+            }
 
 
             /*
@@ -504,19 +752,10 @@ class DatabaseSeeder extends Seeder
                     'user_id' => $users[0],
                     'status' => 'delivered',
                     'days_ago' => 32,
-                    'items' => [
-                        [
-                            'variant_id' => $variantIds[0],
-                            'quantity' => 2,
-                        ],
-                        [
-                            'variant_id' => $variantIds[5],
-                            'quantity' => 1,
-                        ],
-                        [
-                            'variant_id' => $variantIds[12],
-                            'quantity' => 1,
-                        ],
+                    'products' => [
+                        [$productIds[0], 2],
+                        [$productIds[4], 1],
+                        [$productIds[5], 1],
                     ],
                 ],
 
@@ -524,19 +763,10 @@ class DatabaseSeeder extends Seeder
                     'user_id' => $users[1],
                     'status' => 'confirmed',
                     'days_ago' => 7,
-                    'items' => [
-                        [
-                            'variant_id' => $variantIds[20],
-                            'quantity' => 1,
-                        ],
-                        [
-                            'variant_id' => $variantIds[21],
-                            'quantity' => 1,
-                        ],
-                        [
-                            'variant_id' => $variantIds[30],
-                            'quantity' => 1,
-                        ],
+                    'products' => [
+                        [$productIds[2], 1],
+                        [$productIds[7], 1],
+                        [$productIds[11], 1],
                     ],
                 ],
 
@@ -544,19 +774,10 @@ class DatabaseSeeder extends Seeder
                     'user_id' => $users[2],
                     'status' => 'pending',
                     'days_ago' => 2,
-                    'items' => [
-                        [
-                            'variant_id' => $variantIds[2],
-                            'quantity' => 1,
-                        ],
-                        [
-                            'variant_id' => $variantIds[25],
-                            'quantity' => 1,
-                        ],
-                        [
-                            'variant_id' => $variantIds[40],
-                            'quantity' => 1,
-                        ],
+                    'products' => [
+                        [$productIds[1], 1],
+                        [$productIds[6], 1],
+                        [$productIds[9], 1],
                     ],
                 ],
 
@@ -564,19 +785,10 @@ class DatabaseSeeder extends Seeder
                     'user_id' => $users[3],
                     'status' => 'shipped',
                     'days_ago' => 4,
-                    'items' => [
-                        [
-                            'variant_id' => $variantIds[6],
-                            'quantity' => 2,
-                        ],
-                        [
-                            'variant_id' => $variantIds[10],
-                            'quantity' => 1,
-                        ],
-                        [
-                            'variant_id' => $variantIds[36],
-                            'quantity' => 1,
-                        ],
+                    'products' => [
+                        [$productIds[3], 1],
+                        [$productIds[8], 1],
+                        [$productIds[12], 1],
                     ],
                 ],
 
@@ -584,15 +796,9 @@ class DatabaseSeeder extends Seeder
                     'user_id' => $users[4],
                     'status' => 'cancelled',
                     'days_ago' => 15,
-                    'items' => [
-                        [
-                            'variant_id' => $variantIds[16],
-                            'quantity' => 1,
-                        ],
-                        [
-                            'variant_id' => $variantIds[45],
-                            'quantity' => 1,
-                        ],
+                    'products' => [
+                        [$productIds[0], 1],
+                        [$productIds[10], 1],
                     ],
                 ],
 
@@ -600,23 +806,11 @@ class DatabaseSeeder extends Seeder
                     'user_id' => $users[5],
                     'status' => 'delivered',
                     'days_ago' => 45,
-                    'items' => [
-                        [
-                            'variant_id' => $variantIds[1],
-                            'quantity' => 2,
-                        ],
-                        [
-                            'variant_id' => $variantIds[15],
-                            'quantity' => 1,
-                        ],
-                        [
-                            'variant_id' => $variantIds[28],
-                            'quantity' => 1,
-                        ],
-                        [
-                            'variant_id' => $variantIds[50],
-                            'quantity' => 1,
-                        ],
+                    'products' => [
+                        [$productIds[4], 2],
+                        [$productIds[5], 1],
+                        [$productIds[7], 1],
+                        [$productIds[11], 1],
                     ],
                 ],
             ];
@@ -630,7 +824,9 @@ class DatabaseSeeder extends Seeder
 
             foreach ($orders as $orderData) {
 
-                $createdAt = now()->subDays($orderData['days_ago']);
+                $createdAt = now()->subDays(
+                    $orderData['days_ago']
+                );
 
 
                 /*
@@ -657,10 +853,21 @@ class DatabaseSeeder extends Seeder
 
                 $subtotal = 0;
 
-                foreach ($orderData['items'] as $item) {
+                foreach ($orderData['products'] as $item) {
 
-                    $variantId = $item['variant_id'];
-                    $quantity = $item['quantity'];
+                    $productId = $item[0];
+                    $quantity = $item[1];
+
+                    $availableVariants =
+                        $variantsByProduct[$productId];
+
+                    if (empty($availableVariants)) {
+                        continue;
+                    }
+
+                    $variantId = $availableVariants[
+                        array_rand($availableVariants)
+                    ];
 
                     $price = $variantPrices[$variantId];
 
@@ -682,13 +889,6 @@ class DatabaseSeeder extends Seeder
                 */
 
                 $total = $subtotal + $deliveryFee;
-
-
-                /*
-                |--------------------------------------------------------------------------
-                | UPDATE ORDER TOTAL
-                |--------------------------------------------------------------------------
-                */
 
                 DB::table('orders')
                     ->where('id', $orderId)
