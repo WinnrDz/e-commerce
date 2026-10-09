@@ -3,9 +3,13 @@ import.meta.glob(["../fonts/**"]);
 
 import { createIcons, icons } from 'lucide';
 
-createIcons({
-    icons
+document.addEventListener('livewire:init', () => {
+    Livewire.hook('morph.updated', () => {
+        createIcons({ icons });
+    });
 });
+
+createIcons({ icons });
 
 if (document.getElementById("welcome")) {
     import("./welcome.js");

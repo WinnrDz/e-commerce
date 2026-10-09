@@ -5,8 +5,10 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Product;
 use App\Models\Color;
+use App\Models\Review;
 use App\Models\Size;
 use App\Models\Variant;
+use Livewire\Attributes\Computed;
 
 class Show extends Component
 {
@@ -21,6 +23,8 @@ class Show extends Component
     public $review;
     public $reviewRating = 1;
     public $isReviewing = false;
+
+    public $reviewsOrder = 'desc';
 
     public function selectColor($id)
     {
@@ -102,6 +106,28 @@ class Show extends Component
         session()->flash('reviewSuccess', 'Review submitted successfully.');
     }
 
+    public function toggleReviewsOrder() {
+        if ($this->reviewsOrder == 'desc') {
+            $this->reviewsOrder = 'asc';
+        }
+        elseif ($this->reviewsOrder == 'asc') {
+            $this->reviewsOrder = 'desc';
+        }
+    }
+
+    #[Computed]
+    public function relatedProducts()
+    {
+        return Product::whereHas('tags', function($q) { 
+            return $q->where('name','Featured');
+        })->get(); 
+    }
+
+    public function show($id) 
+    {
+        return redirect()->route('show', $id);
+    }
+
     public function mount($id)
     {
         $this->product = Product::findOrFail($id);
@@ -117,6 +143,7 @@ class Show extends Component
             "sizes" => Size::whereHas('variants', function ($q) {
                 return $q->where('product_id', $this->product->id);
             })->get(),
+            "reviews" => Review::where('product_id',$this->product->id)->orderBy('created_at',$this->reviewsOrder)->get(),
         ]);
     }
 }
