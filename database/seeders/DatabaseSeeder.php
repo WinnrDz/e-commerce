@@ -16,20 +16,9 @@ class DatabaseSeeder extends Seeder
 
             /*
             |--------------------------------------------------------------------------
-            | CLEAR STORAGE
-            |--------------------------------------------------------------------------
-            */
-
-            Storage::disk('public')->deleteDirectory('products');
-
-
-            /*
-            |--------------------------------------------------------------------------
             | CLEAR DATABASE
             |--------------------------------------------------------------------------
             */
-
-            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
             foreach ([
                 'order_variant',
@@ -49,9 +38,6 @@ class DatabaseSeeder extends Seeder
             ] as $table) {
                 DB::table($table)->delete();
             }
-
-            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-
 
             /*
             |--------------------------------------------------------------------------
@@ -79,21 +65,10 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
 
-
             /*
             |--------------------------------------------------------------------------
             | COLORS
             |--------------------------------------------------------------------------
-            |
-            | Product colors are detected automatically from image filenames.
-            |
-            | Example:
-            |
-            | Black.png  -> Black
-            | Green.png  -> Green
-            | Khaki.png  -> Khaki
-            | Camel.png  -> Camel
-            |
             */
 
             $colorDefinitions = [
@@ -112,8 +87,6 @@ class DatabaseSeeder extends Seeder
                 'Orange' => '#F97316',
                 'Purple' => '#A855F7',
                 'Pink' => '#EC4899',
-
-                // Added because Tailored Long Overcoat contains Camel.png
                 'Camel' => '#C19A6B',
             ];
 
@@ -125,7 +98,6 @@ class DatabaseSeeder extends Seeder
                     'hex_code' => $hexCode,
                 ]);
             }
-
 
             /*
             |--------------------------------------------------------------------------
@@ -149,7 +121,6 @@ class DatabaseSeeder extends Seeder
                     'name' => $name,
                 ]);
             }
-
 
             /*
             |--------------------------------------------------------------------------
@@ -182,7 +153,6 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
 
-
             /*
             |--------------------------------------------------------------------------
             | USERS
@@ -208,22 +178,13 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
 
-
             /*
             |--------------------------------------------------------------------------
             | PRODUCTS
             |--------------------------------------------------------------------------
-            |
-            | Colors are NOT manually defined here.
-            |
-            | They are detected automatically from:
-            |
-            | public/images/Mockups/{folder}/Color.png
-            |
             */
 
             $products = [
-
                 [
                     'folder' => 'Cargo Pants',
                     'name' => 'Urban Utility Cargo Pants',
@@ -233,7 +194,6 @@ class DatabaseSeeder extends Seeder
                     'sizes' => ['S', 'M', 'L', 'XL', 'XXL'],
                     'tags' => ['new', 'Trending', 'Streetwear', 'Casual', 'Gym'],
                 ],
-
                 [
                     'folder' => 'Chino Pants',
                     'name' => 'Essential Slim Chino Pants',
@@ -243,7 +203,6 @@ class DatabaseSeeder extends Seeder
                     'sizes' => ['S', 'M', 'L', 'XL'],
                     'tags' => ['Popular', 'Casual', 'Formal'],
                 ],
-
                 [
                     'folder' => 'Classic Denim Trucker Jacket',
                     'name' => 'Classic Denim Trucker Jacket',
@@ -253,7 +212,6 @@ class DatabaseSeeder extends Seeder
                     'sizes' => ['S', 'M', 'L', 'XL'],
                     'tags' => ['Best Seller', 'Popular', 'Casual', 'Trending'],
                 ],
-
                 [
                     'folder' => 'Classic Leather Biker Jacket',
                     'name' => 'Classic Leather Biker Jacket',
@@ -263,7 +221,6 @@ class DatabaseSeeder extends Seeder
                     'sizes' => ['S', 'M', 'L', 'XL'],
                     'tags' => ['Premium', 'Featured', 'Trending', 'Streetwear', 'Party'],
                 ],
-
                 [
                     'folder' => 'Crew-Neck T-Shirt',
                     'name' => 'Essential Crew-Neck T-Shirt',
@@ -273,7 +230,6 @@ class DatabaseSeeder extends Seeder
                     'sizes' => ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
                     'tags' => ['Best Seller', 'Popular', 'Casual'],
                 ],
-
                 [
                     'folder' => 'Denim Jeans',
                     'name' => 'Classic Straight-Leg Denim Jeans',
@@ -283,7 +239,6 @@ class DatabaseSeeder extends Seeder
                     'sizes' => ['S', 'M', 'L', 'XL'],
                     'tags' => ['Popular', 'Best Seller', 'Casual'],
                 ],
-
                 [
                     'folder' => 'Hoodie',
                     'name' => 'Heavyweight Essential Hoodie',
@@ -293,7 +248,6 @@ class DatabaseSeeder extends Seeder
                     'sizes' => ['S', 'M', 'L', 'XL', 'XXL'],
                     'tags' => ['new', 'Popular', 'Casual', 'Gym', 'Winter'],
                 ],
-
                 [
                     'folder' => 'Leather Lace-Up Boots',
                     'name' => 'Heritage Leather Lace-Up Boots',
@@ -303,7 +257,6 @@ class DatabaseSeeder extends Seeder
                     'sizes' => ['S', 'M', 'L', 'XL'],
                     'tags' => ['Premium', 'Featured', 'Outdoor', 'Formal'],
                 ],
-
                 [
                     'folder' => 'Olive Bomber Jacket',
                     'name' => 'Olive Flight Bomber Jacket',
@@ -313,7 +266,6 @@ class DatabaseSeeder extends Seeder
                     'sizes' => ['S', 'M', 'L', 'XL'],
                     'tags' => ['new', 'Trending', 'Streetwear', 'Casual'],
                 ],
-
                 [
                     'folder' => 'Oversized Crewneck Sweatshirt',
                     'name' => 'Oversized Essential Crewneck',
@@ -323,7 +275,6 @@ class DatabaseSeeder extends Seeder
                     'sizes' => ['S', 'M', 'L', 'XL', 'XXL'],
                     'tags' => ['new', 'Trending', 'Streetwear', 'Casual', 'Party'],
                 ],
-
                 [
                     'folder' => 'Quilted Puffer Jacket',
                     'name' => 'Alpine Quilted Puffer Jacket',
@@ -333,7 +284,6 @@ class DatabaseSeeder extends Seeder
                     'sizes' => ['S', 'M', 'L', 'XL', 'XXL'],
                     'tags' => ['new', 'Winter', 'Featured', 'Outdoor'],
                 ],
-
                 [
                     'folder' => 'Sneakers',
                     'name' => 'Everyday Court Sneakers',
@@ -343,7 +293,6 @@ class DatabaseSeeder extends Seeder
                     'sizes' => ['S', 'M', 'L', 'XL'],
                     'tags' => ['Best Seller', 'Popular', 'Casual', 'Gym'],
                 ],
-
                 [
                     'folder' => 'Tailored Long Overcoat',
                     'name' => 'Modern Tailored Long Overcoat',
@@ -354,7 +303,6 @@ class DatabaseSeeder extends Seeder
                     'tags' => ['Premium', 'Featured', 'Formal', 'Winter'],
                 ],
             ];
-
 
             /*
             |--------------------------------------------------------------------------
@@ -367,7 +315,6 @@ class DatabaseSeeder extends Seeder
             $variantPrices = [];
             $variantsByProduct = [];
 
-
             /*
             |--------------------------------------------------------------------------
             | CREATE PRODUCTS
@@ -375,13 +322,6 @@ class DatabaseSeeder extends Seeder
             */
 
             foreach ($products as $product) {
-
-                /*
-                |--------------------------------------------------------------------------
-                | PRODUCT IMAGE FOLDER
-                |--------------------------------------------------------------------------
-                */
-
                 $folderPath = public_path(
                     'images/Mockups/' . $product['folder']
                 );
@@ -391,13 +331,6 @@ class DatabaseSeeder extends Seeder
                         "Product image folder not found: {$folderPath}"
                     );
                 }
-
-
-                /*
-                |--------------------------------------------------------------------------
-                | FIND IMAGES
-                |--------------------------------------------------------------------------
-                */
 
                 $images = glob($folderPath . '/*');
 
@@ -411,13 +344,6 @@ class DatabaseSeeder extends Seeder
                     );
                 }
 
-
-                /*
-                |--------------------------------------------------------------------------
-                | SORT IMAGES
-                |--------------------------------------------------------------------------
-                */
-
                 usort($images, function ($a, $b) {
                     return strnatcasecmp(
                         basename($a),
@@ -425,28 +351,15 @@ class DatabaseSeeder extends Seeder
                     );
                 });
 
-
                 /*
                 |--------------------------------------------------------------------------
                 | DETECT PRODUCT COLORS FROM FILENAMES
                 |--------------------------------------------------------------------------
-                |
-                | Example:
-                |
-                | Cargo Pants/
-                |     Black.png
-                |     Green.png
-                |
-                | becomes:
-                |
-                | ['Black', 'Green']
-                |
                 */
 
                 $productColors = [];
 
                 foreach ($images as $image) {
-
                     $colorName = pathinfo(
                         basename($image),
                         PATHINFO_FILENAME
@@ -457,12 +370,6 @@ class DatabaseSeeder extends Seeder
                     if ($colorName === '') {
                         continue;
                     }
-
-                    /*
-                    |--------------------------------------------------------------------------
-                    | CHECK COLOR EXISTS
-                    |--------------------------------------------------------------------------
-                    */
 
                     if (!isset($colorIds[$colorName])) {
                         throw new \Exception(
@@ -476,13 +383,6 @@ class DatabaseSeeder extends Seeder
                     $productColors[] = $colorName;
                 }
 
-
-                /*
-                |--------------------------------------------------------------------------
-                | REMOVE DUPLICATE COLORS
-                |--------------------------------------------------------------------------
-                */
-
                 $productColors = array_values(
                     array_unique($productColors)
                 );
@@ -492,7 +392,6 @@ class DatabaseSeeder extends Seeder
                         "No colors detected for product: {$product['name']}"
                     );
                 }
-
 
                 /*
                 |--------------------------------------------------------------------------
@@ -509,17 +408,19 @@ class DatabaseSeeder extends Seeder
 
                 $productIds[] = $productId;
 
-
                 /*
                 |--------------------------------------------------------------------------
                 | COPY PRODUCT IMAGES
+                |--------------------------------------------------------------------------
+                |
+                | Images are shared files. Do not delete the products
+                | directory when seeding a visitor's database.
                 |--------------------------------------------------------------------------
                 */
 
                 $productSlug = Str::slug($product['name']);
 
                 foreach ($images as $image) {
-
                     $filename = basename($image);
 
                     Storage::disk('public')->putFileAs(
@@ -534,7 +435,6 @@ class DatabaseSeeder extends Seeder
                     ]);
                 }
 
-
                 /*
                 |--------------------------------------------------------------------------
                 | PRODUCT TAGS
@@ -542,7 +442,6 @@ class DatabaseSeeder extends Seeder
                 */
 
                 foreach ($product['tags'] as $tag) {
-
                     if (!isset($tagIds[$tag])) {
                         throw new \Exception(
                             "Tag '{$tag}' does not exist."
@@ -555,39 +454,16 @@ class DatabaseSeeder extends Seeder
                     ]);
                 }
 
-
                 /*
                 |--------------------------------------------------------------------------
                 | CREATE VARIANTS
                 |--------------------------------------------------------------------------
-                |
-                | Variants are generated from the ACTUAL image colors.
-                |
-                | Example:
-                |
-                | Black.png
-                | Green.png
-                |
-                | Creates:
-                |
-                | Black + S
-                | Black + M
-                | Black + L
-                | Black + XL
-                |
-                | Green + S
-                | Green + M
-                | Green + L
-                | Green + XL
-                |
                 */
 
                 $variantsByProduct[$productId] = [];
 
                 foreach ($productColors as $color) {
-
                     foreach ($product['sizes'] as $size) {
-
                         $addedPrice = 0.00;
 
                         $variantId = DB::table('variants')->insertGetId([
@@ -606,7 +482,6 @@ class DatabaseSeeder extends Seeder
                     }
                 }
             }
-
 
             /*
             |--------------------------------------------------------------------------
@@ -642,11 +517,9 @@ class DatabaseSeeder extends Seeder
             ];
 
             foreach ($productIds as $index => $productId) {
-
                 $numberOfReviews = rand(1, 3);
 
                 for ($i = 0; $i < $numberOfReviews; $i++) {
-
                     $review = $reviewTexts[
                         ($index + $i) % count($reviewTexts)
                     ];
@@ -664,7 +537,6 @@ class DatabaseSeeder extends Seeder
                 }
             }
 
-
             /*
             |--------------------------------------------------------------------------
             | CARTS
@@ -674,12 +546,10 @@ class DatabaseSeeder extends Seeder
             $cartIds = [];
 
             foreach ($users as $userId) {
-
                 $cartIds[$userId] = DB::table('carts')->insertGetId([
                     'user_id' => $userId,
                 ]);
             }
-
 
             /*
             |--------------------------------------------------------------------------
@@ -692,26 +562,21 @@ class DatabaseSeeder extends Seeder
                     $productIds[0],
                     $productIds[4],
                 ],
-
                 1 => [
                     $productIds[2],
                     $productIds[5],
                 ],
-
                 2 => [
                     $productIds[6],
                     $productIds[9],
                 ],
-
                 3 => [
                     $productIds[7],
                 ],
             ];
 
             foreach ($cartExamples as $userIndex => $cartProducts) {
-
                 foreach ($cartProducts as $productId) {
-
                     if (empty($variantsByProduct[$productId])) {
                         continue;
                     }
@@ -731,7 +596,6 @@ class DatabaseSeeder extends Seeder
                 }
             }
 
-
             /*
             |--------------------------------------------------------------------------
             | DELIVERY FEE
@@ -739,7 +603,6 @@ class DatabaseSeeder extends Seeder
             */
 
             $deliveryFee = 5.00;
-
 
             /*
             |--------------------------------------------------------------------------
@@ -758,7 +621,6 @@ class DatabaseSeeder extends Seeder
                         [$productIds[5], 1],
                     ],
                 ],
-
                 [
                     'user_id' => $users[1],
                     'status' => 'confirmed',
@@ -769,7 +631,6 @@ class DatabaseSeeder extends Seeder
                         [$productIds[11], 1],
                     ],
                 ],
-
                 [
                     'user_id' => $users[2],
                     'status' => 'pending',
@@ -780,7 +641,6 @@ class DatabaseSeeder extends Seeder
                         [$productIds[9], 1],
                     ],
                 ],
-
                 [
                     'user_id' => $users[3],
                     'status' => 'shipped',
@@ -791,7 +651,6 @@ class DatabaseSeeder extends Seeder
                         [$productIds[12], 1],
                     ],
                 ],
-
                 [
                     'user_id' => $users[4],
                     'status' => 'cancelled',
@@ -801,7 +660,6 @@ class DatabaseSeeder extends Seeder
                         [$productIds[10], 1],
                     ],
                 ],
-
                 [
                     'user_id' => $users[5],
                     'status' => 'delivered',
@@ -815,7 +673,6 @@ class DatabaseSeeder extends Seeder
                 ],
             ];
 
-
             /*
             |--------------------------------------------------------------------------
             | CREATE ORDERS + ORDER ITEMS
@@ -823,17 +680,9 @@ class DatabaseSeeder extends Seeder
             */
 
             foreach ($orders as $orderData) {
-
                 $createdAt = now()->subDays(
                     $orderData['days_ago']
                 );
-
-
-                /*
-                |--------------------------------------------------------------------------
-                | CREATE ORDER
-                |--------------------------------------------------------------------------
-                */
 
                 $orderId = DB::table('orders')->insertGetId([
                     'user_id' => $orderData['user_id'],
@@ -844,17 +693,9 @@ class DatabaseSeeder extends Seeder
                     'updated_at' => $createdAt,
                 ]);
 
-
-                /*
-                |--------------------------------------------------------------------------
-                | CREATE ORDER ITEMS
-                |--------------------------------------------------------------------------
-                */
-
                 $subtotal = 0;
 
                 foreach ($orderData['products'] as $item) {
-
                     $productId = $item[0];
                     $quantity = $item[1];
 
@@ -880,13 +721,6 @@ class DatabaseSeeder extends Seeder
 
                     $subtotal += $price * $quantity;
                 }
-
-
-                /*
-                |--------------------------------------------------------------------------
-                | CALCULATE ORDER TOTAL
-                |--------------------------------------------------------------------------
-                */
 
                 $total = $subtotal + $deliveryFee;
 

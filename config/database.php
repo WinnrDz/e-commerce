@@ -31,6 +31,13 @@ return [
     */
 
     'connections' => [
+        'tenant' => [
+            'driver' => 'sqlite',
+            'database' => null,
+            'prefix' => '',
+            'foreign_key_constraints' => true,
+            'busy_timeout' => 5000,
+        ],
 
         'sqlite' => [
             'driver' => 'sqlite',
