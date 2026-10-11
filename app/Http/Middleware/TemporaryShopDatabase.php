@@ -17,6 +17,20 @@ class TemporaryShopDatabase
     ): Response {
         $directory = storage_path('app/demo-databases');
 
+        // Delete SQLite databases older than 24 hours.
+        if (is_dir($directory)) {
+            $cutoff = time() - (24 * 60 * 60);
+
+            foreach (glob($directory . '/*.sqlite') ?: [] as $file) {
+                if (
+                    is_file($file)
+                    && filemtime($file) < $cutoff
+                ) {
+                    @unlink($file);
+                }
+            }
+        }
+
         if (
             ! is_dir($directory)
             && ! mkdir($directory, 0755, true)
