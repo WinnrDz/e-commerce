@@ -18,6 +18,28 @@
 </head>
 
 <body class="bg-white min-w-[320px]">
+    <div x-data="{ show: true }" x-show="show"
+        class="relative flex min-h-[38px] items-center justify-center bg-black px-10 py-2 text-center text-xs text-white sm:text-sm">
+        <p>
+            This is a demo website. Changes are reset every 24 hours.
+            <a href="{{ route('admin.dashboard') }}"
+                class="font-medium underline underline-offset-2 hover:text-gray-300">
+                Admin Dashboard
+            </a>
+            <span class="mx-1 text-gray-500">|</span>
+            <span class="font-medium">
+                for more information, contact us at: rabawinnr@gmail.com
+            </span>
+        </p>
+
+        <button type="button" @click="show = false" aria-label="Close announcement"
+            class="absolute right-4 top-1/2 -translate-y-1/2 text-white transition hover:text-gray-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18" />
+            </svg>
+        </button>
+    </div>
     <header>
         <nav
             class="flex justify-between items-center gap-5 font-satoshi text-[16px] bg-[#FFFFFF] px-4 lg:px-7 py-5 border-b border-black/10">
