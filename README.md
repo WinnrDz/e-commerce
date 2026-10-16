@@ -204,6 +204,12 @@ Possible areas for further development include:
 
 - GitHub: [@WinnrDz](https://github.com/WinnrDz)
 
-## License
+## Design Credits
 
-No license has been specified yet. Unless a license is added to this repository, reuse and redistribution are not automatically granted.
+The frontend design of this project was inspired by a free Figma Community template created by **Hamza Naeem**.
+
+- **Original design:** [Figma Template Link](https://www.figma.com/community/file/1273571982885059508)
+- **Designer:** [Hamza Naeem]
+- **Modifications:** The original design was adapted and implemented using Laravel, Livewire, and Tailwind CSS.
+
+All credit for the original design belongs to its respective creator. My implementation and application functionality are separate from the original design.
